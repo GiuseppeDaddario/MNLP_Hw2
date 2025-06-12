@@ -4,7 +4,7 @@ from src.api.gemini import ask_gemini
 from src.api.prometheus import absolute_grading, relative_grading, absolute_grading_no_reference, relative_grading_no_reference
 
 
-class TestAIModels(unittest.TestCase):
+class TestAPIs(unittest.TestCase):
     def test_ask_gemini(self):
         response = ask_gemini("What is the capital of France?")
         assert isinstance(response, str)
