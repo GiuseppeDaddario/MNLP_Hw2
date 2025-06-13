@@ -33,3 +33,8 @@ def ask_minerva(message):
     # [{'generated_text': "La capitale dell'Italia è la città di Roma, che si trova a [...]"}]
 
     return output[0]['generated_text']
+
+if __name__ == "__main__":
+    # Example usage
+    response = ask_minerva("What is the capital of France?")
+    print(response)  # Should print: "La capitale dell'Italia è Roma."
