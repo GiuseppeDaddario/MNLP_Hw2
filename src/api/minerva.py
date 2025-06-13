@@ -1,8 +1,13 @@
 import transformers
 import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # huggingface-cli login in order to use the model
 
+def get_model_and_tokenizer():
+    tokenizer = AutoTokenizer.from_pretrained("sapienzanlp/Minerva-350M-base-v1.0")
+    model = AutoModelForCausalLM.from_pretrained("sapienzanlp/Minerva-350M-base-v1.0")
+    return model, tokenizer
 
 def ask_minerva(message):
     model_id = "sapienzanlp/Minerva-350M-base-v1.0"
