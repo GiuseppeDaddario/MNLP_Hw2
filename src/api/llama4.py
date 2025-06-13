@@ -29,7 +29,7 @@ def groq_chat(api_key, prompt):
 
 if __name__ == "__main__":
     API_KEY = "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"  # Here is the API key
-    prompt = "Correggi: 'il c4ne è suL c0modino '" ## Insert here your prompt
+    prompt = "Correggi senza dire altro: 'il c4ne è suL c0mod!no '" ## Insert here your prompt
 
     output = groq_chat(API_KEY, prompt)
     print("Risposta API:")
