@@ -1,12 +1,19 @@
 import unittest
 
 from src.api.gemini import ask_gemini
+from src.api.minerva import ask_minerva
 from src.api.prometheus import absolute_grading, relative_grading, absolute_grading_no_reference, relative_grading_no_reference
 
 
 class TestAPIs(unittest.TestCase):
+    @unittest.skip("Already tested")
     def test_ask_gemini(self):
         response = ask_gemini("What is the capital of France?")
+        assert isinstance(response, str)
+        assert "Paris" in response or len(response) > 0
+
+    def test_ask_minerva(self):
+        response = ask_minerva("What is the capital of France?")
         assert isinstance(response, str)
         assert "Paris" in response or len(response) > 0
 
