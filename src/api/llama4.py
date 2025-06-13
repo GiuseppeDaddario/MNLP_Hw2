@@ -30,7 +30,7 @@ def ask_llama(prompt):
 
 if __name__ == "__main__":
     # Example usage
-    prompt = "Correggi senza dire altro: 'il c4ne è suL c0mod!no '"
+    prompt = "Correggi rispettando la punteggiatura, senza aggiungere altro: The universa1 belief js, that a person sucked by a vampyre becomes a vampyre himself, arid sucks in his turn."
     output = ask_llama(prompt)
     print("Risposta API:")
     print(output)
