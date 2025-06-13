@@ -2,7 +2,7 @@ import unittest
 
 from src.api.gemini import ask_gemini
 from src.api.minerva import ask_minerva
-from src.api.llama import ask_llama
+from src.api.llama4 import ask_llama
 from src.api.prometheus import absolute_grading, relative_grading, absolute_grading_no_reference, relative_grading_no_reference
 
 

@@ -59,7 +59,7 @@ def absolute_grading_no_reference(instruction, response, score_rubric):
     score, feedback = judge.evaluate_absolute(
         instruction,
         response,
-        reference_answer=None,  # 👈 Nessun riferimento
+        reference_answer=None,
         score_rubric=score_rubric
     )
 
@@ -81,7 +81,7 @@ def relative_grading_no_reference(instruction, response_a, response_b, score_rub
         instruction,
         response_a,
         response_b,
-        reference_answer=None,  # 👈 Nessun riferimento
+        reference_answer=None,
         score_rubric=score_rubric
     )
 

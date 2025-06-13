@@ -1,7 +1,8 @@
 
 import requests
 
-def groq_chat(api_key, prompt):
+def ask_llama(prompt):
+    api_key = "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"
     url = "https://api.groq.com/openai/v1/chat/completions"
 
     headers = {
@@ -28,9 +29,8 @@ def groq_chat(api_key, prompt):
         return f"Errore HTTP {response.status_code}: {response.text}"
 
 if __name__ == "__main__":
-    API_KEY = "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"  # Here is the API key
-    prompt = "Correggi senza dire altro: 'il c4ne è suL c0mod!no '" ## Insert here your prompt
-
-    output = groq_chat(API_KEY, prompt)
+    # Example usage
+    prompt = "Correggi senza dire altro: 'il c4ne è suL c0mod!no '"
+    output = ask_llama(prompt)
     print("Risposta API:")
     print(output)
