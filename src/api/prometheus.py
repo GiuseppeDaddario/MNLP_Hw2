@@ -21,8 +21,10 @@ def absolute_grading(instruction,response,reference_answer,score_rubric):
         score_rubric
     )
 
-    print("Score:", score)
-    print("Feedback:", feedback)
+    return{
+        "score": score,
+        "feedback": feedback
+    }
 
 
 def relative_grading(instruction, response_a, response_b, reference_answer, score_rubric):
@@ -43,8 +45,10 @@ def relative_grading(instruction, response_a, response_b, reference_answer, scor
         score_rubric
     )
 
-    print("Winner: Response", "A" if winner == 1 else "B")
-    print("Feedback:", feedback)
+    return{
+        "winner": "A" if winner == 1 else "B",
+        "feedback": feedback
+    }
 
 def absolute_grading_no_reference(instruction, response, score_rubric):
     """
@@ -63,8 +67,10 @@ def absolute_grading_no_reference(instruction, response, score_rubric):
         score_rubric=score_rubric
     )
 
-    print("Score:", score)
-    print("Feedback:", feedback)
+    return {
+        "score": score,
+        "feedback": feedback
+    }
 
 
 def relative_grading_no_reference(instruction, response_a, response_b, score_rubric):
@@ -85,5 +91,7 @@ def relative_grading_no_reference(instruction, response_a, response_b, score_rub
         score_rubric=score_rubric
     )
 
-    print("Winner: Response", "A" if winner == 1 else "B")
-    print("Feedback:", feedback)
+    return {
+        "winner": "A" if winner == 1 else "B",
+        "feedback": feedback
+    }

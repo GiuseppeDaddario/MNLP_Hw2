@@ -2,7 +2,7 @@ import torch
 
 from src.utils import OcrCorrectionDataset, read_dataset, difference_score
 from src.models  import t5Model
-from src.api import ask_llama, ask_gemini
+from src.api import ask_llama, ask_gemini, absolute_grading
 
 DIRTY_PATH_ENG = "datasets/eng/the_vampyre_ocr.json"
 CLEAN_PATH_ENG = "datasets/eng/the_vampyre_clean.json"
@@ -28,6 +28,7 @@ JUDGE_PROMPT = ("Evaluate the quality of the output based on the following scale
                 "coherent. It retained the original meaning as much as it could.\n"
                 "Answer only with a number from 1 to 5, without any other sentence.\n\n")
 
+INSTRUCTION = "Correct the sentence removing OCR errors and typos, preserving the original meaning and syntax. Do not add any additional text or explanation."
 
 
 def main_t5():
@@ -66,9 +67,11 @@ def main():
 
     # LLM as a Judge
     eval_prompt = f"{JUDGE_PROMPT} Original: {correct[num_elem]} \n Output: {output}"
-    judge_score = ask_gemini(eval_prompt)
-    print("Judge score:", judge_score)
-
+    gemini_score = ask_gemini(eval_prompt)
+    print("Gemini score:", gemini_score)
+    if torch.cuda.is_available():
+        prometheus_score = absolute_grading(instruction=INSTRUCTION, response=output, reference_answer=correct[num_elem], score_rubric=JUDGE_PROMPT)
+        print("Prometheus score:", prometheus_score["score"])
 
     return
 
