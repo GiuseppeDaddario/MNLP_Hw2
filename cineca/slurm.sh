@@ -7,7 +7,7 @@
 #SBATCH --ntasks-per-node=1                   # Number of MPI tasks per node (e.g., 1 per GPU)
 #SBATCH --cpus-per-task=1                     # Number of CPU cores per task (adjust as needed)
 #SBATCH --gres=gpu:1                          # Number of GPUs per node (adjust to match hardware)
-#SBATCH --partition=lrd_all_serial            # GPU-enabled partition
+#SBATCH --partition=boost_usr_prod            # GPU-enabled partition
 #SBATCH --qos=normal                          # Quality of Service
 #SBATCH --output=multiGPUJob.out              # File for standard output
 #SBATCH --error=multiGPUJob.err               # File for standard error
