@@ -11,7 +11,7 @@
 #SBATCH --qos=normal                          # Quality of Service
 #SBATCH --output=multiGPUJob.out              # File for standard output
 #SBATCH --error=multiGPUJob.err               # File for standard error
-#SBATCH --account=Gdaddari                    # Project account number
+#SBATCH --account=try25_navigli               # Project account number
 
 # Load necessary modules (adjust to your environment)
 module load python/3.11                       # Load Python module
