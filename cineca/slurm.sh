@@ -18,8 +18,6 @@ module load python/3.11                       # Load Python module
 module load cuda/12.2                         # Load CUDA toolkit
 module load openmpi                           # Load MPI implementation
 
-source /Users/giuseppedaddario/miniconda3/etc/profile.d/conda.sh
-conda activate MNLP
 
 # Optional: Set environment variables for performance tuning
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK   # Set OpenMP threads per task
@@ -27,4 +25,4 @@ export NCCL_DEBUG=INFO                        # Enable NCCL debugging (for multi
 
 # Launch the distributed GPU application
 # Replace with your actual command (e.g., mpirun or srun)
-srun --mpi=pmix python ../main.py
+python ../main.py
