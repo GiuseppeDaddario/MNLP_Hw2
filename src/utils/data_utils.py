@@ -31,3 +31,43 @@ class OcrCorrectionDataset(Dataset):
             "attention_mask": inputs.attention_mask.squeeze(),
             "labels": labels
         }
+
+
+def read_dataset(file_path, elements=None):
+    if elements is None:
+        if "eng" in file_path:
+            elements = 24
+        elif "ita" in file_path:
+            elements = 7
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    # Creiamo una lista con solo i primi 'elements' elementi
+    keys = sorted(data.keys(), key=lambda x: int(x))[:elements]
+    return [data[k] for k in keys]
+
+def difference_score(original, corrected):
+    original_words = set(original.split())
+    corrected_words = set(corrected.split())
+
+    # Parole corrette che coincidono
+    correct_words = original_words.intersection(corrected_words)
+
+    # Parole mancanti e aggiunte
+    missing_words = original_words - corrected_words  # Parole presenti nell'originale ma mancanti nel corretto
+    added_words = corrected_words - original_words    # Parole presenti nel corretto ma non nell'originale
+
+    # Calcola la percentuale di correzione
+    if len(original_words) == 0:
+        score = 0.0
+    else:
+        score = len(correct_words) / len(original_words) * 100
+
+    # Restituisce punteggio e dettagli delle differenze
+    return {
+        "score": score,
+        "missing_words": missing_words,
+        "added_words": added_words
+    }
+
+
+
