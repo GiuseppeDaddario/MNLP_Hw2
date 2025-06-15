@@ -9,8 +9,8 @@
 #SBATCH --gres=gpu:2                          # Number of GPUs per node (adjust to match hardware)
 #SBATCH --partition=boost_usr_prod            # GPU-enabled partition
 #SBATCH --qos=normal                          # Quality of Service
-#SBATCH --output=multiGPUJob.out              # File for standard output
-#SBATCH --error=multiGPUJob.err               # File for standard error
+#SBATCH --output=./logs/multiGPUJob.out              # File for standard output
+#SBATCH --error=./logs/multiGPUJob.err               # File for standard error
 #SBATCH --account=try25_navigli               # Project account number
 
 # Load necessary modules (adjust to your environment)
