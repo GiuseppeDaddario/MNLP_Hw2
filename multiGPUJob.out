@@ -1,0 +1,16 @@
+Loading libiconv/1.17-nhc3mhm
+  ERROR: Module cannot be loaded due to a conflict.
+    HINT: Might try "module unload libiconv" first.
+
+Loading libxml2/2.10.3-zbbe7lm
+  ERROR: Requirement libiconv/1.17-nhc3mhm is not loaded
+
+Loading cuda/12.2
+  ERROR: Load of requirement libiconv/1.17-nhc3mhm failed
+  ERROR: Load of requirement libxml2/2.10.3-zbbe7lm failed
+Loading openmpi/4.1.6--gcc--12.2.0
+  Loading requirement: gcc/12.2.0
+INFO 06-14 22:28:52 [__init__.py:244] Automatically detected platform cuda.
+Evaluating with Prometheus...
+ERROR 06-14 22:28:58 [config.py:114] Error retrieving file list: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/prometheus-eval/prometheus-7b-v2.0/tree/main?recursive=True&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14f8520d7fd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 0bbd0800-1422-4251-9372-2e0b65c00286)'), retrying 1 of 2
+ERROR 06-14 22:29:03 [config.py:112] Error retrieving file list: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/prometheus-eval/prometheus-7b-v2.0/tree/main?recursive=True&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14f84fdaac90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: ce48fb22-bb06-4a64-84d4-37f9b8134891)')
