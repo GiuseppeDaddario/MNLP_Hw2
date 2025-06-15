@@ -26,7 +26,7 @@ module load cuda/12.2
 module load openmpi/4.1.6--gcc--12.2.0
 
 # Attiva l'ambiente virtuale
-source ~/mnlp/bin/activate
+source ~/prometheus-env/bin/activate
 
 # Optional: Set environment variables for performance tuning
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK   # Set OpenMP threads per task
@@ -34,5 +34,5 @@ export NCCL_DEBUG=INFO                        # Enable NCCL debugging (for multi
 
 # Launch the distributed GPU application
 # Replace with your actual command (e.g., mpirun or srun)
-cd /leonardo/home/userexternal/gdaddari/MNLP_Hw2
-python src/prometheus/evaluate.py
+cd /leonardo/home/userexternal/lbenucci/MNLP_Hw2
+python src//models/prometheus/evaluate.py
