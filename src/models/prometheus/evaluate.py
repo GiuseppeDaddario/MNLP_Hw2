@@ -7,7 +7,7 @@ def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 # === CONFIG ===
-MODEL_PATH = ".cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df"
+MODEL_PATH = "cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 JUDGE_PROMPT = (
