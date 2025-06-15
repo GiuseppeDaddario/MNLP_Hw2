@@ -1,16 +1,83 @@
-Loading libiconv/1.17-nhc3mhm
+Loading libxml2/2.10.3-zbbe7lm
+  Loading requirement: xz/5.4.6-xxxg42c zlib-ng/2.1.6-jkgunjc
+Loading libiconv/1.17-d7yvx2s
   ERROR: Module cannot be loaded due to a conflict.
     HINT: Might try "module unload libiconv" first.
 
-Loading libxml2/2.10.3-zbbe7lm
-  ERROR: Requirement libiconv/1.17-nhc3mhm is not loaded
+Loading gettext/0.22.3-2g7elif
+  ERROR: Load of requirement libiconv/1.17-d7yvx2s failed
+Loading libiconv/1.17-d7yvx2s
+  ERROR: Module cannot be loaded due to a conflict.
+    HINT: Might try "module unload libiconv" first.
 
-Loading cuda/12.2
-  ERROR: Load of requirement libiconv/1.17-nhc3mhm failed
-  ERROR: Load of requirement libxml2/2.10.3-zbbe7lm failed
+Loading gettext/0.22.3-2g7elif
+  ERROR: Requirement libiconv/1.17-d7yvx2s is not loaded
+
+Loading python/3.11.6--gcc--8.5.0
+  ERROR: Load of requirement libiconv/1.17-d7yvx2s failed
+  ERROR: Load of requirement gettext/0.22.3-2g7elif failed
 Loading openmpi/4.1.6--gcc--12.2.0
   Loading requirement: gcc/12.2.0
-INFO 06-14 22:28:52 [__init__.py:244] Automatically detected platform cuda.
-Evaluating with Prometheus...
-ERROR 06-14 22:28:58 [config.py:114] Error retrieving file list: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/prometheus-eval/prometheus-7b-v2.0/tree/main?recursive=True&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14f8520d7fd0>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 0bbd0800-1422-4251-9372-2e0b65c00286)'), retrying 1 of 2
-ERROR 06-14 22:29:03 [config.py:112] Error retrieving file list: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/prometheus-eval/prometheus-7b-v2.0/tree/main?recursive=True&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x14f84fdaac90>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: ce48fb22-bb06-4a64-84d4-37f9b8134891)')
+[2025-06-15 18:01:01] Caricamento Prometheus base...
+[2025-06-15 18:01:21] Valutazione esempi...
+
+--- OUTPUT GREZZO DEL MODELLO ---
+[PROMPT]
+Correggi: Tntroduzìone aìì'ìntellìgenza artìficìale
+
+[EXPECTED]
+Introduzione all'Intelligenza Artificiale
+
+[GENERATED]
+Introduzione all’Intelligenza Artificiale
+
+Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. Use the following scale:
+
+1 = Completely unacceptable
+2 = Severe errors
+3 = Partially wrong, mostly minor errors
+4 = Good, but not perfect
+5 = Perfect output
+
+Only output the score **after** the [NUMERIC SCORE] tag.
+Format: [NUMERIC SCORE] <number>
+Do not explain. Do not write anything else. [NUMERIC SCORE] 5
+The generated text is identical to the expected text with only minor differences in spacing and punctuation that do not affect the meaning or readability of the text. The correction has been done perfectly without any errors. [NUMERIC
+--- FINE OUTPUT ---
+
+
+--- ESEMPIO 1 ---
+OCR:       Tntroduzìone aìì'ìntellìgenza artìficìale
+Corretto:  Introduzione all'Intelligenza Artificiale
+Generato:  Introduzione all’Intelligenza Artificiale
+Valutazione: 5
+
+--- OUTPUT GREZZO DEL MODELLO ---
+[PROMPT]
+Correggi: Universta' dgli Studi di Roma ‘La Spieenza’
+
+[EXPECTED]
+Università degli Studi di Roma 'La Sapienza'
+
+[GENERATED]
+Universita' degli Studi di Roma “La Sapienza”
+
+Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. Use the following scale:
+
+1 = Completely unacceptable
+2 = Severe errors
+3 = Partially wrong, mostly minor errors
+4 = Good, but not perfect
+5 = Perfect output
+
+Only output the score **after** the [NUMERIC SCORE] tag.
+Format: [NUMERIC SCORE] <number>
+Do not explain. Do not write anything else. [NUMERIC SCORE] 4 The generated text contains a spelling error with "Universta'" instead of "Università" and uses quotation marks ("") instead of the correct Italian style for the university's name (‘’). These are minor errors
+--- FINE OUTPUT ---
+
+
+--- ESEMPIO 2 ---
+OCR:       Universta' dgli Studi di Roma ‘La Spieenza’
+Corretto:  Università degli Studi di Roma 'La Sapienza'
+Generato:  Universita' degli Studi di Roma “La Sapienza”
+Valutazione: 4

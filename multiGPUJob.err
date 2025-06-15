@@ -1,37 +1,3 @@
-Traceback (most recent call last):
-  File "/leonardo/home/userexternal/gdaddari/MNLP_Hw2/main.py", line 95, in <module>
-    main_leonardo()
-  File "/leonardo/home/userexternal/gdaddari/MNLP_Hw2/main.py", line 89, in main_leonardo
-    prometheus_score = absolute_grading(instruction=INSTRUCTION, response=output, reference_answer=correct, score_rubric=JUDGE_PROMPT)
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/MNLP_Hw2/src/api/prometheus.py", line 14, in absolute_grading
-    model = VLLM(model="prometheus-eval/prometheus-7b-v2.0")
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/prometheus_eval/vllm.py", line 28, in __init__
-    self.model: LLM = LLM(
-                      ^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 243, in __init__
-    self.llm_engine = LLMEngine.from_engine_args(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 494, in from_engine_args
-    vllm_config = engine_args.create_engine_config(usage_context)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/vllm/engine/arg_utils.py", line 1018, in create_engine_config
-    model_config = self.create_model_config()
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/vllm/engine/arg_utils.py", line 910, in create_model_config
-    return ModelConfig(
-           ^^^^^^^^^^^^
-  File "/leonardo/home/userexternal/gdaddari/mnlp/lib/python3.11/site-packages/pydantic/_internal/_dataclasses.py", line 123, in __init__
-    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
-pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
-  Value error, Invalid repository ID or local directory specified: 'prometheus-eval/prometheus-7b-v2.0'.
-Please verify the following requirements:
-1. Provide a valid Hugging Face repository ID.
-2. Specify a local directory that contains a recognized configuration file.
-   - For Hugging Face models: ensure the presence of a 'config.json'.
-   - For Mistral models: ensure the presence of a 'params.json'.
-3. For GGUF: pass the local path of the GGUF checkpoint.
-   Loading GGUF from a remote repo directly is not yet supported.
- [type=value_error, input_value=ArgsKwargs((), {'model': ..., 'model_impl': 'auto'}), input_type=ArgsKwargs]
-    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.16s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.14s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.08s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:10<00:00,  3.51s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:10<00:00,  2.63s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
