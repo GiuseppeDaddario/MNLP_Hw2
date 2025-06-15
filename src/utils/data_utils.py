@@ -33,7 +33,7 @@ class OcrCorrectionDataset(Dataset):
         }
 
 
-def read_dataset(file_path, elements=None):
+def read_dataset(file_path, elements=None,start_idx=None):
     if elements is None:
         if "eng" in file_path:
             elements = 24
@@ -42,8 +42,12 @@ def read_dataset(file_path, elements=None):
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     # Creiamo una lista con solo i primi 'elements' elementi
-    keys = sorted(data.keys(), key=lambda x: int(x))[:elements]
+    if start_idx is not None:
+        keys = sorted(data.keys(), key=lambda x: int(x))[elements:]
+    else:
+        keys = sorted(data.keys(), key=lambda x: int(x))[:elements]
     return [data[k] for k in keys]
+
 
 def difference_score(original, corrected):
     original_words = set(original.split())
@@ -69,5 +73,21 @@ def difference_score(original, corrected):
         "added_words": added_words
     }
 
+import json
+
+def build_ocr_dataset(ocr_path, clean_path, output_path, start_idx=8):
+    ocr_data = read_dataset(ocr_path, start_idx=start_idx)
+    clean_data = read_dataset(clean_path, start_idx=start_idx)
+    assert len(ocr_data) == len(clean_data), "OCR e testi corretti non hanno la stessa lunghezza!"
+    dataset = [{"ocr": o, "corretto": c} for o, c in zip(ocr_data, clean_data)]
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(dataset, f, ensure_ascii=False, indent=2)
+    print(f"✅ Dataset salvato in: {output_path} ({len(dataset)} esempi)")
 
 
+if __name__ == "__main__":
+    ocr_file = "../../datasets/ita/original_ocr.json"        # Cambia se necessario
+    clean_file = "../../datasets/ita/cleaned.json"    # Cambia se necessario
+    output_file = "../../datasets/ita/finetuning.json"
+
+    build_ocr_dataset(ocr_file, clean_file, output_file)
