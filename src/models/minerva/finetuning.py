@@ -2,7 +2,7 @@ from accelerate import Accelerator
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_scheduler
 from peft import get_peft_model, LoraConfig
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from datetime import datetime
@@ -11,12 +11,27 @@ from functools import partial
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
+# === Collate function ===
+def smart_collate(batch, tokenizer):
+    padded = tokenizer.pad(batch, return_tensors="pt")
+    padded["labels"] = padded["input_ids"].clone()
+    return padded
+
+def preprocess(example, tokenizer):
+    if len(example["conversations"]) < 2:
+        return {}  # scarta esempio malformato
+    prompt = example["conversations"][0]
+    response = example["conversations"][1]
+    full_text = f"### Istruzione:\n{prompt}\n\n### Risposta:\n{response}"
+    return tokenizer(full_text, truncation=True, max_length=512)
+
 # === Config ===
-MODEL_PATH = "./minerva-cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-DATA_PATH = "./datasets/finetuning_all.json"
+MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
+DATA_PATH = "./datasets/lima"
 BATCH_SIZE = 2
-EPOCHS = 3
+EPOCHS = 4
 LR = 2e-5
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
 
 # === Init accelerator ===
 log("Initializing the accelerator...")
@@ -47,25 +62,17 @@ model = get_peft_model(model, peft_config)
 
 # === Load dataset ===
 log("Loading finetuning dataset...")
-raw_dataset = load_dataset("json", data_files=DATA_PATH)["train"]
+#raw_dataset = load_dataset("json", data_files=DATA_PATH)["train"]
+raw_dataset = raw_dataset.filter(lambda ex: len(ex["conversations"]) >= 2)
 
-def preprocess(example, tokenizer):
-    prompt = f"Correggi: {example['ocr']}\nRisposta:"
-    target = example["corretto"]
-    full_text = f"{prompt} {target}"
-    return tokenizer(full_text, truncation=True, max_length=512)
-
-# Pre-tokenize to avoid doing it at batch time
+# Tokenizza
 tokenized_dataset = raw_dataset.map(
-    lambda ex: preprocess(ex, tokenizer),
+    lambda ex: tokenizer(
+        f"### Istruzione:\n{ex['conversations'][0]}\n\n### Risposta:\n{ex['conversations'][1]}",
+        truncation=True, padding="max_length", max_length=512
+    ),
     remove_columns=raw_dataset.column_names
 )
-
-# === Collate function ===
-def smart_collate(batch, tokenizer):
-    padded = tokenizer.pad(batch, return_tensors="pt")
-    padded["labels"] = padded["input_ids"].clone()
-    return padded
 
 collate_fn = partial(smart_collate, tokenizer=tokenizer)
 
@@ -113,5 +120,5 @@ for epoch in range(EPOCHS):
 # === Save model/tokenizer ===
 log("Saving model...")
 if accelerator.is_main_process:
-    model.save_pretrained("./results_minerva_ocr")
-    tokenizer.save_pretrained("./results_minerva_ocr")
+    model.save_pretrained(FINETUNED_MODEL_PATH)
+    tokenizer.save_pretrained(FINETUNED_MODEL_PATH)

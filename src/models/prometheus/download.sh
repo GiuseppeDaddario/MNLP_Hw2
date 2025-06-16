@@ -3,8 +3,8 @@ set -e
 
 # Variabili
 MODEL_NAME="Unbabel/M-Prometheus-7B"
-CACHE_DIR="./cache"
-WHEELHOUSE_DIR="./wheelhouse"
+CACHE_DIR="./src/models/prometheus/cache"
+WHEELHOUSE_DIR="./src/models/prometheus/wheelhouse"
 
 # Crea cartelle se non esistono
 mkdir -p "${CACHE_DIR}"

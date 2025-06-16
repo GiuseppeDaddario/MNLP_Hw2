@@ -3,8 +3,8 @@ set -e
 
 # Variabili
 MODEL_NAME="sapienzanlp/Minerva-7B-instruct-v1.0"
-CACHE_DIR="./minerva-cache"
-WHEELHOUSE_DIR="./wheelhouse"
+CACHE_DIR="./src/models/minerva/cache"
+WHEELHOUSE_DIR="./src/models/minerva/wheelhouse"
 
 # Crea cartelle se non esistono
 mkdir -p "${CACHE_DIR}"
