@@ -1,5 +1,3 @@
-
-
 import json
 
 def textCleaner(input_path='input.json', output_path='output.json'):

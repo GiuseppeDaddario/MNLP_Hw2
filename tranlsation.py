@@ -2,14 +2,18 @@
 import json
 import requests
 import time
-import requests
-
 from src.utils.post_process import textCleaner
+
+
+
 
 REQUESTS_LIMIT = 29
 TIME_WINDOW = 60  # secondi
 requests_made = 0
 start_time = time.time()
+
+
+
 
 def ask_llama4(prompt):
     global requests_made
