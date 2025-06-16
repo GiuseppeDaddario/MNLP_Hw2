@@ -11,8 +11,8 @@ from src.llama4_translation import translate_with_llama4
 
 
 ####### LLAMA4 TRANSLATIONS ########
-FILE_PATH = r"datasets\eng\finetuning.json"
-translate_with_llama4(FILE_PATH)
+FILE_NAME = "finetuning"
+translate_with_llama4(FILE_NAME)
 
 
 
