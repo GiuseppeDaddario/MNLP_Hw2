@@ -172,7 +172,7 @@
     "corretto": "He opened the old chest cautiously, afraid that some hidden mechanism might trigger a trap. Instead, he found dusty relics of a past era."
   },
   {
-    "ocr": "The c1assroom was fi11ed with murmurs as students debated the theory, their voices rising and falling like a wave.",
+    "ocr": "The c1assroom was fi11ed with murrnurs as students debated the theory, their voices rising and falling like a wave.",
     "corretto": "The classroom was filled with murmurs as students debated the theory, their voices rising and falling like a wave."
   },
   {
@@ -188,18 +188,16 @@
     "corretto": "She wrote her thoughts in a tattered journal, the ink smudging slightly from the damp air."
   },
   {
-    "ocr": "The chef added a pinch of sa1t and a dash of pepper, tasting the broth to ensure the flavour was perfect.",
+    "ocr": "The chef added a pinch of sa1t and a dash of peppen, tasting the broth to ensure the flavour was perfect.",
     "corretto": "The chef added a pinch of salt and a dash of pepper, tasting the broth to ensure the flavour was perfect."
   },
   {
-    "ocr": "The mountain peak pierced the sky, its snowy cap glistening in the f1are of the rising sun.",
+    "ocr": "The mountain peak piereed the sky, its snowy cap glistening in the f1are of the rising sun.",
     "corretto": "The mountain peak pierced the sky, its snowy cap glistening in the flare of the rising sun."
   },
   {
-    "ocr": "After hours of study, her eyes grew tired but her determination did not wa1ver. Success was within reach.",
+    "ocr": "After hours of study, her eyes grew tirèd but her determination did not wa1ver. Success was within reach.",
     "corretto": "After hours of study, her eyes grew tired but her determination did not waver. Success was within reach."
   }
-
-
 ]
 
