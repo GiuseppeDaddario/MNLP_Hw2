@@ -14,7 +14,8 @@ def kappa_correlation(file_path="", print_results=True):
         if "human_score" in item and "machine_score" in item:
             human_scores.append(item["human_score"])
             machine_scores.append(item["machine_score"])
-
+        else:
+            print("Missing 'human_score' or 'machine_score' in item:", item)
 
     kappa = cohen_kappa_score(human_scores, machine_scores)
     
