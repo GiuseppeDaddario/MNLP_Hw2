@@ -4,9 +4,7 @@ import requests
 import time
 import requests
 
-
-import time
-import requests
+from src.utils.post_process import textCleaner
 
 REQUESTS_LIMIT = 29
 TIME_WINDOW = 60  # secondi
@@ -61,16 +59,19 @@ def process_ocr_file(input_file, output_file):
             continue
 
         # Costruisci il prompt per chiedere la correzione
-        prompt = f"Correggi rispettando la punteggiatura e l'ortografia, senza scrivere altro:\n{ocr_text}"
+        #judge_prompt =
+        #judge_prompt =
+        judge_prompt = "Correct the following text, fixing spelling and punctuation. Return only the corrected text, with no explanations or introductory phrases:"
+        #judge_prompt = "Correggi il seguente testo rispettando ortografia e punteggiatura. Restituisci solo il testo corretto, senza alcuna spiegazione o introduzione:"
+
+        prompt = f"{judge_prompt}\n{ocr_text}"
         
         correction = ask_llama4(prompt)
         print(f"Originale: {ocr_text}")
         print(f"Correzione: {correction}\n")
 
-        results.append({
-            "ocr": ocr_text,
-            "llama4_correction": correction
-        })
+        item["llama4_correction"] = correction
+        results.append(item)
 
         # Pausa breve per non sovraccaricare l'API (regola come ti serve)
         time.sleep(1)
@@ -82,18 +83,25 @@ def process_ocr_file(input_file, output_file):
 
 
 
-if __name__ == "__main__":
-    input_path = "datasets/eng/human_data.json"   # sostituisci con il nome del file input
-    output_path = "datasets/eng/corrections/human_data_correction.json"  # nome del file output
+## DA CONTROLLARE CHE LE CORREZIONI TALVOLTA INIZANO CON "ECCO IL TESTO CORRETTO:". Essendo sempre lo stesso pattern, si può facilmente rimuovere
+        # Se vuoi rimuovere questa parte, puoi farlo con una regex o semplicemente con una slice
+        # correction = correction.replace("Ecco il testo corretto: ", "").strip()
 
+if __name__ == "__main__":
+    
+    file = "finetuning"   # sostituisci solo il nome del file senza estensione
+    
+    datapath = "datasets/eng/"
+    input_path = datapath + file +".json" # percorso del file di input
+    output_path = datapath+"corrections/"+file+"_correction.json"  # nome del file output
+
+    ## Call agli API di llama4 e creazione file
     process_ocr_file(input_path, output_path)
 
+    ## Rimuove eventuale "Ecco il testo corretto: " dalle correzioni
+    textCleaner(output_path, output_path)
 
-#judge_prompt = "Correggi rispettando la punteggiatura, senza scrivere altro:" ## Insert here your prompt
-#message_prompt = "The universa1 belief js, that a person sucked by a vampyre becomes a vampyre himself, arid sucks in his turn."
-#prompt = f"{judge_prompt} {message_prompt}"
-#output = ask_llama4(prompt)
-#print("Risposta API:")
-#print(output)
+
+
 
 
