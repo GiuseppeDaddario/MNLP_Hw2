@@ -1,12 +1,12 @@
 
 import requests
 
-def ask_llama(prompt):
-    api_key = "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"
+def ask_llama4(prompt):
+    API_KEY = "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"  # Here is the API key
     url = "https://api.groq.com/openai/v1/chat/completions"
 
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
 
@@ -28,9 +28,3 @@ def ask_llama(prompt):
     else:
         return f"Errore HTTP {response.status_code}: {response.text}"
 
-if __name__ == "__main__":
-    # Example usage
-    prompt = "Correggi rispettando la punteggiatura, senza aggiungere altro: The universa1 belief js, that a person sucked by a vampyre becomes a vampyre himself, arid sucks in his turn."
-    output = ask_llama(prompt)
-    print("Risposta API:")
-    print(output)
