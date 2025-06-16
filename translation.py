@@ -102,6 +102,9 @@ if __name__ == "__main__":
     ## Call agli API di llama4 e creazione file
     process_ocr_file(input_path, output_path)
 
+    
+    
+    
     ## Rimuove eventuale "Ecco il testo corretto: " dalle correzioni
     textCleaner(output_path, output_path)
 
