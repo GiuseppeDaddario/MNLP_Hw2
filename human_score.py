@@ -1,0 +1,30 @@
+import json
+
+def annotate_human_scores(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for i, item in enumerate(data):
+        print("\n" + "=" * 50)
+        print(f"Item {i+1}/{len(data)}")
+        print("- CORRETTO:\n", item.get("corretto", ""))
+        print("- LLAMA4_CORRECTION:\n", item.get("llama4_correction", ""))
+        
+        while True:
+            try:
+                score = int(input("Insert human score (1-5): "))
+                if score < 1 or score > 5:
+                    print(" must be from 1 to 5.")
+                    continue
+                item["human_score"] = score
+                break
+            except ValueError:
+                print(" Inserisci un numero valido.")
+
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    print("\n Annotations complete and saved!")
+
+# ESEMPIO USO
+# annotate_human_scores("tuo_file.json")
