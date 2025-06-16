@@ -97,7 +97,7 @@ def translate_with_llama4(file_name):
     
     datapath = "datasets/eng/"
     input_path = datapath + file +".json" # percorso del file di input
-    output_path = datapath+"corrections/"+file+"_correction.json"  # nome del file output
+    output_path = datapath+"corrections/"+ file+".json"  # nome del file output
 
     ## Call agli API di llama4 e creazione file
     process_ocr_file(input_path, output_path)

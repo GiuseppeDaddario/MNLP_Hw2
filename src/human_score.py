@@ -1,7 +1,11 @@
 import json
 
-def annotate_human_scores(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
+def annotate_human_scores(FILE_NAME):
+    
+    BASE_PATH = "datasets/eng/corrections/"
+    FILE_PATH = BASE_PATH + FILE_NAME + ".json"
+    
+    with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     for i, item in enumerate(data):
@@ -21,7 +25,7 @@ def annotate_human_scores(file_path):
             except ValueError:
                 print(" Inserisci un numero valido.")
 
-    with open(file_path, "w", encoding="utf-8") as f:
+    with open(FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     print("\n Annotations complete and saved!")

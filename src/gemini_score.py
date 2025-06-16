@@ -53,8 +53,10 @@ def gemini_ask_score(translation,expected,print_result=True):
 
 
 
-def gemini_score(FILE_PATH):
+def gemini_score(FILE_NAME):
 
+    BASE_PATH = "datasets/eng/corrections/"
+    FILE_PATH = BASE_PATH + FILE_NAME + ".json"
     # Carica il tuo JSON da file
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)

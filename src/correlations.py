@@ -12,9 +12,12 @@ import json
 ######################################
 
 
-def kappa_correlation(file_path="", print_results=True):
+def kappa_correlation(FILE_NAME="", print_results=True):
     
-    with open(file_path, "r", encoding="utf-8") as f:
+    BASE_PATH = "datasets/eng/corrections/"
+    FILE_PATH = BASE_PATH + FILE_NAME + ".json"
+
+    with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     
     human_scores = []
@@ -55,9 +58,12 @@ def kappa_correlation(file_path="", print_results=True):
 ###      ACCURACY CORRELATION      ###
 ######################################
 
-def accuracy_correlation(file_path="", print_results=True):
+def accuracy_correlation(FILE_NAME, print_results=True):
     
-    with open(file_path, "r", encoding="utf-8") as f:
+    BASE_PATH = "datasets/eng/corrections/"
+    FILE_PATH = BASE_PATH + FILE_NAME + ".json"
+
+    with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     
     human_scores = []

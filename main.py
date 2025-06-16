@@ -6,29 +6,29 @@ from src.llama4_translation import translate_with_llama4
 
 
 
+# WATCH OUT! this is just the name of the file without extension. it MUST be into the datasets folder. 
+# The output will be generated into /datasets/correction with the same file_name and extension.
+FILE_NAME = "finetuning"
+
 
 
 
 
 ####### LLAMA4 TRANSLATIONS ########
-FILE_NAME = "finetuning"
 translate_with_llama4(FILE_NAME)
 
 
 
 #######   GEMINI ANNOTATING  ########
-FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
-gemini_score(FILE_PATH)
+gemini_score(FILE_NAME)
 
 
 
 #######   HUMAN ANNOTATING  ########
-FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
-annotate_human_scores(FILE_PATH)
+annotate_human_scores(FILE_NAME)
 
 
 
 ####### COMPUTING CORRELATION #########
-FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
-kappa_correlation(FILE_PATH,True)
-accuracy_correlation(FILE_PATH,True)
+kappa_correlation(FILE_NAME,True)
+accuracy_correlation(FILE_NAME,True)
