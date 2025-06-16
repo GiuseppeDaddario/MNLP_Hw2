@@ -2,6 +2,26 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from datetime import datetime
 import re 
+import os
+
+
+# === CONFIG ===
+MODEL_PATH = os.path.abspath("./src/models/prometheus/cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df")
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+JUDGE_PROMPT = (
+    "Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. "
+    "Use the following scale:\n\n"
+    "1 = Completely unacceptable\n"
+    "2 = Severe errors\n"
+    "3 = Partially wrong, mostly minor errors\n"
+    "4 = Good, but not perfect\n"
+    "5 = Perfect output\n\n"
+    "Only output the score **after** the [NUMERIC SCORE] tag.\n"
+    "Format: [NUMERIC SCORE] <number>\n"
+    "Do not explain. Do not write anything else."
+)
+
 
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
@@ -34,22 +54,6 @@ def valuta_judge(text,model,tokenizer):
     match = re.search(r"\[NUMERIC SCORE\]\s*([1-5])", decoded)
     return match.group(1) if match else f"[ERRORE: {decoded.strip()}]"
 
-# === CONFIG ===
-MODEL_PATH = "cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df"
-device = "cuda" if torch.cuda.is_available() else "cpu"
-
-JUDGE_PROMPT = (
-    "Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. "
-    "Use the following scale:\n\n"
-    "1 = Completely unacceptable\n"
-    "2 = Severe errors\n"
-    "3 = Partially wrong, mostly minor errors\n"
-    "4 = Good, but not perfect\n"
-    "5 = Perfect output\n\n"
-    "Only output the score **after** the [NUMERIC SCORE] tag.\n"
-    "Format: [NUMERIC SCORE] <number>\n"
-    "Do not explain. Do not write anything else."
-)
 
 def evaluate(texts=None):
     if texts is None:
@@ -74,10 +78,10 @@ def evaluate(texts=None):
 
     # === LOOP DI VALUTAZIONE ===
     log("Valutazione esempi...")
-    for i, ex in enumerate(examples, 1):
+    for i, ex in enumerate(texts, 1):
         score = valuta_judge(ex,model,tokenizer)
         print(f"\n--- ESEMPIO {i} ---")
         print(f"OCR:         {ex['ocr']}")
-        print(f"Correct:     {ex['corretto']}")
-        print(f"Generation:  {ex['output_generato']}")
+        print(f"Correct:     {ex['correct']}")
+        print(f"Generation:  {ex['generation']}")
         print(f"Score:       {score}")

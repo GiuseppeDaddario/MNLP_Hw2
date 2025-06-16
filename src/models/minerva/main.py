@@ -1,13 +1,16 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from datetime import datetime
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from models.prometheus import evaluate
 
 # === Config ===
 BASE_MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
 FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MAX_NEW_TOKENS = 40
+MAX_NEW_TOKENS = 800
 
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
@@ -22,7 +25,7 @@ def load_model(path):
     )
 # === Prompt ===
 def make_prompt(ocr_text):
-    return f"Correggi: {ocr_text}\nRisposta:"
+    return f"You must correct the following OCR sentence, replying only with the clean sentence keeping syntax, language and meaning.\nSentence to correct: {ocr_text}\Your Answer:"
 
 # === Funzione di generazione pulita ===
 def generate(model, prompt):
@@ -35,11 +38,15 @@ def generate(model, prompt):
         return_dict_in_generate=False
     )
     decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    # Estrae solo il testo dopo "Risposta:"
-    if "Risposta:" in decoded:
-        return decoded.split("Risposta:")[-1].strip()
+
+    if "Your Answer:" in decoded:
+        text = decoded.split("Your Answer:")[-1].strip()
     else:
-        return decoded.strip()
+        text = decoded.strip()
+
+    # Prendi solo fino al primo a capo
+    first_line = text.split('\n')[0].strip()
+    return first_line
 
 
 # === Load tokenizer ===
@@ -48,8 +55,9 @@ tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_PATH, trust_remote_code=Tru
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-log("Caricamento modelli...")
+log("Loading base Minerva...")
 model_base = load_model(BASE_MODEL_PATH)
+log("Loading finetuned Minerva...")
 model_finetuned = load_model(FINETUNED_MODEL_PATH)
 
 # === Esempi OCR ===

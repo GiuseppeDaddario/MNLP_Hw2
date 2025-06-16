@@ -28,8 +28,8 @@ def preprocess(example, tokenizer):
 # === Config ===
 MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
 DATA_PATH = "./datasets/lima"
-BATCH_SIZE = 2
-EPOCHS = 4
+BATCH_SIZE = 3
+EPOCHS = 10
 LR = 2e-5
 FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
 
