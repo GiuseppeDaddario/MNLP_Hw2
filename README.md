@@ -1,8 +1,7 @@
 ## Second Homework of MNLP
 
-### llama4 translation branch
+### Correlations Branch
 
-The translation.py provides a correction file with three fields:
-- "ocr": the original OCRed text
-- "correct": the expected and right translation
-- "llama4_correction": is the llama4 translation from OCRed to correct text. 
+Both correlations need a file with:
+- "human_score": the human score given for the machine-translation
+- "machine_score": the score given by the judge-machine
