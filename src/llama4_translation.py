@@ -91,9 +91,9 @@ def process_ocr_file(input_file, output_file):
         # Se vuoi rimuovere questa parte, puoi farlo con una regex o semplicemente con una slice
         # correction = correction.replace("Ecco il testo corretto: ", "").strip()
 
-if __name__ == "__main__":
+def translate_with_llama4(file_name):
     
-    file = "finetuning"   # sostituisci solo il nome del file senza estensione
+    file = file_name   # sostituisci solo il nome del file senza estensione
     
     datapath = "datasets/eng/"
     input_path = datapath + file +".json" # percorso del file di input
@@ -102,11 +102,8 @@ if __name__ == "__main__":
     ## Call agli API di llama4 e creazione file
     process_ocr_file(input_path, output_path)
 
-    
-    
-    
     ## Rimuove eventuale "Ecco il testo corretto: " dalle correzioni
-    textCleaner(output_path, output_path)
+    #textCleaner(output_path, output_path)
 
 
 

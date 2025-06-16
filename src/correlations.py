@@ -31,6 +31,7 @@ def kappa_correlation(file_path="", print_results=True):
     
     if print_results:
         print("\n")
+        print("|          KAPPA CORRELATION        ")
         print("|------------------------------------------")
         print("| Remember that 0 < C-K < 1: \n| -- 0 means no agreement\n| -- 1 means complete agreement")
         print("|------------------------------------------")
@@ -74,8 +75,9 @@ def accuracy_correlation(file_path="", print_results=True):
     
     if print_results:
         print("\n")
+        print("|          ACCURACY CORRELATION        ")
         print("|------------------------------------------")
-        print("| Accuracy = fraction of exact matches between human and machine scores")
+        print("| Accuracy =  matching human-machine scores/total")
         print("|------------------------------------------")
         print(f"| Accuracy: {accuracy:.3f}")
         print("|------------------------------------------")

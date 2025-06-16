@@ -8,7 +8,7 @@ FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
 
 
 
-def gemini_score(translation,expected,print_result=True):
+def gemini_ask_score(translation,expected,print_result=True):
 
     # Configura la tua API key
     genai.configure(api_key="AIzaSyD2SsbKDiwbxstu97xaC0HOG8Lhp6gw2DU")
@@ -53,32 +53,32 @@ def gemini_score(translation,expected,print_result=True):
 
 
 
-#gemini_score("the dog is on the car", "the dog is on the table",True)
+def gemini_score(FILE_PATH):
 
-# Carica il tuo JSON da file
-with open(FILE_PATH, "r", encoding="utf-8") as f:
-    data = json.load(f)
+    # Carica il tuo JSON da file
+    with open(FILE_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-for i, entry in enumerate(data, start=1):
-    translation = entry["llama4_correction"]
-    reference = entry["corretto"]
+    for i, entry in enumerate(data, start=1):
+        translation = entry["llama4_correction"]
+        reference = entry["corretto"]
 
-    print(f"{i}/{len(data)} - Valutazione in corso...")
+        print(f"{i}/{len(data)} - Valutazione in corso...")
 
-    try:
-        score = gemini_score(translation, reference, print_result=False)
-        entry["machine_score"] = int(score)
-    except ValueError:
-        entry["machine_score"] = score  # fallback se Gemini restituisce qualcosa di strano
-    except Exception as e:
-        print(f"Errore alla voce {i}: {e}")
-        entry["machine_score"] = "ERROR"
+        try:
+            score = gemini_ask_score(translation, reference, print_result=False)
+            entry["machine_score"] = int(score)
+        except ValueError:
+            entry["machine_score"] = score  # fallback se Gemini restituisce qualcosa di strano
+        except Exception as e:
+            print(f"Errore alla voce {i}: {e}")
+            entry["machine_score"] = "ERROR"
 
-    time.sleep(4.5)  # Per rispettare il limite del free tier (15/min)
+        time.sleep(4.5)  # Per rispettare il limite del free tier (15/min)
 
-# Salva il risultato in un nuovo file
-with open(FILE_PATH, "w", encoding="utf-8") as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
+    # Salva il risultato in un nuovo file
+    with open(FILE_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 

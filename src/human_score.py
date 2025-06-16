@@ -29,5 +29,5 @@ def annotate_human_scores(file_path):
 # ESEMPIO USO
 # annotate_human_scores("tuo_file.json")
 
-to_annotate_path = "datasets/eng/corrections/finetuning_correction.json"
-annotate_human_scores(to_annotate_path)
+#to_annotate_path = "datasets/eng/corrections/finetuning_correction.json"
+#annotate_human_scores(to_annotate_path)
