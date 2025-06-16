@@ -26,7 +26,7 @@ module load cuda/12.2
 module load openmpi/4.1.6--gcc--12.2.0
 
 # Attiva l'ambiente virtuale
-source ~/prometheus-env/bin/activate
+source ~/mnlp/bin/activate
 
 # Optional: Set environment variables for performance tuning
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK   # Set OpenMP threads per task

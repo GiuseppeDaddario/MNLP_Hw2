@@ -63,6 +63,7 @@ model = get_peft_model(model, peft_config)
 # === Load dataset ===
 log("Loading finetuning dataset...")
 #raw_dataset = load_dataset("json", data_files=DATA_PATH)["train"]
+raw_dataset = load_from_disk(DATA_PATH)["train"]
 raw_dataset = raw_dataset.filter(lambda ex: len(ex["conversations"]) >= 2)
 
 # Tokenizza
