@@ -35,7 +35,7 @@ data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
 # Training config
 training_args = TrainingArguments(
     output_dir="./t5-ocr-correction",
-    evaluation_strategy="epoch",
+    eval_strategy="epoch",
     learning_rate=5e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
