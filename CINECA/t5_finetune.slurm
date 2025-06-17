@@ -1,14 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=t5-ocr-correction
+#SBATCH --job-name=t5-eval
+#SBATCH --time=04:00:00                       # Maximum wall time (hh:mm:ss)
+#SBATCH --nodes=1                             # Number of nodes to use
+#SBATCH --ntasks-per-node=1                   # Number of MPI tasks per node (e.g., 1 per GPU)
+#SBATCH --cpus-per-task=8                     # Number of CPU cores per task (adjust as needed)
+#SBATCH --gres=gpu:2                          # Number of GPUs per node (adjust to match hardware)
+#SBATCH --partition=boost_usr_prod            # GPU-enabled partition
+#SBATCH --qos=normal                          # Quality of Service
 #SBATCH --output=logs/t5_ocr.out
 #SBATCH --error=logs/t5_ocr.err
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --gres=gpu:2                # Usa 2 GPU A100
-#SBATCH --time=24:00:00
-#SBATCH --partition=accelerated     # O specifica la coda usata da Cineca
-#SBATCH --mem=128G
+#SBATCH --account=try25_navigli               # Project account number
 
 # === Imposta ambiente ===
 module load cuda/12.1  # o il modulo corretto per il tuo sistema
