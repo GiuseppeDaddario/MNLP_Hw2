@@ -3,11 +3,14 @@ from datasets import load_dataset, Dataset
 import json
 
 # Load custom dataset
-def load_jsonl(path):
+def load_json(path):
     with open(path, 'r') as f:
-        return [json.loads(line) for line in f]
+        return json.load(f)  # carica tutta la lista di dizionari
 
-data = load_jsonl("dataset.jsonl")
+
+BASE_PATH = "/leonardo/home/userexternal/lbenucci/MNLP_Hw2/datasets/eng/"
+
+data = load_json(BASE_PATH + "finetuning.json")
 dataset = Dataset.from_list(data)
 dataset = dataset.train_test_split(test_size=0.1)
 
@@ -21,8 +24,8 @@ max_input_length = 128
 max_target_length = 128
 
 def preprocess(example):
-    inputs = tokenizer(example["inputs"], max_length=max_input_length, truncation=True, padding="max_length")
-    targets = tokenizer(example["targets"], max_length=max_target_length, truncation=True, padding="max_length")
+    inputs = tokenizer(example["ocr"], max_length=max_input_length, truncation=True, padding="max_length")
+    targets = tokenizer(example["corretto"], max_length=max_target_length, truncation=True, padding="max_length")
     inputs["labels"] = targets["input_ids"]
     return inputs
 
