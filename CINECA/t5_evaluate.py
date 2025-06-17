@@ -7,7 +7,10 @@ MODEL_PATH = "./t5-ocr-correction-final"  # o un path assoluto
 # === Carica modello e tokenizer ===
 tokenizer = T5Tokenizer.from_pretrained(MODEL_PATH)
 model = T5ForConditionalGeneration.from_pretrained(MODEL_PATH)
-model.eval().cuda()  # sposta su GPU
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.eval().to(device)
+
 
 # === Funzione per correggere il testo ===
 def correct_text(input_text):
