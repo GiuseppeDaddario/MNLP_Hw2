@@ -42,7 +42,7 @@ training_args = TrainingArguments(
     num_train_epochs=5,
     save_strategy="epoch",
     fp16=True,  # usa fp16 con A100
-    logging_dir="./logs",
+    logging_dir="../logs",
     logging_steps=50,
     report_to="none"
 )

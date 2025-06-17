@@ -2,7 +2,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 
 # === Imposta il percorso del modello fine-tunato ===
-MODEL_PATH = "/leonardo/home/userexternal/lbenucci/models/t5-base"  # o un path assoluto
+MODEL_PATH = "./t5-ocr-correction-final"  # o un path assoluto
 
 # === Carica modello e tokenizer ===
 tokenizer = T5Tokenizer.from_pretrained(MODEL_PATH)
