@@ -18,7 +18,7 @@ module load cuda/12.1
 module load python/3.10
 
 # === Attiva il tuo ambiente virtuale o Conda ===
-source ~/envs/t5ocr/bin/activate  # Sostituisci col path corretto
+source ~/t5-env310/bin/activate  # Sostituisci col path corretto
 
 # === Vai nella directory dove si trova lo script ===
 cd $SLURM_SUBMIT_DIR

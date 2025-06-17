@@ -16,7 +16,7 @@ module load cuda/12.1  # o il modulo corretto per il tuo sistema
 module load python/3.10
 
 # === Attiva virtualenv/conda ===
-source ~/envs/t5ocr/bin/activate   # cambia con il tuo path
+source ~/t5-env310/bin/activate   # cambia con il tuo path
 
 # === Vai nella directory di lavoro ===
 cd $SLURM_SUBMIT_DIR
