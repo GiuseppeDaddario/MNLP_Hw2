@@ -12,16 +12,16 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 JUDGE_PROMPT = (
     "Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. "
     "Use the following scale:\n\n"
-    "1 = Completely unacceptable\n"
-    "2 = Severe errors\n"
-    "3 = Partially wrong, mostly minor errors\n"
-    "4 = Good, but not perfect\n"
-    "5 = Perfect output\n\n"
+    "1 = Completely unacceptable. The text is severly incomplete/wrong.\n"
+    "2 = Severe errors. The output is complete but severly wrong.\n"
+    "3 = Partially wrong, mostly minor errors. The meaning is not exaclty the same.\n"
+    "4 = Good, but not perfect. There are minor errors but the meaning is preserved.\n"
+    "5 = Perfect output.\n\n"
     "Only output the score **after** the [NUMERIC SCORE] tag.\n"
     "Format: [NUMERIC SCORE] <number>\n"
     "Do not explain. Do not write anything else."
 )
-
+MAX_NEW_TOKENS = 2500
 
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
@@ -39,13 +39,13 @@ def valuta_judge(text,model,tokenizer):
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=50,
+            max_new_tokens=MAX_NEW_TOKENS,
             do_sample=False,
             pad_token_id=tokenizer.eos_token_id,
         )
     decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    # 🔍 Stampa tutto ciò che ha risposto Prometheus
+    # Stampa tutto ciò che ha risposto Prometheus
     print("\n--- OUTPUT GREZZO DEL MODELLO ---")
     print(decoded)
     print("--- FINE OUTPUT ---\n")

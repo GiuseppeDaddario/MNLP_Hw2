@@ -2,53 +2,78 @@ from accelerate import Accelerator
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_scheduler
 from peft import get_peft_model, LoraConfig
-from datasets import load_dataset, load_from_disk
+from datasets import load_dataset, load_from_disk, concatenate_datasets
 from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from datetime import datetime
 from functools import partial
 
+# === Logging ===
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-# === Collate function ===
+# === Config ===
+MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
+BATCH_SIZE = 3
+EPOCHS = 4
+LR = 2e-5
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
+
+# === Funzioni per caricare e formattare i dataset ===
+def load_ocr_dataset(path):
+    ds = load_dataset("json", data_files=path)["train"]
+    def format_ocr(example):
+        prompt = (
+            "You must correct the following OCR sentence, replying only with the clean sentence "
+            "keeping syntax, language and meaning.\n"
+            f"Sentence to correct: {example['ocr']}\nYour Answer:"
+        )
+        return {
+            "instruction": prompt,
+            "response": example["corretto"]
+        }
+    return ds.map(format_ocr, remove_columns=ds.column_names)
+
+def load_lima_dataset(path):
+    ds = load_from_disk(path)["train"]
+    ds = ds.filter(lambda ex: len(ex["conversations"]) >= 2)
+    def format_lima(example):
+        return {
+            "instruction": example["conversations"][0],
+            "response": example["conversations"][1]
+        }
+    return ds.map(format_lima, remove_columns=ds.column_names)
+
+# === Preprocessing ===
+def preprocess(example, tokenizer):
+    full_text = f"### Istruzione:\n{example['instruction']}\n\n### Risposta:\n{example['response']}"
+    return tokenizer(full_text, truncation=True, padding="max_length", max_length=512)
+
+# === Collate ===
 def smart_collate(batch, tokenizer):
     padded = tokenizer.pad(batch, return_tensors="pt")
     padded["labels"] = padded["input_ids"].clone()
     return padded
 
-def preprocess(example, tokenizer):
-    if len(example["conversations"]) < 2:
-        return {}  # scarta esempio malformato
-    prompt = example["conversations"][0]
-    response = example["conversations"][1]
-    full_text = f"### Istruzione:\n{prompt}\n\n### Risposta:\n{response}"
-    return tokenizer(full_text, truncation=True, max_length=512)
-
-# === Config ===
-MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-DATA_PATH = "./datasets/lima"
-BATCH_SIZE = 3
-EPOCHS = 10
-LR = 2e-5
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
-
-# === Init accelerator ===
+# === Accelerate ===
 log("Initializing the accelerator...")
 accelerator = Accelerator(mixed_precision="fp16")
 
-# === Load model/tokenizer ===
+# === Model & Tokenizer ===
 log("Loading model and tokenizer...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(
-    MODEL_PATH, torch_dtype=torch.float16, device_map="auto", trust_remote_code=True
+    MODEL_PATH,
+    torch_dtype=torch.float16,
+    device_map="auto",
+    trust_remote_code=True
 )
 
-# === Fix missing pad token ===
+# === Pad token fix ===
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-# === LoRA config ===
+# === LoRA ===
 log("Configuring LoRA...")
 peft_config = LoraConfig(
     r=8,
@@ -60,25 +85,23 @@ peft_config = LoraConfig(
 )
 model = get_peft_model(model, peft_config)
 
-# === Load dataset ===
-log("Loading finetuning dataset...")
-#raw_dataset = load_dataset("json", data_files=DATA_PATH)["train"]
-raw_dataset = load_from_disk(DATA_PATH)["train"]
-raw_dataset = raw_dataset.filter(lambda ex: len(ex["conversations"]) >= 2)
+# === Dataset ===
+log("Loading and combining datasets...")
+ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
+ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
+ds3 = load_lima_dataset("./datasets/lima")
+combined_dataset = concatenate_datasets([ds1, ds2, ds3])
 
-# Tokenizza
-tokenized_dataset = raw_dataset.map(
-    lambda ex: tokenizer(
-        f"### Istruzione:\n{ex['conversations'][0]}\n\n### Risposta:\n{ex['conversations'][1]}",
-        truncation=True, padding="max_length", max_length=512
-    ),
-    remove_columns=raw_dataset.column_names
+# === Tokenization ===
+log("Tokenizing dataset...")
+tokenized_dataset = combined_dataset.map(
+    lambda ex: preprocess(ex, tokenizer),
+    remove_columns=combined_dataset.column_names
 )
 
+# === DataLoader ===
+log("Configuring dataloader...")
 collate_fn = partial(smart_collate, tokenizer=tokenizer)
-
-# === Dataloader ===
-log("Configuring dataloader")
 train_dataloader = DataLoader(
     tokenized_dataset,
     batch_size=BATCH_SIZE,
@@ -86,7 +109,7 @@ train_dataloader = DataLoader(
     collate_fn=collate_fn
 )
 
-# === Optimizer and scheduler ===
+# === Optimizer & Scheduler ===
 log("Setting optimizer and scheduler...")
 optimizer = AdamW(model.parameters(), lr=LR)
 num_training_steps = EPOCHS * len(train_dataloader)
@@ -97,13 +120,13 @@ lr_scheduler = get_scheduler(
     num_training_steps=num_training_steps,
 )
 
-# === Prepare everything with accelerator ===
-log("Preparing everything...")
+# === Accelerator Prepare ===
+log("Preparing with accelerator...")
 model, optimizer, train_dataloader, lr_scheduler = accelerator.prepare(
     model, optimizer, train_dataloader, lr_scheduler
 )
 
-# === Training loop ===
+# === Training ===
 log("Start training...")
 model.train()
 for epoch in range(EPOCHS):
@@ -116,9 +139,9 @@ for epoch in range(EPOCHS):
         optimizer.step()
         lr_scheduler.step()
         optimizer.zero_grad()
-    log(f"Epoch {epoch+1} finished. Avg loss: {total_loss / len(train_dataloader):.4f}")
+    log(f"Epoch {epoch+1}/{EPOCHS} finished. Avg loss: {total_loss / len(train_dataloader):.4f}")
 
-# === Save model/tokenizer ===
+# === Save model ===
 log("Saving model...")
 if accelerator.is_main_process:
     model.save_pretrained(FINETUNED_MODEL_PATH)

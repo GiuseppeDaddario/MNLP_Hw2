@@ -8,9 +8,9 @@ from models.prometheus import evaluate
 
 # === Config ===
 BASE_MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
+#BASE_MODEL_PATH = "./src/models/minerva/finetuned_minerva"
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MAX_NEW_TOKENS = 800
 
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
@@ -25,14 +25,15 @@ def load_model(path):
     )
 # === Prompt ===
 def make_prompt(ocr_text):
-    return f"You must correct the following OCR sentence, replying only with the clean sentence keeping syntax, language and meaning.\nSentence to correct: {ocr_text}\Your Answer:"
+    return f"You must correct the following OCR sentence, replying only with the clean sentence keeping syntax, language and meaning.\nSentence to correct: {ocr_text}\nYour Answer:"
 
 # === Funzione di generazione pulita ===
-def generate(model, prompt):
+def generate(model, tokenizer, prompt):
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+    max_new_tokens = 4096
     outputs = model.generate(
         **inputs,
-        max_new_tokens=MAX_NEW_TOKENS,
+        max_new_tokens=max_new_tokens,
         pad_token_id=tokenizer.pad_token_id,
         do_sample=False,
         return_dict_in_generate=False
@@ -51,9 +52,14 @@ def generate(model, prompt):
 
 # === Load tokenizer ===
 log("Loading tokenizer...")
-tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL_PATH, trust_remote_code=True)
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
+tokenizer_base = AutoTokenizer.from_pretrained(BASE_MODEL_PATH, trust_remote_code=True)
+tokenizer_finetuned = AutoTokenizer.from_pretrained(FINETUNED_MODEL_PATH, trust_remote_code=True)
+
+if tokenizer_base.pad_token is None:
+    tokenizer_base.pad_token = tokenizer_base.eos_token
+
+if tokenizer_finetuned.pad_token is None:
+    tokenizer_finetuned.pad_token = tokenizer_finetuned.eos_token
 
 log("Loading base Minerva...")
 model_base = load_model(BASE_MODEL_PATH)
@@ -71,8 +77,8 @@ clean = "THE superstition upon which this tale is founded is very general in the
 log("\n=== CONFRONTO MINERVA BASE vs FINE-TUNED ===\n")
 for i, ocr in enumerate(ocr_examples):
     prompt = make_prompt(ocr)
-    base_output = generate(model_base, prompt)
-    fine_output = generate(model_finetuned, prompt)
+    base_output = generate(model_base, tokenizer_base, prompt)
+    fine_output = generate(model_finetuned, tokenizer_finetuned, prompt)
 
     print(f"--- ESEMPIO {i+1} ---")
     print(f"OCR:         {ocr}")
