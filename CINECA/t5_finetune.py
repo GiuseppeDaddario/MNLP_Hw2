@@ -14,10 +14,10 @@ data = load_json(BASE_PATH + "finetuning.json")
 dataset = Dataset.from_list(data)
 dataset = dataset.train_test_split(test_size=0.1)
 
-# Load tokenizer and model
-model_name = "t5-base"
-tokenizer = T5Tokenizer.from_pretrained(model_name)
-model = T5ForConditionalGeneration.from_pretrained(model_name)
+# Load tokenizer and model dal path locale
+model_path = "/leonardo/home/userexternal/lbenucci/models/t5-base"
+tokenizer = T5Tokenizer.from_pretrained(model_path)
+model = T5ForConditionalGeneration.from_pretrained(model_path)
 
 # Preprocessing
 max_input_length = 128
