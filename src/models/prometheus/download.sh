@@ -17,9 +17,3 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 AutoModelForCausalLM.from_pretrained('${MODEL_NAME}', cache_dir='${CACHE_DIR}', trust_remote_code=True)
 AutoTokenizer.from_pretrained('${MODEL_NAME}', cache_dir='${CACHE_DIR}', trust_remote_code=True)
 "
-
-# Scarica pacchetti Python necessari
-echo "Scaricando pacchetti Python nella cartella wheelhouse..."
-pip download transformers peft datasets accelerate bitsandbytes -d "${WHEELHOUSE_DIR}"
-
-echo "Download completato. Modello e pacchetti sono in '${CACHE_DIR}' e '${WHEELHOUSE_DIR}'."
