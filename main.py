@@ -11,7 +11,7 @@ from src.human_score import annotate_human_scores
 
 ## Stats
 from src.correlations import kappa_correlation,accuracy_correlation
-
+from src.conf_matrix import plot_confusion_matrix
 
 
 
@@ -86,3 +86,13 @@ accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 #accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
 # ------------------------------#
 
+
+## -------- CONFUSION MATRICES -------- #
+plot_confusion_matrix("finetuning", "llama4", "gemini", normalize=True)
+plot_confusion_matrix("finetuning", "llama4", "prometheus", normalize=True)
+
+#plot_confusion_matrix("finetuning", "smaLLM", "gemini", normalize=True)
+#plot_confusion_matrix("finetuning", "smaLLM", "prometheus", normalize=True)
+
+#plot_confusion_matrix("finetuning", "minerva", "gemini", normalize=True)
+#plot_confusion_matrix("finetuning", "minerva", "prometheus", normalize=True)

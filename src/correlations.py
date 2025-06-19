@@ -40,7 +40,7 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
         print("|====================================")
         print(f"| \033[93mKAPPA CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
         print("|------------------------------------")
-        print("| Remember that 0 < C-K < 1: \n| -- 0 means no agreement\n| -- 1 means complete agreement")
+        print("| Remember that -1 < C-K < 1: \n| -- 0 means casual agreement\n| -- 1 means complete agreement\n| -- -1 means complete disagreement")
         print("|------------------------------------")
         print(f"| Cohen's Kappa: {kappa:.3f}")
         print("|====================================")
