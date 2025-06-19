@@ -65,12 +65,12 @@ def gemini_score(FILE_NAME, correction_model):
     key2 = f"{correction_model}_gemini_score"
 
     print("|========================================")
-    print(f"|--- Valutazione di {correction_model} con Gemini ---|")
+    print(f"| \033[93mValutazione di {correction_model} con Gemini ...\033[0m")
     for i, entry in enumerate(data, start=1):
         translation = entry[key]
         reference = entry["corretto"]
 
-        print(f"{i}/{len(data)}")
+        print(f"| {i}/{len(data)}", end="\r", flush=True)
 
         try:
             score = gemini_ask_score(translation, reference, print_result=False)
@@ -87,7 +87,8 @@ def gemini_score(FILE_NAME, correction_model):
     with open(FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("========================================")
+    print("|========================================")
+    print("\n")
 
 
 

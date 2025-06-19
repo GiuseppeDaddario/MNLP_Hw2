@@ -44,13 +44,13 @@ def prometheus_score(FILE_NAME, correction_model):
 
 
     print("|====================================")
-    print(f"|--- Valutazione di {correction_model} con Prometheus ---|")
+    print(f"| \033[93mValutazione di {correction_model} con Prometheus\033[0m")
     for i, entry in enumerate(data, start=1):
         
         translation = entry[key]
         reference = entry["corretto"]
 
-        print(f"{i}/{len(data)}")
+        print(f"| {i}/{len(data)}", end="\r", flush=True)
 
         try:
             score = prometheus_ask_score(translation, reference, print_result=False)
@@ -67,4 +67,5 @@ def prometheus_score(FILE_NAME, correction_model):
     with open(FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("====================================")
+    print("|====================================")
+    print("\n")

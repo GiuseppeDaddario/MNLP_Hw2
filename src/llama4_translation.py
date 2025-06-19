@@ -59,7 +59,7 @@ def process_ocr_file(input_file, output_file, print_result = False):
     results = []
     print("\n")
     print("|========================================")
-    print("Translating with llama4 ...")
+    print("| \033[93mTranslating with llama4 ...\033[0m")
     for item in data:
         ocr_text = item.get("ocr", "")
         if not ocr_text:

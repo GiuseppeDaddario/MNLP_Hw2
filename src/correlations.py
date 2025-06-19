@@ -26,8 +26,8 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
     key = f"{correction_model}_{evaluation_model}_score"
 
     for item in data:
-        if "human_score" in item and key in item:
-            human_scores.append(item["human_score"])
+        if f"human_{correction_model}_score" in item and key in item:
+            human_scores.append(item[f"human_{correction_model}_score"])
             machine_scores.append(item[key])
         else:
             print("Missing 'human_score' or 'machine_score' in item:", item)
@@ -38,10 +38,10 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
 
         print("\n")
         print("|====================================")
-        print("|          KAPPA CORRELATION        ")
-        print("|------------------------------------------")
+        print(f"| \033[93mKAPPA CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
+        print("|------------------------------------")
         print("| Remember that 0 < C-K < 1: \n| -- 0 means no agreement\n| -- 1 means complete agreement")
-        print("|------------------------------------------")
+        print("|------------------------------------")
         print(f"| Cohen's Kappa: {kappa:.3f}")
         print("|====================================")
         print("\n")
@@ -76,8 +76,8 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
     
     key = f"{correction_model}_{evaluation_model}_score"
     for item in data:
-        if "human_score" in item and key in item:
-            human_scores.append(item["human_score"])
+        if f"human_{correction_model}_score" in item and key in item:
+            human_scores.append(item[f"human_{correction_model}_score"])
             machine_scores.append(item[key])
         else:
             print("Missing 'human_score' or 'machine_score' in item:", item)
@@ -89,10 +89,10 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
 
         print("\n")
         print("|====================================")
-        print("|          ACCURACY CORRELATION        ")
-        print("|------------------------------------------")
-        print("| Accuracy =  matching human-machine scores/total")
-        print("|------------------------------------------")
+        print(f"| \033[93mACCURACY CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
+        print("|------------------------------------")
+        print("| Defined as: \n| Matching human-machine scores/total")
+        print("|------------------------------------")
         print(f"| Accuracy: {accuracy:.3f}")
         print("|====================================")
         
@@ -102,7 +102,6 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
 
 #######################################
 #######################################
-
 
 
 

@@ -49,12 +49,13 @@ gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 # - Prometheus - 
 prometheus_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 #prometheus_score(FILE_NAME,"smallLLM") ## Evaluating smallLLM translations
-#prometheus_score(FILE_NAME,"minerva") ##Evaluating minerva translations
+#prometheus_score(FILE_NAME,"minerva") ## Evaluating minerva translations
 
 
 # - Human -
-annotate_human_scores(FILE_NAME)
-
+annotate_human_scores(FILE_NAME,"llama4")
+#annotate_human_scores(FILE_NAME,"smallLLM")
+#annotate_human_scores(FILE_NAME,"minerva")
 # ------------------------------#
 
 
@@ -62,6 +63,8 @@ annotate_human_scores(FILE_NAME)
 
 
 # ----- COMPUTING CORRELATION ----- #
+# kappa_correlation(FILE_NAME, correction_model, judge_model, print_result)
+# accuracy_correlation(FILE_NAME, correction_model, judge_model, print_result)
 
 kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 #kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
@@ -80,3 +83,4 @@ accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 #accuracy_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 #accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
 # ------------------------------#
+
