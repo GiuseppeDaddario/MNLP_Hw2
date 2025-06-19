@@ -15,13 +15,21 @@ FILE_NAME = "finetuning"
 
 
 ####### LLAMA4 TRANSLATIONS ########
-translate_with_llama4(FILE_NAME)
+translate_with_llama4(FILE_NAME) ##Enrich the dataset with
 
+
+####### Minerva FineTuned TRANSLATIONS #######
+#translate_with_minerva(FILE_NAME)
 
 
 #######   GEMINI ANNOTATING  ########
 gemini_score(FILE_NAME)
+gemini_score(FILE_NAME)
 
+
+#######   PROMETHEUS ANNOTATING  ########
+prometheus_score(FILE_NAME)
+prometheus_score(FILE_NAME)
 
 
 #######   HUMAN ANNOTATING  ########
