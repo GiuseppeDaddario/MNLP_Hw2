@@ -1,7 +1,15 @@
-from src.correlations import kappa_correlation,accuracy_correlation
-from src.gemini_score import gemini_score
-from src.human_score import annotate_human_scores
+
+## Translations
 from src.llama4_translation import translate_with_llama4
+
+## Scores
+from src.gemini_score import gemini_score
+from src.prometheus_score import prometheus_score
+from src.human_score import annotate_human_scores
+
+## Stats
+from src.correlations import kappa_correlation,accuracy_correlation
+
 
 
 
@@ -13,30 +21,62 @@ FILE_NAME = "finetuning"
 
 
 
+#------ TRANSLATIONS ------#
 
-####### LLAMA4 TRANSLATIONS ########
-translate_with_llama4(FILE_NAME) ##Enrich the dataset with
+# - llama4 - 
+translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 
+# - smallLLM - 
+#translate_with_smallLLM(FILE_NAME,print_result=False)
 
-####### Minerva FineTuned TRANSLATIONS #######
-#translate_with_minerva(FILE_NAME)
+# - minerva - 
+#translate_with_minerva(FILE_NAME,print_result=False)
 
-
-#######   GEMINI ANNOTATING  ########
-gemini_score(FILE_NAME)
-gemini_score(FILE_NAME)
-
-
-#######   PROMETHEUS ANNOTATING  ########
-prometheus_score(FILE_NAME)
-prometheus_score(FILE_NAME)
+# ------------------------------#
 
 
-#######   HUMAN ANNOTATING  ########
+
+
+#------  ANNOTATIONS  ------#
+#function input "corection_model" can be [llama4/minerva/smallLLM]
+
+# - Gemini -
+gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+#gemini_score(FILE_NAME,"smallLLM") ## Evaluating smallLLM translations
+#gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
+
+
+# - Prometheus - 
+prometheus_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+#prometheus_score(FILE_NAME,"smallLLM") ## Evaluating smallLLM translations
+#prometheus_score(FILE_NAME,"minerva") ##Evaluating minerva translations
+
+
+# - Human -
 annotate_human_scores(FILE_NAME)
 
+# ------------------------------#
 
 
-####### COMPUTING CORRELATION #########
-kappa_correlation(FILE_NAME,True)
-accuracy_correlation(FILE_NAME,True)
+
+
+
+# ----- COMPUTING CORRELATION ----- #
+
+kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
+#kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
+
+kappa_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
+#kappa_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
+
+
+accuracy_correlation(FILE_NAME,"llama4","gemini",print_results=True)
+#accuracy_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva","gemini",print_results=True)
+
+accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
+#accuracy_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
+# ------------------------------#
