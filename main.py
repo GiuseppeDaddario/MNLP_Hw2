@@ -1,6 +1,8 @@
 
 ## Translations
 from src.llama4_translation import translate_with_llama4
+from src.minerva_translation import translate_with_minerva
+from src.smaLLM_translation import translate_with_smaLLM
 
 ## Scores
 from src.gemini_score import gemini_score
@@ -27,10 +29,10 @@ FILE_NAME = "finetuning"
 translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 
 # - smallLLM - 
-#translate_with_smallLLM(FILE_NAME,print_result=False)
+translate_with_smaLLM(FILE_NAME,print_result=False)
 
 # - minerva - 
-#translate_with_minerva(FILE_NAME,print_result=False)
+translate_with_minerva(FILE_NAME,print_result=False)
 
 # ------------------------------#
 
