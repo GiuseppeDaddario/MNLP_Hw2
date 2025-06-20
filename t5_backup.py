@@ -28,8 +28,8 @@ tokenizer = T5Tokenizer.from_pretrained("t5-base")
 def preprocess(example):
     input_text = "fix: " + example["ocr"]  # prefix task instruction
     target_text = example["correct"]
-    inputs = tokenizer(input_text, max_length=256, padding="max_length", truncation=True)
-    targets = tokenizer(target_text, max_length=256, padding="max_length", truncation=True)
+    inputs = tokenizer(input_text, max_length=256, padding="max_length", truncation=True) #default 256
+    targets = tokenizer(target_text, max_length=256, padding="max_length", truncation=True) #default 256
     inputs["labels"] = targets["input_ids"]
     return inputs
 
@@ -78,3 +78,5 @@ for i in range(5):
     print(f"\n🔹 OCR:     {test_data[i]['ocr']}")
     print(f"✅ Truth:   {test_data[i]['correct']}")
     print(f"🤖 T5 Out:  {decoded_preds[i]}")
+
+

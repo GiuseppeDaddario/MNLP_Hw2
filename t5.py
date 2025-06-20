@@ -107,7 +107,7 @@ decoded_preds = tokenizer.batch_decode(preds, skip_special_tokens=True)
 decoded_labels = tokenizer.batch_decode(outputs.label_ids, skip_special_tokens=True)
 
 # 12. Print some examples
-for i in range(5):
+for i in range(10):
     print(f"\n🔹 OCR:     {test_data[i]['ocr']}")
     print(f"✅ Truth:   {test_data[i]['correct']}")
     print(f"🤖 T5 Out:  {decoded_preds[i]}")
