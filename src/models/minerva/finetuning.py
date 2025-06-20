@@ -14,7 +14,7 @@ def log(msg):
 
 # --- Config ---
 MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima"
 BATCH_SIZE = 3
 EPOCHS = 4
 LR = 2e-5
@@ -88,10 +88,11 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 
 # --- Load and prepare datasets ---
-ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
-ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
+#ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
+#ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
 ds3 = load_lima_dataset("./datasets/lima")
-combined = concatenate_datasets([ds1, ds2, ds3])
+#combined = concatenate_datasets([ds1, ds2, ds3])
+combined = ds3
 
 tokenized = combined.map(lambda ex: preprocess(ex, tokenizer), batched=True)
 train_dl = DataLoader(tokenized, batch_size=BATCH_SIZE, shuffle=True, collate_fn=partial(smart_collate, tokenizer=tokenizer))
