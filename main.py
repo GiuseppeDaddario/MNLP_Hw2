@@ -2,7 +2,13 @@ import torch
 
 from src.utils import OcrCorrectionDataset, read_dataset, difference_score
 from src.models  import t5Model
-from src.api import ask_llama, ask_gemini, absolute_grading
+from src.api import ask_gemini, absolute_grading
+
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from datetime import datetime
+import sys
+import os
 
 DIRTY_PATH_ENG = "/leonardo/home/userexternal/gdaddari/MNLP_Hw2/datasets/eng/the_vampyre_ocr.json"
 CLEAN_PATH_ENG = "/leonardo/home/userexternal/gdaddari/MNLP_Hw2/datasets/eng/the_vampyre_clean.json"
@@ -86,6 +92,7 @@ def main():
 
     return
 
+
 def main_leonardo():
     # reading datasets
     output = "In the London Journal, of March, 1732, is a curious, and, of course, credible account of a particular case of vampirism, which is stated to have occurred at Madreyga, in Hungary. It appears, that upon an examination of the commander-in-chief and magistrates of the place, they positively and unanimously affirmed, that, about five years before, a certain Heyduke, named Arnold Paul, had been heard to say, that, at Cassovia, on the frontiers of the Turkish Servia, he had been tormented by a vampyre, but had found a way to rid himself of the evil, by eating some of the earth out of the vampyre's grave, and rubbing himself with his blood. This precaution, however, did not prevent him from becoming a vampyre himself; for, about twenty or thirty days after his death and burial, many persons complained of having been tormented by him, and a deposition was made, that four persons had been deprived of life by his attacks. To prevent further mischief, the inhabitants having consulted their Hadagni, took up the body, and found it (as is supposed to be usual in cases of vampirism) fresh, and entirely free from corruption, and emitting at the mouth, nose, and ears, pure and florid blood. Proof having been thus obtained, they resorted to the accustomed remedy. A stake was driven entirely through the heart and body of Arnold Paul, at which he is reported to have cried out as dreadfully as if he had been alive. This done, they cut off his head, burned his body, and threw the ashes into his grave. The same measures were adopted with the corpses of those persons who had previously died from vampirism, lest they should, in their turn, become agents upon others who survived them."
@@ -99,5 +106,40 @@ def main_leonardo():
 
     return
 
+
+
+def generate(model, tokenizer, prompt="Ques7a e' un4 prov0"):
+    inputs = tokenizer(prompt, return_tensors="pt")
+    max_new_tokens = 4096
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=max_new_tokens,
+        pad_token_id=tokenizer.pad_token_id,
+        do_sample=False,
+        return_dict_in_generate=False
+    )
+    decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+    if "Your Answer:" in decoded:
+        text = decoded.split("Your Answer:")[-1].strip()
+    else:
+        text = decoded.strip()
+
+    # Prendi solo fino al primo a capo
+    first_line = text.split('\n')[0].strip()
+    return first_line
+def load_model(path):
+    return AutoModelForCausalLM.from_pretrained(
+        path,
+        device_map="auto",
+        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+        trust_remote_code=True
+    )
+
+
 if __name__ == "__main__":
-    main_leonardo()
+    path = "/Volumes/Extreme\ Pro/mnlp/leonardo/home/userexternal/gdaddari/MNLP_Hw2/src/models/minerva/finetuned_minerva_all"
+    tokenizer_base = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
+    model_base = load_model(path)
+    print(generate(model_base, tokenizer_base, path))
+
