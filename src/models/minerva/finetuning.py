@@ -1,67 +1,74 @@
 from accelerate import Accelerator
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, get_scheduler
-from peft import get_peft_model, LoraConfig
+from peft import get_peft_model, LoraConfig, TaskType
 from datasets import load_dataset, load_from_disk, concatenate_datasets
 from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from datetime import datetime
 from functools import partial
 
-# === Logging ===
+# --- Logging ---
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-# === Config ===
-MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
+# --- Config ---
+MODEL_PATH = "./src/models/minerva/cache/.../snapshots/..."  # base model
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
 BATCH_SIZE = 3
 EPOCHS = 4
 LR = 2e-5
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
+MAX_LENGTH = 512
 
-# === Funzioni per caricare e formattare i dataset ===
+# --- Prompt template ---
+def make_prompt(ocr_text: str) -> str:
+    return (
+        "You are an OCR correction system.\n"
+        "Task: Fix spelling, spacing, and OCR errors.\n"
+        "Rules:\n"
+        "1. Do NOT explain.\n"
+        "2. Keep old spellings and historical terms.\n"
+        "3. No additions.\n"
+        "4. If already correct, repeat it.\n"
+        f"Sentence: {ocr_text}\n"
+        "Corrected:"
+    )
+
+# --- Dataset loaders ---
 def load_ocr_dataset(path):
     ds = load_dataset("json", data_files=path)["train"]
-    def format_ocr(example):
-        prompt = (
-            "You must correct the following OCR sentence, replying only with the clean sentence "
-            "keeping syntax, language and meaning.\n"
-            f"Sentence to correct: {example['ocr']}\nYour Answer:"
-        )
-        return {
-            "instruction": prompt,
-            "response": example["corretto"]
-        }
-    return ds.map(format_ocr, remove_columns=ds.column_names)
+    return ds.map(lambda ex: {"instruction": make_prompt(ex["ocr"]), "response": ex["corretto"]}, remove_columns=ds.column_names)
 
 def load_lima_dataset(path):
     ds = load_from_disk(path)["train"]
     ds = ds.filter(lambda ex: len(ex["conversations"]) >= 2)
-    def format_lima(example):
-        return {
-            "instruction": example["conversations"][0],
-            "response": example["conversations"][1]
-        }
-    return ds.map(format_lima, remove_columns=ds.column_names)
+    return ds.map(lambda ex: {"instruction": ex["conversations"][0], "response": ex["conversations"][1]}, remove_columns=ds.column_names)
 
-# === Preprocessing ===
+# --- Preprocessing ---
 def preprocess(example, tokenizer):
-    full_text = f"### Istruzione:\n{example['instruction']}\n\n### Risposta:\n{example['response']}"
-    return tokenizer(full_text, truncation=True, padding="max_length", max_length=512)
+    text = f"### Instruction:\n{example['instruction']}\n\n### Response:\n{example['response']}"
+    enc = tokenizer(text, truncation=True, padding="max_length", max_length=MAX_LENGTH)
+    enc["labels"] = [lbl if mask else -100
+                     for lbl, mask in zip(enc["input_ids"], enc["attention_mask"])]
+    return enc
 
-# === Collate ===
+# --- Collate fn ---
 def smart_collate(batch, tokenizer):
     padded = tokenizer.pad(batch, return_tensors="pt")
-    padded["labels"] = padded["input_ids"].clone()
+    labels = padded["labels"]
+    padded["labels"] = torch.where(padded["attention_mask"] == 1, labels, -100)
     return padded
 
-# === Accelerate ===
-log("Initializing the accelerator...")
+# --- Accelerator init ---
 accelerator = Accelerator(mixed_precision="fp16")
+log("Accelerator ready.")
 
-# === Model & Tokenizer ===
-log("Loading model and tokenizer...")
+# --- Load tokenizer and model ---
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.pad_token_id = tokenizer.eos_token_id
+
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_PATH,
     torch_dtype=torch.float16,
@@ -69,69 +76,39 @@ model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True
 )
 
-# === Pad token fix ===
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
-
-# === LoRA ===
-log("Configuring LoRA...")
+# --- LoRA config ---
 peft_config = LoraConfig(
+    task_type=TaskType.CAUSAL_LM,
     r=8,
     lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],
     lora_dropout=0.05,
     bias="none",
-    task_type="CAUSAL_LM"
+    target_modules=["q_proj", "v_proj"]  # controlla che siano presenti nel tuo modello
 )
 model = get_peft_model(model, peft_config)
 
-# === Dataset ===
-log("Loading and combining datasets...")
+# --- Load and prepare datasets ---
 ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
 ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
 ds3 = load_lima_dataset("./datasets/lima")
-combined_dataset = concatenate_datasets([ds1, ds2, ds3])
+combined = concatenate_datasets([ds1, ds2, ds3])
 
-# === Tokenization ===
-log("Tokenizing dataset...")
-tokenized_dataset = combined_dataset.map(
-    lambda ex: preprocess(ex, tokenizer),
-    remove_columns=combined_dataset.column_names
-)
+tokenized = combined.map(lambda ex: preprocess(ex, tokenizer), batched=True)
+train_dl = DataLoader(tokenized, batch_size=BATCH_SIZE, shuffle=True, collate_fn=partial(smart_collate, tokenizer=tokenizer))
 
-# === DataLoader ===
-log("Configuring dataloader...")
-collate_fn = partial(smart_collate, tokenizer=tokenizer)
-train_dataloader = DataLoader(
-    tokenized_dataset,
-    batch_size=BATCH_SIZE,
-    shuffle=True,
-    collate_fn=collate_fn
-)
-
-# === Optimizer & Scheduler ===
-log("Setting optimizer and scheduler...")
+# --- Optimizer & scheduler ---
 optimizer = AdamW(model.parameters(), lr=LR)
-num_training_steps = EPOCHS * len(train_dataloader)
-lr_scheduler = get_scheduler(
-    "linear",
-    optimizer=optimizer,
-    num_warmup_steps=0,
-    num_training_steps=num_training_steps,
-)
+num_steps = EPOCHS * len(train_dl)
+lr_scheduler = get_scheduler("linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_steps)
 
-# === Accelerator Prepare ===
-log("Preparing with accelerator...")
-model, optimizer, train_dataloader, lr_scheduler = accelerator.prepare(
-    model, optimizer, train_dataloader, lr_scheduler
-)
+# --- Prepare everything with accelerator ---
+model, optimizer, train_dl, lr_scheduler = accelerator.prepare(model, optimizer, train_dl, lr_scheduler)
 
-# === Training ===
-log("Start training...")
+# --- Training loop ---
 model.train()
-for epoch in range(EPOCHS):
-    total_loss = 0
-    for batch in train_dataloader:
+for epoch in range(1, EPOCHS + 1):
+    total_loss = 0.0
+    for batch in train_dl:
         outputs = model(**batch)
         loss = outputs.loss
         total_loss += loss.item()
@@ -139,10 +116,11 @@ for epoch in range(EPOCHS):
         optimizer.step()
         lr_scheduler.step()
         optimizer.zero_grad()
-    log(f"Epoch {epoch+1}/{EPOCHS} finished. Avg loss: {total_loss / len(train_dataloader):.4f}")
+    log(f"Epoch {epoch} completed — avg loss: {total_loss/len(train_dl):.4f}")
 
-# === Save model ===
-log("Saving model...")
+# --- Save LoRA adapter + tokenizer ---
 if accelerator.is_main_process:
     model.save_pretrained(FINETUNED_MODEL_PATH)
     tokenizer.save_pretrained(FINETUNED_MODEL_PATH)
+
+log("✅ Finetuning completed.")
