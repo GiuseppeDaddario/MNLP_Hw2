@@ -13,7 +13,7 @@ def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 # --- Config ---
-MODEL_PATH = "./src/models/minerva/cache/.../snapshots/..."  # base model
+MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
 FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_all"
 BATCH_SIZE = 3
 EPOCHS = 4
