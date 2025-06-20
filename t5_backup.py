@@ -13,7 +13,7 @@ from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 
 
 # 1. Carica il dataset
-with open("datasets/eng/finetuning.json", "r", encoding="utf-8") as f:
+with open("datasets/eng/finetuning_split.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 samples = [{"ocr": item["ocr"], "correct": item["corretto"]} for item in data if item["ocr"] and item["corretto"]]
