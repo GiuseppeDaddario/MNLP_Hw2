@@ -1,9 +1,21 @@
 # train_bart_ocr.py
 
+
+
+
+
 import json
-from datasets import Dataset
+from datasets import Dataset, load_dataset
 from sklearn.model_selection import train_test_split
 from transformers import BartTokenizer, BartForConditionalGeneration, Seq2SeqTrainer, Seq2SeqTrainingArguments
+
+
+
+ds = load_dataset("PleIAs/Post-OCR-Correction", "italian")
+print(ds["train"][0])
+
+
+
 
 # 1. Carica il tuo dataset OCR (assunto JSON con "ocr" e "correct")
 with open("datasets/finetuning_all.json", "r", encoding="utf-8") as f:
