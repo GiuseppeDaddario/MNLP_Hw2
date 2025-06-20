@@ -53,7 +53,7 @@ def gemini_ask_score(translation,expected,print_result=True):
 
 
 
-def gemini_score(FILE_NAME):
+def gemini_score(FILE_NAME, correction_model):
 
     BASE_PATH = "datasets/eng/corrections/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
@@ -61,20 +61,25 @@ def gemini_score(FILE_NAME):
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    key = f"{correction_model}_correction"
+    key2 = f"{correction_model}_gemini_score"
+
+    print("|========================================")
+    print(f"| \033[93mValutazione di {correction_model} con Gemini ...\033[0m")
     for i, entry in enumerate(data, start=1):
-        translation = entry["llama4_correction"]
+        translation = entry[key]
         reference = entry["corretto"]
 
-        print(f"{i}/{len(data)} - Valutazione in corso...")
+        print(f"| {i}/{len(data)}", end="\r", flush=True)
 
         try:
             score = gemini_ask_score(translation, reference, print_result=False)
-            entry["machine_score"] = int(score)
+            entry[key2] = int(score)
         except ValueError:
-            entry["machine_score"] = score  # fallback se Gemini restituisce qualcosa di strano
+            entry[key2] = score  # fallback se Gemini restituisce qualcosa di strano
         except Exception as e:
             print(f"Errore alla voce {i}: {e}")
-            entry["machine_score"] = "ERROR"
+            entry[key2] = "ERROR"
 
         time.sleep(4.5)  # Per rispettare il limite del free tier (15/min)
 
@@ -82,6 +87,8 @@ def gemini_score(FILE_NAME):
     with open(FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+    print("|========================================")
+    print("\n")
 
 
 

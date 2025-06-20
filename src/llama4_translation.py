@@ -52,11 +52,14 @@ def ask_llama4(prompt):
         return f"Errore HTTP {response.status_code}: {response.text}"
 
 
-def process_ocr_file(input_file, output_file):
+def process_ocr_file(input_file, output_file, print_result = False):
     with open(input_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     results = []
+    print("\n")
+    print("|========================================")
+    print("| \033[93mTranslating with llama4 ...\033[0m")
     for item in data:
         ocr_text = item.get("ocr", "")
         if not ocr_text:
@@ -71,8 +74,10 @@ def process_ocr_file(input_file, output_file):
         prompt = f"{judge_prompt}\n{ocr_text}"
         
         correction = ask_llama4(prompt)
-        print(f"Originale: {ocr_text}")
-        print(f"Correzione: {correction}\n")
+        
+        if(print_result):
+            print(f"Originale: {ocr_text}")
+            print(f"Correzione: {correction}\n")
 
         item["llama4_correction"] = correction
         results.append(item)
@@ -83,7 +88,10 @@ def process_ocr_file(input_file, output_file):
     # Scrivi il file di output
     with open(output_file, "w", encoding="utf-8") as f_out:
         json.dump(results, f_out, ensure_ascii=False, indent=2)
-
+    
+    print("|========================================")
+    print("\n")
+    
 
 
 
@@ -91,7 +99,7 @@ def process_ocr_file(input_file, output_file):
         # Se vuoi rimuovere questa parte, puoi farlo con una regex o semplicemente con una slice
         # correction = correction.replace("Ecco il testo corretto: ", "").strip()
 
-def translate_with_llama4(file_name):
+def translate_with_llama4(file_name, print_result = False):
     
     file = file_name   # sostituisci solo il nome del file senza estensione
     
@@ -100,7 +108,7 @@ def translate_with_llama4(file_name):
     output_path = datapath+"corrections/"+ file+".json"  # nome del file output
 
     ## Call agli API di llama4 e creazione file
-    process_ocr_file(input_path, output_path)
+    process_ocr_file(input_path, output_path, print_result)
 
     ## Rimuove eventuale "Ecco il testo corretto: " dalle correzioni
     #textCleaner(output_path, output_path)
