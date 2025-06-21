@@ -1,0 +1,55 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "plain_text",
+  "dataset_name": "lima",
+  "dataset_size": 2946574,
+  "description": "A high-quality dataset for efficient instruction tuning.\n",
+  "download_checksums": {
+    "hf://datasets/GAIR/lima@b1b3f0c193ea931b395c32791a16982e987c13d3/plain_text/train/0000.parquet": {
+      "num_bytes": 1677611,
+      "checksum": null
+    },
+    "hf://datasets/GAIR/lima@b1b3f0c193ea931b395c32791a16982e987c13d3/plain_text/test/0000.parquet": {
+      "num_bytes": 27326,
+      "checksum": null
+    }
+  },
+  "download_size": 1704937,
+  "features": {
+    "conversations": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "source": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 4651511,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 2906937,
+      "num_examples": 1030,
+      "dataset_name": "lima"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 39637,
+      "num_examples": 300,
+      "dataset_name": "lima"
+    }
+  },
+  "version": {
+    "version_str": "0.0.1",
+    "major": 0,
+    "minor": 0,
+    "patch": 1
+  }
+}
