@@ -1,0 +1,7 @@
+[2025-06-21 02:48:55] Accelerator ready.
+[2025-06-21 02:49:03] Loading Post-OCR dataset from disk...
+[2025-06-21 03:47:51] Epoch 1 completed — avg loss: 3.6767
+[2025-06-21 04:40:31] Epoch 2 completed — avg loss: 3.5796
+[2025-06-21 05:33:11] Epoch 3 completed — avg loss: 3.5447
+[2025-06-21 06:25:49] Epoch 4 completed — avg loss: 3.5282
+[2025-06-21 06:25:50] ✅ Finetuning completed.

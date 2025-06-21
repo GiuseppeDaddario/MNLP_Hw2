@@ -1,0 +1,96 @@
+[2025-06-21 02:42:30] Loading Minerva model...
+[2025-06-21 02:42:39] Starting OCR correction...
+[2025-06-21 02:42:39] [1/1] Processing key '0'... (1 sentences)
+------------ DEBUG [1/1] --------------
+ You are an OCR correction system.
+Task: Fix spelling, spacing, and OCR errors in the given sentence ONLY if there are any.
+Rules:
+1. DO NOT explain.
+2. DO NOT change names, old spellings or historical terms.
+3. DO NOT add any text.
+4. If the sentence is already correct, repeat it exactly.
+Sentence: THE VAMPYRE;
+Corrected: The Vampyre; or, a Tale of the Dark
+Fairy World. By John Polidori. 1809.
+The following is a translation from the French of Mr.
+Polidori's "Vampire," which appeared in the London
+Monthly Review for July, 1816. It will be seen that
+the author has not been guilty of any extravagant
+imagination, but has faithfully followed the facts as
+they have come to his knowledge.
+THE VAMPIRE; OR, A TALE OF THE DARK FAIRY WORLD.
+By JOHN POLIDORI.
+London, 1809.
+I.
+It was about midnight when I awoke from a deep sleep,
+and found myself lying on my back upon the ground,
+with my arms stretched out, and my eyes fixed upon the
+sky. My first thought was, that I had fallen asleep
+in the open air, and that some accident had prevented
+me from returning home. But soon recollection
+returned, and I remembered where I was, and what
+had happened during the night.
+I had been sitting by the fire with Lady Pembroke,
+when she suddenly started up, and exclaimed, "Oh!
+my God! what a noise!" She then ran into the room,
+and returned with a lighted taper, and a book.
+"What is this?" said she. "This is the work of the
+Devil." And she opened the volume, and read these
+words, "Behold, I am he that holdeth the sceptre of
+death, that turneth men into wolves, and maketh them
+to howl as dogs."
+She then took the book again, and went to bed.
+In the morning, I rose early, and went down stairs,
+where I met Lord Ruthven, who told me that he had
+been awakened by hearing a strange noise, and that
+he had looked out of the window, and saw nothing.
+He added, however, that he had heard something like
+a groaning in the garden, and that he had gone to see
+what it could mean. He then left me, and I went to
+bed again.
+About noon, I was awakened by hearing a loud knocking
+at the door. I got up, and went to the door, and
+saw two men standing at it. They asked me whether
+I was alone? I answered yes. Then they asked me
+if I would give them shelter for the night? I replied
+that I would do so. They then entered the house,
+and locked the door after them.
+They were dressed in black, and wore masks over their
+faces. One of them held a lantern in his hand, and
+the other carried a large box. After they had gone
+away, I sat down to think what had happened. At
+length I recollected that I had heard a noise in the
+garden, and that I had gone to see what it meant.
+I now remembered that I had heard the sound of a
+knife, and that I had seen blood on the floor.
+I also remembered that I had heard a groaning in the
+garden, and that I had gone to see what it meant.
+These things came back to my mind, and I began to
+think that I might have dreamt all this. But I did
+not know what to do. I was afraid to go to bed again,
+for fear of being murdered in my sleep. So I lay
+upon the ground, and watched the moonlight through
+the branches of the trees.
+At length I fell asleep, and dreamed that I was
+walking along a dark road, and that I saw a man
+coming towards me. He was dressed in black, and
+carried a lantern in his hand. When he came near
+me, I recognized him as one of the men who had
+come to the house. He stopped, and said, "Who art
+thou?" I answered, "I am John Polidori." He then
+asked me why I was walking along the road at such
+an hour? I answered, "Because I am going to meet
+some friends." He then said, "You must not go
+along that road. Go another way." I then asked
+him whither he was going? He answered, "To the
+house of Dr. Frankenstein." I then asked him what
+was the matter with him? He answered, "Nothing.
+But you must go away from here." I then asked him
+why he wanted me to go away? He answered, "Because
+you are a friend of mine." I then asked him what he
+------------------------------------------
+[2025-06-21 02:43:42] 📝 OCR:        THE VAMPYRE;
+[2025-06-21 02:43:42] 🤖 Correction: The Vampyre; or, a Tale of the Dark
+[2025-06-21 02:43:42] ✅ Gold:       THE VAMPYRE;
+
+[2025-06-21 02:43:42] ✅ Done!
