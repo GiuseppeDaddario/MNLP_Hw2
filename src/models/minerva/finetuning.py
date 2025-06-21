@@ -13,8 +13,10 @@ def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 # --- Config ---
-MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima"
+FINETUNING = "POST_OCR"
+#MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
+MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima"
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima_post_ocr"
 BATCH_SIZE = 3
 EPOCHS = 4
 LR = 2e-5
@@ -45,12 +47,14 @@ def load_lima_dataset(path):
     return ds.map(lambda ex: {"instruction": ex["conversations"][0], "response": ex["conversations"][1]}, remove_columns=ds.column_names)
 
 # --- Preprocessing ---
-def preprocess(example, tokenizer):
-    text = f"### Instruction:\n{example['instruction']}\n\n### Response:\n{example['response']}"
-    enc = tokenizer(text, truncation=True, padding="max_length", max_length=MAX_LENGTH)
-    enc["labels"] = [lbl if mask else -100
-                     for lbl, mask in zip(enc["input_ids"], enc["attention_mask"])]
-    return enc
+def preprocess(batch, tokenizer):
+    full_texts = [
+        f"### Instruction:\n{instr}\n\n### Response:\n{resp}"
+        for instr, resp in zip(batch["instruction"], batch["response"])
+    ]
+    model_inputs = tokenizer(full_texts, truncation=True, padding="max_length", max_length=512)
+    model_inputs["labels"] = model_inputs["input_ids"].copy()
+    return model_inputs
 
 # --- Collate fn ---
 def smart_collate(batch, tokenizer):
@@ -88,13 +92,30 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 
 # --- Load and prepare datasets ---
-#ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
-#ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
-ds3 = load_lima_dataset("./datasets/lima")
-#combined = concatenate_datasets([ds1, ds2, ds3])
-combined = ds3
+if FINETUNING == "LLIMA":
+    log("Loading LLIMA dataset from disk...")
+    #ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
+    #ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
+    ds3 = load_lima_dataset("./datasets/lima")
+    #combined = concatenate_datasets([ds1, ds2, ds3])
+    combined = ds3
 
-tokenized = combined.map(lambda ex: preprocess(ex, tokenizer), batched=True)
+elif FINETUNING == "POST_OCR":
+    log("Loading Post-OCR dataset from disk...")
+    combined = load_from_disk("datasets/post_ocr_correction")
+    #combined = combined.select(range(10)) #DEBUG
+    def map_to_prompt(example):
+        return {
+            "instruction": make_prompt(example["text"]),
+            "response": example["corrected_text"]
+        }
+    combined = combined.map(map_to_prompt, remove_columns=combined.column_names)
+
+tokenized = combined.map(
+    lambda batch: preprocess(batch, tokenizer),
+    batched=True,
+    remove_columns=combined.column_names 
+)
 train_dl = DataLoader(tokenized, batch_size=BATCH_SIZE, shuffle=True, collate_fn=partial(smart_collate, tokenizer=tokenizer))
 
 # --- Optimizer & scheduler ---
