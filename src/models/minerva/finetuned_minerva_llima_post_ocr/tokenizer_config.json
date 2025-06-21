@@ -1,0 +1,79 @@
+{
+  "add_bos_token": true,
+  "add_eos_token": false,
+  "add_prefix_space": null,
+  "added_tokens_decoder": {
+    "0": {
+      "content": "<s>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "1": {
+      "content": "</s>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "2": {
+      "content": "<unk>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "51200": {
+      "content": "<|start_header_id|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "51201": {
+      "content": "<|end_header_id|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    },
+    "51202": {
+      "content": "<|eot_id|>",
+      "lstrip": false,
+      "normalized": false,
+      "rstrip": false,
+      "single_word": false,
+      "special": true
+    }
+  },
+  "additional_special_tokens": [
+    "<|start_header_id|>",
+    "<|end_header_id|>",
+    "<|eot_id|>"
+  ],
+  "bos_token": "<s>",
+  "clean_up_tokenization_spaces": false,
+  "eos_token": "<|eot_id|>",
+  "extra_special_tokens": {},
+  "legacy": true,
+  "max_length": 512,
+  "model_max_length": 4096,
+  "pad_to_multiple_of": null,
+  "pad_token": "<|eot_id|>",
+  "pad_token_type_id": 0,
+  "padding_side": "right",
+  "split_special_tokens": false,
+  "stride": 0,
+  "tokenizer_class": "LlamaTokenizerFast",
+  "truncation_side": "right",
+  "truncation_strategy": "longest_first",
+  "unk_token": "<unk>",
+  "use_default_system_prompt": false,
+  "vocab_size": 51200
+}
