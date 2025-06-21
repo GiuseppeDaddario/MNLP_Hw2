@@ -61,6 +61,8 @@ def gemini_score(FILE_NAME, correction_model):
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    #data = list(data.values())
+
     key = f"{correction_model}_correction"
     key2 = f"{correction_model}_gemini_score"
 
@@ -68,7 +70,7 @@ def gemini_score(FILE_NAME, correction_model):
     print(f"| \033[93mValutazione di {correction_model} con Gemini ...\033[0m")
     for i, entry in enumerate(data, start=1):
         translation = entry[key]
-        reference = entry["corretto"]
+        reference = entry["gold"]
 
         print(f"| {i}/{len(data)}", end="\r", flush=True)
 
