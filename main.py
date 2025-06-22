@@ -36,21 +36,21 @@ FILE_NAME = "the_vampyre"
 #
 # # - Gemini -correction_model is the name of the model to use for translation in:
 # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+# gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 # gemini_score(FILE_NAME,"deep_mount") ## Evaluating smallLLM translations
 # gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
 #
 #
 # # - Prometheus -correction_model is the name of the model to use for translation in:
 # # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-# prometheus_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+#prometheus_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 # prometheus_score(FILE_NAME,"deep_mount") ## Evaluating smallLLM translations
 # prometheus_score(FILE_NAME,"minerva") ## Evaluating minerva translations.
 #
 #
 # # - Human -correction_model is the name of the model to use for translation in:
 # # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-annotate_human_scores(FILE_NAME,"llama4")
+# annotate_human_scores(FILE_NAME,"llama4")
 # annotate_human_scores(FILE_NAME,"smallLLM")
 # annotate_human_scores(FILE_NAME,"minerva")
 # # ------------------------------#
@@ -65,7 +65,7 @@ annotate_human_scores(FILE_NAME,"llama4")
 # # kappa_correlation(FILE_NAME, correction_model, judge_model, print_result)
 # # accuracy_correlation(FILE_NAME, correction_model, judge_model, print_result)
 #
-# kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
+kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
 #
