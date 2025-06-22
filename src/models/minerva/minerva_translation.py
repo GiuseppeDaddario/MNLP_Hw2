@@ -25,9 +25,11 @@ def load_minerva_model(correction_model, finetuned=True):
     if is_colab:
         BASE_MODEL_PATH = HF_BASE_MODEL_NAME
         local_files_only = False
+        log("Running in Google Colab")
     else:
         BASE_MODEL_PATH = LOCAL_BASE_MODEL_PATH
         local_files_only = True
+        log("Running in Local Environment")
 
 
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
