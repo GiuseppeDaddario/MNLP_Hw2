@@ -11,7 +11,7 @@ FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
 def gemini_ask_score(translation,expected,print_result=True):
 
     # Configura la tua API key
-    genai.configure(api_key="AIzaSyD2SsbKDiwbxstu97xaC0HOG8Lhp6gw2DU")
+    genai.configure(api_key="")
     model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 
