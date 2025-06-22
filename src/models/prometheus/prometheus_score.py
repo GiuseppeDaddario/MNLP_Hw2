@@ -40,7 +40,24 @@ def valuta_judge(text,model,tokenizer, JUDGE_PROMPT, MAX_NEW_TOKENS, device):
 
 # === LOADING PROMETHEUS MODEL ===
 def init():
-    MODEL_PATH = os.path.abspath("./src/models/prometheus/cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df")
+    try:
+        import google.colab
+        is_colab = True
+    except ImportError:
+        is_colab = False
+
+    HF_MODEL_NAME = "Unbabel/M-Prometheus-7B"
+    LOCAL_MODEL_PATH = os.path.abspath("./src/models/prometheus/cache/models--Unbabel--M-Prometheus-7B/snapshots/030fb74806e4228c466a98706a297d43b31ce5df")
+
+    if is_colab:
+        MODEL_PATH = HF_MODEL_NAME
+        local_files_only = False
+        log("Running in Google Colab")
+    else:
+        MODEL_PATH = LOCAL_MODEL_PATH
+        local_files_only = True
+        log("Running in Local environment")
+
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     JUDGE_PROMPT = (
@@ -57,8 +74,8 @@ def init():
     )
     MAX_NEW_TOKENS = 2500
     log("Caricamento Prometheus base...")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, trust_remote_code=True).to(device)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True, local_files_only=local_files_only)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, trust_remote_code=True, local_files_only=local_files_only).to(device)
     model.eval()
 
     return MODEL_PATH, device, JUDGE_PROMPT, MAX_NEW_TOKENS, tokenizer, model
