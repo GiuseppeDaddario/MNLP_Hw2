@@ -27,7 +27,7 @@ FILE_NAME = "the_vampyre"
 # [minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
 # correct_with_minerva(FILE_NAME, correction_model="minerva")
 #
-build_output_file(FILE_NAME, "t5")
+#build_output_file(FILE_NAME, "t5")
 #build_output_file(FILE_NAME, "llama4")
 #build_output_file(FILE_NAME, "minerva")
 #build_output_file(FILE_NAME, "minerva_finetuned_llima")
@@ -42,12 +42,12 @@ build_output_file(FILE_NAME, "t5")
 # # - Gemini -correction_model is the name of the model to use for translation in:
 # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
 #gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
-gemini_score(FILE_NAME,"t5") ## Evaluating smallLLM translations
+#gemini_score(FILE_NAME,"t5") ## Evaluating smallLLM translations
 #gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
 #gemini_score(FILE_NAME,"minerva_finetuned_llima") ##Evaluating minerva translations
 #gemini_score(FILE_NAME,"minerva_finetuned_post_ocr") ##Evaluating minerva translations
 
-build_rouges(FILE_NAME, "t5")
+#build_rouges(FILE_NAME, "t5")
 #build_rouges(FILE_NAME, "minerva")
 #build_rouges(FILE_NAME, "minerva_finetuned_llima")
 #build_rouges(FILE_NAME, "minerva_finetuned_post_ocr")
