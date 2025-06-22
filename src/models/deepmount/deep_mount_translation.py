@@ -69,9 +69,11 @@ def translate_with_deep_mount(FILE_NAME, print_result=True):
 
         final_correction = " ".join(corrected_sentences)
 
-        log(f"📝 OCR:        {ocr_text}")
-        log(f"🤖 Correction: {final_correction}")
-        log(f"✅ Gold:       {gold_text}\n")
+        if print_result:
+            log(f"OCR:        {ocr_text}")
+            log(f"Gold:       {gold_text}\n")
+            log(f"Correction: {final_correction}")
+
 
         results[key] = {
             "ocr": ocr_text,
@@ -82,8 +84,6 @@ def translate_with_deep_mount(FILE_NAME, print_result=True):
     with open(output_path, "w", encoding="utf-8") as f_out:
         json.dump(results, f_out, ensure_ascii=False, indent=2)
 
-    if print_result:
-        print(f"\nRisultati salvati in: {output_path}")
 
     print("|========================================")
     print("\n")
