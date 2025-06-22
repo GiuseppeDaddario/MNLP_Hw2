@@ -166,7 +166,7 @@ def process_ocr_file(correction_model, input_file, gold_file, output_file, model
         with open(output_file, "w", encoding="utf-8") as f_out:
             json.dump(results, f_out, ensure_ascii=False, indent=2)
 
-def translate_with_minerva(file_name, correction_model="minerva", print_result=False):
+def translate_with_minerva(file_name, correction_model="minerva", print_result=False, finetuned=False):
 
     input_path = f"datasets/eng/{file_name}_ocr.json"
     gold_path = f"datasets/eng/{file_name}_clean.json"
@@ -174,7 +174,7 @@ def translate_with_minerva(file_name, correction_model="minerva", print_result=F
 
 
     log("Loading Minerva model...")
-    model, tokenizer = load_minerva_model(correction_model,finetuned=True)
+    model, tokenizer = load_minerva_model(correction_model,finetuned=finetuned)
 
     log("Starting OCR correction...")
     process_ocr_file(correction_model, input_path, gold_path, output_path, model, tokenizer, force_indices=None, print_result=print_result)
