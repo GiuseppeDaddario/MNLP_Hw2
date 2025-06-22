@@ -2,3 +2,4 @@ weights/
 datasets/ICDAR/
 
 apikeys.py
+ocr_corrector_finetuned/

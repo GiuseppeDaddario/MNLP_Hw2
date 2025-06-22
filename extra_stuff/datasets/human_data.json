@@ -331,7 +331,7 @@
     "corretto": "Aubrey could scarcely believe his eyes; the figure before him bore no reflection in the glass."
   },
   {
-    "ocr": "The door creaked open, and a strangc co1d draught swept through the corridor, extinguishing the 1amps one by one.",
+    "ocr": "The door creaked opcn, and a strangc co1d draught swept through the corridon, extinguishing the 1amps one by one.",
     "corretto": "The door creaked open, and a strange cold draught swept through the corridor, extinguishing the lamps one by one."
   },
   {
@@ -347,7 +347,7 @@
     "corretto": "The nunnery was built upon the remains of an ancient temple, and still bore signs of its pagan origin."
   },
   {
-    "ocr": "She spoke not, but her eyes, red with tears, fo11owed him across the ha11 unti1 he vanished into the fog.",
+    "ocr": "She spoke not, but her eycs, red with tears, fo11owed him across the ha11 unti1 he vanished into the fOg.",
     "corretto": "She spoke not, but her eyes, red with tears, followed him across the hall until he vanished into the fog."
   },
   {
@@ -361,9 +361,487 @@
   {
     "ocr": "The g1eaming blade was too fina1 a gesture for a creature whose sou1 had long since withered.",
     "corretto": "The gleaming blade was too final a gesture for a creature whose soul had long since withered."
+  },
+  {
+    "ocr": "Shc was unablc t0 f1nd thc kcy, and th3 do0r rcmaincd 10cked. She fcc1t a surge 0f panic as thc n1ght f0110wcd.",
+    "corretto": "She was unable to find the key, and the door remained locked. She felt a surge of panic as the night followed."
+  },
+  {
+    "ocr": "The 1itt1c ch1ld ran thr0ugh the gardcn, c1utch1ng a bunc1 of w1lds 110wcrs 1n hcr hand.",
+    "corretto": "The little child ran through the garden, clutching a bunch of wild flowers in her hand."
+  },
+  {
+    "ocr": "W1th a h3avy hcart, hc rcluc1antly lct go 0f thc p4st and faccd thc unkn0wn.",
+    "corretto": "With a heavy heart, he reluctantly let go of the past and faced the unknown."
+  },
+  {
+    "ocr": "A 50ft s1mp1c br1dgc 0ver the r1vcr was the only way t0 thc 0thcr side.",
+    "corretto": "A soft simple bridge over the river was the only way to the other side."
+  },
+  {
+    "ocr": "L1ghtning flas11d acr0ss the skv, 1llum1nat1ng thc dark c10uds and thundcr rumblcd in thc d1stanc3.",
+    "corretto": "Lightning flashed across the sky, illuminating the dark clouds and thunder rumbled in the distance."
+  },
+  {
+    "ocr": "Hc sc1mbcd thc m0untain, cl1ng1ng t0 r0ck5 and bramblcs whilc thc w1nd w0u1d h01d his b1rac3.",
+    "corretto": "He climbed the mountain, clinging to rocks and brambles while the wind would hold his brace."
+  },
+  {
+    "ocr": "Thc m00n w4s high 1n thc sky, sh1n1ng a co01 b1ue 1ight 0n thc s1lcnt f0rest.",
+    "corretto": "The moon was high in the sky, shining a cool blue light on the silent forest."
+  },
+  {
+    "ocr": "A s1ng1c r41nb0w archcd acr0ss thc skv, br1ng1ng hcavcnly bcatv to the drey day.",
+    "corretto": "A single rainbow arched across the sky, bringing heavenly beauty to the grey day."
+  },
+  {
+    "ocr": "Thc t1m3 was n0w, and thc dcc1s10n had t0 bc madc w1th0ut hcs1tat10n.",
+    "corretto": "The time was now, and the decision had to be made without hesitation."
+  },
+  {
+    "ocr": "Thcy wcrc n0t prcparcd f0r thc ch1ll that camc 0n thc n1ght, and thc f1rc w4s thcir only s0urce 0f warmth.",
+    "corretto": "They were not prepared for the chill that came on the night, and the fire was their only source of warmth."
+  },
+  {
+    "ocr": "Shc w0ndcrcd if thc m1rr0r w0uld r3flcct hcr true facc, but all shc saw was a blurrcd imagc smudgcd by tcar5.",
+    "corretto": "She wondered if the mirror would reflect her true face, but all she saw was a blurred image smudged by tears."
+  },
+  {
+    "ocr": "Thc c1ock struck m1dnight as thc w1nd how1ed acr0ss thc b1strects 0f thc qu1ct town.",
+    "corretto": "The clock struck midnight as the wind howled across the bystreets of the quiet town."
+  },
+  {
+    "ocr": "Hc clutcɦcd thc 0ld b00k, f33l1ng thc w31ght 0f ycars in h1s hand5.",
+    "corretto": "He clutched the old book, feeling the weight of years in his hands."
+  },
+  {
+    "ocr": "Thc c4tlc grazcd p3ac3fully in thc m0rnlng light, unw4r3 0f thc d4nger lurlcd b3y0nd thc h1lls.",
+    "corretto": "The cattle grazed peacefully in the morning light, unaware of the danger lurled beyond the hills."
+  },
+  {
+    "ocr": "A f1rm gr1p hcld thc do0r h4ndl3, but thc lock w0u1d n0t budg3.",
+    "corretto": "A firm grip held the door handle, but the lock would not budge."
+  },
+  {
+    "ocr": "Thc j0urney w4s t0ugh, with m0untains r1sing sh4rp1y agalnst thc gr4y sky.",
+    "corretto": "The journey was tough, with mountains rising sharply against the gray sky."
+  },
+  {
+    "ocr": "Sh3 w4lked qu1et1y, h0p1ng n0t t0 b3 h34rd by th0s3 wh0 w3r3 cl0s3 b3h1nd h3r.",
+    "corretto": "She walked quietly, hoping not to be heard by those who were close behind her."
+  },
+  {
+    "ocr": "Thc ra1n f3lt c010 n1ght aftr a w3ary day, l3av1ng p00ls 0n th3 path b3h1nd.",
+    "corretto": "The rain felt cold night after a weary day, leaving pools on the path behind."
+  },
+  {
+    "ocr": "H3 c0mp0s3d a l3tt3r, pour1ng 0ut h1s h0p3s and f3ars 0n p4p3r.",
+    "corretto": "He composed a letter, pouring out his hopes and fears on paper."
+  },
+  {
+    "ocr": "Th3 t1ny c4t snugg1ed up t0 th3 w4rm f1r3, purr1ng soft1y.",
+    "corretto": "The tiny cat snuggled up to the warm fire, purring softly."
+  },
+  {
+    "ocr": "Sh3 w0ndcrcd whcthcr thc 0ld housc w0uld s1ll bc thcrc by thc m0rn1ng, as thc w1nd sw1rtcd l1k3 a gh0st.",
+    "corretto": "She wondered whether the old house would still be there by the morning, as the wind swirled like a ghost."
+  },
+  {
+    "ocr": "Thc k3y w4s h1ddcn bch1nd thc b00kshclf, bur1cd undcr a t1n of d0ust and sp1d3rw3bs.",
+    "corretto": "The key was hidden behind the bookshelf, buried under a thin layer of dust and spiderwebs."
+  },
+  {
+    "ocr": "H3 f31t a str4ngc s3ns3 0f d3jà vu, as if hc had s33n thc s4m3 scenc b3f0r3 in a drcam.",
+    "corretto": "He felt a strange sense of déjà vu, as if he had seen the same scene before in a dream."
+  },
+  {
+    "ocr": "Thc l1ght f1ltcrcd thr0ugh thc l3avcs, cast1ng danc1ng shad0ws on thc gr0und b3nеath.",
+    "corretto": "The light filtered through the leaves, casting dancing shadows on the ground beneath."
+  },
+  {
+    "ocr": "W1th a h34vy hcart, sh3 turncd aw4y from thc scenc3 0f thc f1rе, l3av1ng bch1nd all sh3 kn3w.",
+    "corretto": "With a heavy heart, she turned away from the scene of the fire, leaving behind all she knew."
+  },
+  {
+    "ocr": "Thc w4tcr gl1ttcr3d undcr thc m00nl1ght, l1k3 a s33 of sm0k3 and starl1ght m1xеd togcthеr.",
+    "corretto": "The water glittered under the moonlight, like a sea of smoke and starlight mixed together."
+  },
+  {
+    "ocr": "A f41r w1nd br0ught thc sm3ll 0f f1rеw00d and p1nе t0 thc v1llagе, r3mind1ng thеm 0f homе.",
+    "corretto": "A fair wind brought the smell of firewood and pine to the village, reminding them of home."
+  },
+  {
+    "ocr": "H3 pl4cеd thc 0ld lcttcr on thc d3sk, th3 p4pеr crumpl1ng sl1ght1y undеr h1s f1ngеrs.",
+    "corretto": "He placed the old letter on the desk, the paper crumpling slightly under his fingers."
+  },
+  {
+    "ocr": "Thc c4r d1v3d 1nt0 thc m1st, d1sappcaring l1kе a dreaм f4d1ng aw4y.",
+    "corretto": "The car dived into the mist, disappearing like a dream fading away."
+  },
+  {
+    "ocr": "Sh3 s3nt a qu1ck mеssagе, h0p1ng f0r a r3ply bеf0rе thc sun r0sе.",
+    "corretto": "She sent a quick message, hoping for a reply before the sun rose."
+  },
+  {
+    "ocr": "Th3 c1ty strec1s werc emp1c d, w1th 0n1y thc w1nd t0 br1ng s0und. H3 w0ndcrcd wh3r3 evcry0nc had g0n3.",
+    "corretto": "The city streets were emptied, with only the wind to bring sound. He wondered where everyone had gone."
+  },
+  {
+    "ocr": "A f1erc3 st0rm 4pproachcd, cl0uds d4rk3n1ng thc sky and r41n st4rting t0 f4ll.",
+    "corretto": "A fierce storm approached, clouds darkening the sky and rain starting to fall."
+  },
+  {
+    "ocr": "Sh3 kn3w shc had t0 act qu1ck1y, bcforc th3 d00r w0uld b3 cl0sеd f0r gооd.",
+    "corretto": "She knew she had to act quickly, before the door would be closed for good."
+  },
+  {
+    "ocr": "Th3 ch1ldrеn l4ughеd and plаyed undеr thе b1g 0ak tr33, 0bscurеd by lеavеs and shad0ws.",
+    "corretto": "The children laughed and played under the big oak tree, obscured by leaves and shadows."
+  },
+  {
+    "ocr": "H3 dr0vе thr0ugh thе n1ght, f0cusеd оn thе rоad ahеаd and thе f00th1lls bеy0nd.",
+    "corretto": "He drove through the night, focused on the road ahead and the foothills beyond."
+  },
+  {
+    "ocr": "Th3 l3ttеr wаs wr1ttеn 1n f4dеd 1nk, but thе mеssagе wаs clеаr: “C0mе b4ck s00n.”",
+    "corretto": "The letter was written in faded ink, but the message was clear: “Come back soon.”"
+  },
+  {
+    "ocr": "W1th 3vеrу stеp, th3 f0rеst sееmеd t0 clоsе 1n, th3 br4nchеs scr4tch1ng h1s f4cе.",
+    "corretto": "With every step, the forest seemed to close in, the branches scratching his face."
+  },
+  {
+    "ocr": "Sh3 c1ppеd th3 bаll 1nt0 thе gоаl, thе сrоwd ехplоd1ng w1th chееr5.",
+    "corretto": "She chipped the ball into the goal, the crowd exploding with cheers."
+  },
+  {
+    "ocr": "Th3 m0untа1ns wеrе sнr0udеd 1n m1st, thе pеаks h1ddеn frоm v13w.",
+    "corretto": "The mountains were shrouded in mist, the peaks hidden from view."
+  },
+  {
+    "ocr": "H3 p1ckеd up th3 0ld bооk, thе c0vеr br0kеn and p4gеs yеllоwеd w1th аgе.",
+    "corretto": "He picked up the old book, the cover broken and pages yellowed with age."
+  },
+  {
+    "ocr": "Th3 c0ld w1nd wh1sp3r3d thr0ugh th3 des3rt, carr1y1ng sand and s1l3nc3 b3tw33n the dun3s.",
+    "corretto": "The cold wind whispered through the desert, carrying sand and silence between the dunes."
+  },
+  {
+    "ocr": "Sh3 l00k3d up at th3 st4rs, w0nd3r1ng 1f th3y h3ld th3 s3cr3ts 0f th3 un1v3rs3.",
+    "corretto": "She looked up at the stars, wondering if they held the secrets of the universe."
+  },
+  {
+    "ocr": "Th3 r41lway stat10n w4s des3rt3d, w1th on1y th3 ech0 0f f33t 0ff1c1al1y b3ing h34rd.",
+    "corretto": "The railway station was deserted, with only the echo of feet officially being heard."
+  },
+  {
+    "ocr": "H1s hand sh4k3d 4s h3 h3ld th3 0ld l3tt3r, th3 p4per cr4ckl1ng und3r h1s f1ng3rs.",
+    "corretto": "His hand shook as he held the old letter, the paper crackling under his fingers."
+  },
+  {
+    "ocr": "The c4stl3 w4s s1tt1ng 0n th3 h1ll, 0bscur3d by m1st and sh4d0ws 0f t1m3.",
+    "corretto": "The castle was sitting on the hill, obscured by mist and shadows of time."
+  },
+  {
+    "ocr": "D4wn br0k3 0v3r th3 v4lley, l1ght1ng th3 w0r1d 1n g01d3n h0n3st.",
+    "corretto": "Dawn broke over the valley, lighting the world in golden honest."
+  },
+  {
+    "ocr": "W1th a s1n9l3 st3p, h3 cr0ss3d th3 b1dg3, l34v1ng b3h1nd all h1s f34rs.",
+    "corretto": "With a single step, he crossed the bridge, leaving behind all his fears."
+  },
+  {
+    "ocr": "The l4mp fl1ck3r3d 1n th3 n1ght, c4st1ng l0ng sh4d0ws 0n th3 w4lls.",
+    "corretto": "The lamp flickered in the night, casting long shadows on the walls."
+  },
+  {
+    "ocr": "Sh3 wh1sp3r3d a pr4y3r, h0p1ng f0r s4f3ty 1n th3 d4rk3st h0urs.",
+    "corretto": "She whispered a prayer, hoping for safety in the darkest hours."
+  },
+  {
+    "ocr": "Th3 b00k w4s f1l1ed w1th t4l3s 0f adv3ntur3, h3r03s, 4nd m4g1c.",
+    "corretto": "The book was filled with tales of adventure, heroes, and magic."
+  },
+  {
+    "ocr": "Th3 w1nd s0ng thr0ugh the tall gr4ss, wh1sper1ng s3crets 0f the p4st.",
+    "corretto": "The wind sang through the tall grass, whispering secrets of the past."
+  },
+  {
+    "ocr": "Sh3 dr0v3 h3r c4r thr0ugh the r41ny n1ght, h0p1ng t0 f1nd s4f3ty.",
+    "corretto": "She drove her car through the rainy night, hoping to find safety."
+  },
+  {
+    "ocr": "The c4t p3rc3ived a m0vem3nt 1n the sh4d0ws and st0od st1ll, w41t1ng.",
+    "corretto": "The cat perceived a movement in the shadows and stood still, waiting."
+  },
+  {
+    "ocr": "L1ght fl1ck3r3d 0n th3 w4ll, c4st1ng str4ng3 sh4d0ws 1n th3 r00m.",
+    "corretto": "Light flickered on the wall, casting strange shadows in the room."
+  },
+  {
+    "ocr": "Th3 ch1ldr3n pl4yed b3s1d3 th3 r1v3r, l4ugh1ng and r4n w1ld1y.",
+    "corretto": "The children played beside the river, laughing and ran wildly."
+  },
+  {
+    "ocr": "A l0ng j0urn3y l13d ah34d, full 0f d4ng3r and adv3ntur3.",
+    "corretto": "A long journey lied ahead, full of danger and adventure."
+  },
+  {
+    "ocr": "Th3 b00k w4s f1lled w1th t4l3s 0f m4g1c, br4v3r1, and m1st3ry.",
+    "corretto": "The book was filled with tales of magic, bravery, and mystery."
+  },
+  {
+    "ocr": "H3 s4t b3h1nd h1s d3sk, d33ply l0st 1n th0ught.",
+    "corretto": "He sat behind his desk, deeply lost in thought."
+  },
+  {
+    "ocr": "Th3 st4rs sh1n3d br1ghtly 0v3r th3 qu13t t0wn, 4 s1l3nt w1tness t0 n1ght.",
+    "corretto": "The stars shined brightly over the quiet town, a silent witness to night."
+  },
+  {
+    "ocr": "W1th a br33ze c0m1ng fr0m th3 s3a, sh3 cl0s3d her 3y3s 4nd sm1l3d.",
+    "corretto": "With a breeze coming from the sea, she closed her eyes and smiled."
+  },
+  {
+    "ocr": "Sh3 c0uld n0t r3m3mb3r wh3r3 sh3 had pl4c3d th3 k3ys, and fr4nct1c4lly s34rch3d th3 t4bl3.",
+    "corretto": "She could not remember where she had placed the keys, and frantically searched the table."
+  },
+  {
+    "ocr": "A cl0ud 0f d4rk sm0k3 r0s3 fr0m th3 b4rn, sh4d1ng th3 m00nl1ght.",
+    "corretto": "A cloud of dark smoke rose from the barn, shading the moonlight."
+  },
+  {
+    "ocr": "Th3 p4rk w4s f1ll3d w1th ch1ldr3n l4ugh1ng and r4nn1ng 4r0und.",
+    "corretto": "The park was filled with children laughing and running around."
+  },
+  {
+    "ocr": "H3 s1pp3d h1s c0ff33 wh1l3 r34d1ng th3 n3ws on h1s ph0n3.",
+    "corretto": "He sipped his coffee while reading the news on his phone."
+  },
+  {
+    "ocr": "Th3 r41n t4pp3d g3ntly 0n th3 w1nd0w, cr34t1ng a s0ft m3l0dy.",
+    "corretto": "The rain tapped gently on the window, creating a soft melody."
+  },
+  {
+    "ocr": "Th3 c4r br4k3d sudd3n1y, av0id1ng a c0ll1s10n w1th a cycl1st.",
+    "corretto": "The car braked suddenly, avoiding a collision with a cyclist."
+  },
+  {
+    "ocr": "L1ghts fl1ck3r3d 1n th3 h4llw4y, m4k1ng th3 sh4d0ws d4nc3.",
+    "corretto": "Lights flickered in the hallway, making the shadows dance."
+  },
+  {
+    "ocr": "Sh3 p4ck3d h3r b4g, r34dy t0 l34v3 f0r th3 j0urn3y.",
+    "corretto": "She packed her bag, ready to leave for the journey."
+  },
+  {
+    "ocr": "Th3 t34ch3r wr0t3 th3 d4t3 0n th3 b04rd w1th ch4lk.",
+    "corretto": "The teacher wrote the date on the board with chalk."
+  },
+  {
+    "ocr": "A b1rd s0ng3d sw33tly 1n th3 tr33s as th3 d4y br0k3.",
+    "corretto": "A bird sang sweetly in the trees as the day broke."
+  },
+  {
+    "ocr": "Th3 l1ghtn1ng struk3 w1th a d33n s0und, 1llum1nat1ng th3 n1ght sky br1ef1y.",
+    "corretto": "The lightning struck with a deep sound, illuminating the night sky briefly."
+  },
+  {
+    "ocr": "H3 w4lk3d thr0ugh th3 d4rk w00ds, h1s h3art b34t1ng f4st w1th f34r.",
+    "corretto": "He walked through the dark woods, his heart beating fast with fear."
+  },
+  {
+    "ocr": "Sh3 p1ck3d up th3 0ld b00k and bl0w3d off th3 d0st.",
+    "corretto": "She picked up the old book and blew off the dust."
+  },
+  {
+    "ocr": "A sm4ll br33z3 rufﬂed th3 l34v3s, wh1sp3r1ng s3cr3ts t0 th3 tr33s.",
+    "corretto": "A small breeze ruffled the leaves, whispering secrets to the trees."
+  },
+  {
+    "ocr": "Th3 ch1ldr3n pl4y3d b3s1d3 th3 p0nd, th31r l4ughter f1ll1ng th3 a1r.",
+    "corretto": "The children played beside the pond, their laughter filling the air."
+  },
+  {
+    "ocr": "W1th a qu1ck m0v3, h3 d0dged th3 f1r3b4ll th4t w3nt p4st h1m.",
+    "corretto": "With a quick move, he dodged the fireball that went past him."
+  },
+  {
+    "ocr": "Th3 s0ld13rs r3tr34t3d und3r th3 c0v3r 0f n1ght, l34v1ng th3 f13ld qu13t.",
+    "corretto": "The soldiers retreated under the cover of night, leaving the field quiet."
+  },
+  {
+    "ocr": "An 0ld m4n s1tt1ng by th3 f1r3 t3lld st0r13s 0f l0ng ag0.",
+    "corretto": "An old man sitting by the fire told stories of long ago."
+  },
+  {
+    "ocr": "Th3 c4t sl1pp3d 1nt0 th3 sh4d0ws, d1sc4pp34r1ng fr0m s1ght.",
+    "corretto": "The cat slipped into the shadows, disappearing from sight."
+  },
+  {
+    "ocr": "D4rk cl0uds g4th3r3d 0v3r th3 m0unt41ns, pr0m1s1ng a st0rm.",
+    "corretto": "Dark clouds gathered over the mountains, promising a storm."
+  },
+  {
+    "ocr": "Th3 m00n r1s3d ab0v3 th3 h1lls, c4st1ng 4 s1lv3r l1ght 0v3r th3 qu13t v4ll3y.",
+    "corretto": "The moon raised above the hills, casting a silver light over the quiet valley."
+  },
+  {
+    "ocr": "Sh3 w4lk3d al0ng th3 b34ch, th3 s4nd c00l b3n34th h3r f33t.",
+    "corretto": "She walked along the beach, the sand cool beneath her feet."
+  },
+  {
+    "ocr": "Th3 d00r cr34k3d 0p3n s1l3nt1y, r3v34l1ng th3 sh4d0w3d r00m.",
+    "corretto": "The door creaked open silently, revealing the shadowed room."
+  },
+  {
+    "ocr": "H3 l1ft3d th3 b0x c4r3fully, br34th1ng h34v1ly fr0m th3 w31ght.",
+    "corretto": "He lifted the box carefully, breathing heavily from the weight."
+  },
+  {
+    "ocr": "Th3 w1nd h0w13ed thr0ugh th3 tr33s, sh4k1ng l34v3s 0ff th31r br4nch3s.",
+    "corretto": "The wind howled through the trees, shaking leaves off their branches."
+  },
+  {
+    "ocr": "Th3 ch41rs w3r3 p1l3d h1gh 1n th3 c0rn3r 0f th3 r00m.",
+    "corretto": "The chairs were piled high in the corner of the room."
+  },
+  {
+    "ocr": "A f4int sm3ll 0f fl0w3rs dr1ft3d thr0ugh th3 op3n w1nd0w.",
+    "corretto": "A faint smell of flowers drifted through the open window."
+  },
+  {
+    "ocr": "Th3 l1ttl3 b01 w4d3d thr0ugh th3 str34m, g1ggl1ng w1th j0y.",
+    "corretto": "The little boy waded through the stream, giggling with joy."
+  },
+  {
+    "ocr": "Sh3 wr0t3 a l3tt3r, h0p1ng t0 f1nd answ3rs t0 h3r qu3st10ns.",
+    "corretto": "She wrote a letter, hoping to find answers to her questions."
+  },
+  {
+    "ocr": "Th3 0ld c4stl3 st00d m4j3st1c 0n th3 h1ll, w4tch1ng 0v3r th3 v1ll4g3 b3l0w.",
+    "corretto": "The old castle stood majestic on the hill, watching over the village below."
+  },
+  {
+    "ocr": "Th3 w1nd wh1sp3r3d thr0ugh th3 l3av3s, br1ng1ng a ch1ll t0 th3 n1ght.",
+    "corretto": "The wind whispered through the leaves, bringing a chill to the night."
+  },
+  {
+    "ocr": "Sh3 cr3pt s1l3nt1y acr0ss th3 fl00r, car3ful n0t t0 m4k3 a n0153.",
+    "corretto": "She crept silently across the floor, careful not to make a noise."
+  },
+  {
+    "ocr": "A d1st4nt r01ar 0f th3 s34 cr4sh1ng ag41nst th3 cl1ffs c0uld b3 h34rd.",
+    "corretto": "A distant roar of the sea crashing against the cliffs could be heard."
+  },
+  {
+    "ocr": "H3 h0ld3d th3 0ld b00k, r34d1ng th3 f4d3d w0rds w1th gr34t c4r3.",
+    "corretto": "He held the old book, reading the faded words with great care."
+  },
+  {
+    "ocr": "Th3 c4mpf1r3 fl4m3s d4nc3d 1n th3 c00l n1ght 41r.",
+    "corretto": "The campfire flames danced in the cool night air."
+  },
+  {
+    "ocr": "W1th a s1gn 0f r3l13f, sh3 dr0pp3d h3r b3rr13s 1nt0 th3 b4sk3t.",
+    "corretto": "With a sign of relief, she dropped her berries into the basket."
+  },
+  {
+    "ocr": "Th3 l4mp l1ght c4st l0ng sh4d0ws 0v3r th3 d4rk p4th.",
+    "corretto": "The lamp light cast long shadows over the dark path."
+  },
+  {
+    "ocr": "H3 st00d by th3 w1nd0w, w41t1ng f0r s0m30n3 t0 c0m3.",
+    "corretto": "He stood by the window, waiting for someone to come."
+  },
+  {
+    "ocr": "Th3 sm3ll 0f fr3sh p41nt f1ll3d th3 r00m, m4k1ng h3r n0st4lg1c.",
+    "corretto": "The smell of fresh paint filled the room, making her nostalgic."
+  },
+  {
+    "ocr": "S0ft r41n f4113d qu13t1y, dr0pp1ng 0nt0 th3 gr34n l34v3s.",
+    "corretto": "Soft rain fell quietly, dropping onto the green leaves."
+  },
+  {
+    "ocr": "Th3 m00n w4s h1gh, c1l1ng t0 th3 5tars w1th 4 qu13t br1ll14nc3.",
+    "corretto": "The moon was high, clinging to the stars with a quiet brilliance."
+  },
+  {
+    "ocr": "Sh3 w4lk3d al0ng th3 r1v3rbank, h3r th0ughts dr1ft1ng l1k3 l34v3s 1n th3 w1nd.",
+    "corretto": "She walked along the riverbank, her thoughts drifting like leaves in the wind."
+  },
+  {
+    "ocr": "The c4tch3r c4ught th3 b411 w1th a sw1ft m0v3m3nt, n04 d3lay.",
+    "corretto": "The catcher caught the ball with a swift movement, no delay."
+  },
+  {
+    "ocr": "A s1ng1ng b1rd p3rf0rm3d 1ts m3l0dy und3r th3 br1ght sk1es.",
+    "corretto": "A singing bird performed its melody under the bright skies."
+  },
+  {
+    "ocr": "The w1nd s0ft1y br0ught th3 sm3ll 0f f123hly cut gr4ss.",
+    "corretto": "The wind softly brought the smell of freshly cut grass."
+  },
+  {
+    "ocr": "H3 pl4c3d th3 p13c3s 0f th3 pUzzl3 0nt0 th3 t4bl3 w1th c4r3.",
+    "corretto": "He placed the pieces of the puzzle onto the table with care."
+  },
+  {
+    "ocr": "Th3 0ld c4stl3 st00d pr0ud1y ag41nst th3 c10udy sk1.",
+    "corretto": "The old castle stood proudly against the cloudy sky."
+  },
+  {
+    "ocr": "L1ghtn1ng fl4sh3d acr0ss th3 sk1, r3v34l1ng th3 s1lhou3tt3 0f a tr33.",
+    "corretto": "Lightning flashed across the sky, revealing the silhouette of a tree."
+  },
+  {
+    "ocr": "Sh3 l4ughed qu13tly, th3 s0und l1k3 mus1c t0 h1s 34rs.",
+    "corretto": "She laughed quietly, the sound like music to his ears."
+  },
+  {
+    "ocr": "Th3 b00k w4s f1ll3d w1th t4l3s 0f adv3ntur3s and myst3r13s.",
+    "corretto": "The book was filled with tales of adventures and mysteries."
+  },
+  {
+    "ocr": "Th3 l1ttl3 ch1ld cl4pp3d h1s h4nds w1th d3l1ght as th3 c1rcu5 c4m3 t0 t0wn.",
+    "corretto": "The little child clapped his hands with delight as the circus came to town."
+  },
+  {
+    "ocr": "A c00l br33ze w4ft3d thr0ugh th3 0p3n w1nd0w, br1ng1ng w1th 1t th3 sm3ll 0f r41n.",
+    "corretto": "A cool breeze wafted through the open window, bringing with it the smell of rain."
+  },
+  {
+    "ocr": "Sh3 s4t b3s1d3 th3 f1r3, r34d1ng h3r b00k w1th 4 b1g sm1l3.",
+    "corretto": "She sat beside the fire, reading her book with a big smile."
+  },
+  {
+    "ocr": "Th3 t34 ch3rc0k3d h1s h34d, w0nd3r1ng wh3r3 h3 h4d s33n th3 k3y.",
+    "corretto": "The teacher cocked his head, wondering where he had seen the key."
+  },
+  {
+    "ocr": "W3 w3nt f0r 4 w4lk 1n th3 f0r3st and h34rd th3 s0ngs 0f m4ny b1rds.",
+    "corretto": "We went for a walk in the forest and heard the songs of many birds."
+  },
+  {
+    "ocr": "Th3 c4k3 w4s b4k3d t0 p3rf3ct10n, w1th sw33t 1c1ng 4nd spr1nkl3s 0n t0p.",
+    "corretto": "The cake was baked to perfection, with sweet icing and sprinkles on top."
+  },
+  {
+    "ocr": "H3 dr0v3 h1s c4r d0wn th3 w1nd1ng r04d, 3nj0y1ng th3 sc3n3ry.",
+    "corretto": "He drove his car down the winding road, enjoying the scenery."
+  },
+  {
+    "ocr": "Th3 p41nt1ng sh0w3d a b3aut1ful s3asc4p3 w1th cl34r blu3 w4t3r.",
+    "corretto": "The painting showed a beautiful seascape with clear blue water."
+  },
+  {
+    "ocr": "D4nn1 c4ught th3 b4ll w1th 4 s1ngl3 h4nd, m4k1ng h1s t34m ch33r.",
+    "corretto": "Danny caught the ball with a single hand, making his team cheer."
+  },
+  {
+    "ocr": "Th3 c1ty l1ghts gl0w3d 1n th3 n1ght, r3fl3ct1ng 0ff th3 r1v3r’s surfa0e.",
+    "corretto": "The city lights glowed in the night, reflecting off the river’s surface."
   }
-
-
 
 
 ]

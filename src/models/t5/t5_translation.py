@@ -147,3 +147,8 @@ def translate_with_t5(FILE_NAME, print_result=True):
         json.dump(results, f_out, ensure_ascii=False, indent=2)
 
     print("|========================================\n")
+
+
+
+
+
