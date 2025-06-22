@@ -65,14 +65,12 @@ def translate_with_deep_mount(FILE_NAME, print_result=True):
             final_sentence = spellcheck_text(corrected,spell)
             corrected_sentences.append(final_sentence)
 
-            print(f"  ↪️ [{j+1}/{len(sentences)}] {final_sentence}")
-
         final_correction = " ".join(corrected_sentences)
 
         if print_result:
             log(f"OCR:        {ocr_text}")
-            log(f"Gold:       {gold_text}\n")
-            log(f"Correction: {final_correction}")
+            log(f"Gold:       {gold_text}")
+            log(f"Correction: {final_correction}\n")
 
 
         results[key] = {

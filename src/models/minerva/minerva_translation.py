@@ -129,8 +129,8 @@ def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force
 
         if print_result:
             log(f"OCR:        {ocr_text}")
-            log(f"Gold:       {gold_text}\n")
-            log(f"Correction: {final_correction}")
+            log(f"Gold:       {gold_text}")
+            log(f"Correction: {final_correction}\n")
 
         results[key] = {
             "ocr": ocr_text,
