@@ -24,8 +24,10 @@ def load_minerva_model(correction_model, finetuned=True):
     # Model to upload
     if is_colab:
         BASE_MODEL_PATH = HF_BASE_MODEL_NAME
+        local_files_only = False
     else:
         BASE_MODEL_PATH = LOCAL_BASE_MODEL_PATH
+        local_files_only = True
 
 
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -35,7 +37,7 @@ def load_minerva_model(correction_model, finetuned=True):
     tokenizer = AutoTokenizer.from_pretrained(
     model_path,
     trust_remote_code=True,
-    local_files_only=True
+    local_files_only=local_files_only
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -44,7 +46,8 @@ def load_minerva_model(correction_model, finetuned=True):
         model_path,
         torch_dtype=DTYPE,
         device_map="auto",
-        trust_remote_code=True
+        trust_remote_code=True,
+        local_files_only=local_files_only
     )
 
     return model, tokenizer
