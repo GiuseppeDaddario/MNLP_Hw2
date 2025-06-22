@@ -3,7 +3,7 @@ from .models import (
     gemini_score,
     prometheus_score,
     translate_with_llama4,
-    translate_with_deep_mount,
+    translate_with_t5,
 )
 from .utils import (
     plot_confusion_matrix,
@@ -21,7 +21,7 @@ __all__ = [
     "gemini_score",
     "prometheus_score",
     "translate_with_llama4",
-    "translate_with_deep_mount",
+    "translate_with_t5",
     "plot_confusion_matrix",
     "HF_Login",
     "annotate_human_scores",

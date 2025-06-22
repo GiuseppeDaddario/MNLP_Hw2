@@ -1,6 +1,6 @@
 
 ## Translations
-from src import translate_with_llama4, translate_with_minerva, translate_with_deep_mount
+from src import translate_with_llama4, translate_with_minerva, translate_with_t5
 
 ## Scores
 from src import gemini_score, prometheus_score, annotate_human_scores
@@ -21,7 +21,7 @@ FILE_NAME = "the_vampyre"
 #translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 #
 # # - smallLLM -
-# translate_with_deep_mount(FILE_NAME, print_result=False)
+translate_with_t5(FILE_NAME, print_result=True)
 #
 # # - minerva - correction_model is the name of the model to use for translation in:
 # [minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
@@ -65,7 +65,7 @@ FILE_NAME = "the_vampyre"
 # # kappa_correlation(FILE_NAME, correction_model, judge_model, print_result)
 # # accuracy_correlation(FILE_NAME, correction_model, judge_model, print_result)
 #
-kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
+#kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
 #
