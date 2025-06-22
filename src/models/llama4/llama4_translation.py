@@ -23,7 +23,7 @@ def ask_llama4(prompt):
         requests_made = 0
         
 
-    API_KEY = "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"
+    API_KEY = ""
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {API_KEY}",
@@ -48,45 +48,60 @@ def ask_llama4(prompt):
         return f"Errore HTTP {response.status_code}: {response.text}"
 
 
-def process_ocr_file(input_file, output_file, print_result = False):
+def process_ocr_file(input_file, gold_file, output_file, print_result=False):
+    import json
+
     with open(input_file, "r", encoding="utf-8") as f:
-        data = json.load(f)
+        ocr_data = json.load(f)
+
+    with open(gold_file, "r", encoding="utf-8") as f:
+        gold_data = json.load(f)
 
     results = []
+
     print("\n")
     print("|========================================")
     print("| \033[93mTranslating with llama4 ...\033[0m")
-    for item in data:
-        ocr_text = item.get("ocr", "")
+
+    for key in ocr_data:
+        ocr_text = ocr_data.get(key, "")
+        gold_text = gold_data.get(key, "")
+
         if not ocr_text:
             continue
 
-        # Costruisci il prompt per chiedere la correzione
-        #judge_prompt =
-        #judge_prompt =
         judge_prompt = "Correct the following text, fixing spelling and punctuation. Return only the corrected text, with no explanations or introductory phrases:"
-        #judge_prompt = "Correggi il seguente testo rispettando ortografia e punteggiatura. Restituisci solo il testo corretto, senza alcuna spiegazione o introduzione:"
-
         prompt = f"{judge_prompt}\n{ocr_text}"
-        
+
         correction = ask_llama4(prompt)
-        
-        if(print_result):
+
+        # Rimozione opzionale di frasi introduttive
+        if isinstance(correction, str):
+            correction = correction.replace("Ecco il testo corretto: ", "").strip()
+
+        if print_result:
+            print(f"ID {key}")
             print(f"Originale: {ocr_text}")
+            print(f"Oro: {gold_text}")
             print(f"Correzione: {correction}\n")
 
-        item["llama4_correction"] = correction
-        results.append(item)
+        results.append({
+            "ocr": ocr_text,
+            "gold": gold_text,
+            "correction": correction,
+            "prometheus_score": None,
+            "gemini_score": None,
+            "human_score": None
+        })
 
-        # Pausa breve per non sovraccaricare l'API (regola come ti serve)
         time.sleep(1)
 
-    # Scrivi il file di output
+    # Scrivi come lista di dizionari
     with open(output_file, "w", encoding="utf-8") as f_out:
         json.dump(results, f_out, ensure_ascii=False, indent=2)
-    
-    print("|========================================")
-    print("\n")
+
+    print("|========================================\n")
+
     
 
 
@@ -95,19 +110,15 @@ def process_ocr_file(input_file, output_file, print_result = False):
         # Se vuoi rimuovere questa parte, puoi farlo con una regex o semplicemente con una slice
         # correction = correction.replace("Ecco il testo corretto: ", "").strip()
 
-def translate_with_llama4(file_name, print_result = False):
-    
-    file = file_name   # sostituisci solo il nome del file senza estensione
-    
+def translate_with_llama4(file_name, print_result=False):
+    file = file_name
     datapath = "datasets/eng/"
-    input_path = datapath + file +"_ocr.json" # percorso del file di input
-    output_path = datapath+"corrections/llama/"+ file+".json"  # nome del file output
 
-    ## Call agli API di llama4 e creazione file
-    process_ocr_file(input_path, output_path, print_result)
+    input_path = datapath + file + "_ocr.json"
+    gold_path = datapath + file + "_clean.json"
+    output_path = datapath + "corrections/llama4/" + file + ".json"
 
-    ## Rimuove eventuale "Ecco il testo corretto: " dalle correzioni
-    #textCleaner(output_path, output_path)
+    process_ocr_file(input_path, gold_path, output_path, print_result)
 
 
 

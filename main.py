@@ -18,7 +18,7 @@ FILE_NAME = "the_vampyre"
 #------ TRANSLATIONS ------#
 
 # - llama4 -
-# translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
+#translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 #
 # # - smallLLM -
 # translate_with_deep_mount(FILE_NAME, print_result=False)
@@ -36,7 +36,7 @@ FILE_NAME = "the_vampyre"
 #
 # # - Gemini -correction_model is the name of the model to use for translation in:
 # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-# gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 # gemini_score(FILE_NAME,"deep_mount") ## Evaluating smallLLM translations
 # gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
 #
@@ -50,7 +50,7 @@ FILE_NAME = "the_vampyre"
 #
 # # - Human -correction_model is the name of the model to use for translation in:
 # # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-# annotate_human_scores(FILE_NAME,"llama4")
+annotate_human_scores(FILE_NAME,"llama4")
 # annotate_human_scores(FILE_NAME,"smallLLM")
 # annotate_human_scores(FILE_NAME,"minerva")
 # # ------------------------------#
