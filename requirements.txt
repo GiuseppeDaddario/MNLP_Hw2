@@ -2,4 +2,4 @@ scikit-learn
 rouge-score
 matplotlib
 transformers
-pyspellcheckers
+pyspellchecker
