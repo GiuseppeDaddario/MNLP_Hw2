@@ -1,5 +1,7 @@
 #from src.api.llama4 import ask_llama
 import json
+import os
+
 import requests
 import time
 
@@ -23,7 +25,7 @@ def ask_llama4(prompt):
         requests_made = 0
         
 
-    API_KEY = ""
+    API_KEY = os.environ.get("LLAMA4_KEY", "")
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {API_KEY}",

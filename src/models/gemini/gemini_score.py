@@ -1,3 +1,4 @@
+import os
 
 import google.generativeai as genai
 import json
@@ -10,8 +11,9 @@ FILE_PATH = r"datasets\eng\corrections\finetuning_correction.json"
 
 def gemini_ask_score(translation,expected,print_result=True):
 
+    API_KEY = os.environ.get("GEMINI_KEY", "")
     # Configura la tua API key
-    genai.configure(api_key="")
+    genai.configure(api_key=API_KEY)
     model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 
