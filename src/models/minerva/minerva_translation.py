@@ -78,7 +78,7 @@ def split_into_sentences(text):
     # Divide le frasi usando il punto seguito da spazio o fine stringa
     return [s.strip() for s in re.split(r'(?<=[.])\s+', text) if s.strip()]
 
-def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force_indices=None):
+def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force_indices=None, print_result=False):
     with open(input_file, "r", encoding="utf-8") as f_in:
         ocr_data = json.load(f_in)
 
@@ -121,15 +121,16 @@ def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force
             corrected, full_text = ask_minerva(prompt, model, tokenizer)
             corrected_sentences.append(corrected)
 
-            print(f"------------ DEBUG [{j+1}/{len(sentences)}] --------------")
-            print(f"{full_text}")
-            print("------------------------------------------")
+            #print(f"------------ DEBUG [{j+1}/{len(sentences)}] --------------")
+            #print(f"{full_text}")
+            #print("------------------------------------------")
 
         final_correction = " ".join(corrected_sentences)
 
-        log(f"📝 OCR:        {ocr_text}")
-        log(f"🤖 Correction: {final_correction}")
-        log(f"✅ Gold:       {gold_text}\n")
+        if print_result:
+            log(f"OCR:        {ocr_text}")
+            log(f"Gold:       {gold_text}\n")
+            log(f"Correction: {final_correction}")
 
         results[key] = {
             "ocr": ocr_text,
@@ -141,7 +142,7 @@ def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force
         with open(output_file, "w", encoding="utf-8") as f_out:
             json.dump(results, f_out, ensure_ascii=False, indent=2)
 
-def translate_with_minerva(file_name, correction_model="minerva"):
+def translate_with_minerva(file_name, correction_model="minerva", print_result=False):
     input_path = f"datasets/eng/{file_name}_ocr.json"
     gold_path = f"datasets/eng/{file_name}_clean.json"
     output_path = f"datasets/eng/corrections/{correction_model}/{file_name}.json"
@@ -151,6 +152,6 @@ def translate_with_minerva(file_name, correction_model="minerva"):
     model, tokenizer = load_minerva_model(finetuned=True)
 
     log("Starting OCR correction...")
-    process_ocr_file(input_path, gold_path, output_path, model, tokenizer,force_indices=None)
+    process_ocr_file(input_path, gold_path, output_path, model, tokenizer, force_indices=None, print_result=print_result)
 
     log("✅ Done!")
