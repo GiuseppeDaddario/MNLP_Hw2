@@ -21,7 +21,7 @@ FILE_NAME = "the_vampyre"
 # correct_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 #
 # # - smallLLM -
-correct_with_t5(FILE_NAME, print_result=True)
+#correct_with_t5(FILE_NAME, print_result=True)
 #
 # # - minerva - correction_model is the name of the model to use for translation in:
 # [minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
