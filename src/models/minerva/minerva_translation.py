@@ -9,9 +9,27 @@ import re
 def log(msg):
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-def load_minerva_model(finetuned=True):
-    BASE_MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-    FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima_post_ocr"
+def load_minerva_model(correction_model, finetuned=True):
+    # Checking if running in Google Colab
+    try:
+        import google.colab
+        is_colab = True
+    except ImportError:
+        is_colab = False
+
+    HF_BASE_MODEL_NAME = "sapienzanlp/Minerva-7B-instruct-v1.0"
+    LOCAL_BASE_MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
+    FINETUNED_MODEL_PATH = f"./src/models/minerva/{correction_model}"
+
+    # Model to upload
+    if is_colab:
+        BASE_MODEL_PATH = HF_BASE_MODEL_NAME
+        local_files = False
+    else:
+        BASE_MODEL_PATH = LOCAL_BASE_MODEL_PATH
+        local_files = True
+
+
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     DTYPE = torch.float16 if DEVICE == "cuda" else torch.float32
     model_path = FINETUNED_MODEL_PATH if finetuned else BASE_MODEL_PATH
@@ -19,7 +37,7 @@ def load_minerva_model(finetuned=True):
     tokenizer = AutoTokenizer.from_pretrained(
     model_path,
     trust_remote_code=True,
-    local_files_only=True
+    local_files_only=local_files
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -33,25 +51,28 @@ def load_minerva_model(finetuned=True):
 
     return model, tokenizer
 
-def make_prompt(ocr_text: str) -> str:
-    # return (
-    #     "You are an OCR correction system.\n"
-    #     "Task: Fix spelling, spacing, and OCR errors in the given sentence ONLY if there are any.\n"
-    #     "Rules:\n"
-    #     "1. DO NOT explain.\n"
-    #     "2. DO NOT change names, old spellings or historical terms.\n"
-    #     "3. DO NOT add any text.\n"
-    #     "4. If the sentence is already correct, repeat it exactly.\n"
-    #     "Sentence: " + ocr_text + "\n"
-    #     "Corrected:"
-    # )
-    #PROMPT FOR MINERVA FINETUNED ON LLIMA + POST_OCR
-    return (
-        "You are an OCR correction system. You MUST output the input exactly if it's already correct."
-        "NEVER add, complete, or guess missing content. Only fix OCR errors."
-        f"Input Sentence: {ocr_text}"
-        "Corrected:"
-    )
+def make_prompt(correction_model, ocr_text):
+    if correction_model == "minerva":
+        return (
+             "You are an OCR correction system.\n"
+             "Task: Fix spelling, spacing, and OCR errors in the given sentence ONLY if there are any.\n"
+             "Rules:\n"
+             "1. DO NOT explain.\n"
+             "2. DO NOT change names, old spellings or historical terms.\n"
+             "3. DO NOT add any text.\n"
+             "4. If the sentence is already correct, repeat it exactly.\n"
+             "Sentence: " + ocr_text + "\n"
+             "Corrected:"
+         )
+    elif correction_model == "minerva_finetuned_post_ocr":
+        return (
+            "You are an OCR correction system. You MUST output the input exactly if it's already correct."
+            "NEVER add, complete, or guess missing content. Only fix OCR errors."
+            f"Input Sentence: {ocr_text}"
+            "Corrected:"
+        )
+    return None
+
 
 @torch.inference_mode()
 def ask_minerva(prompt, model, tokenizer):
@@ -78,7 +99,7 @@ def split_into_sentences(text):
     # Divide le frasi usando il punto seguito da spazio o fine stringa
     return [s.strip() for s in re.split(r'(?<=[.])\s+', text) if s.strip()]
 
-def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force_indices=None, print_result=False):
+def process_ocr_file(correction_model, input_file, gold_file, output_file, model, tokenizer, force_indices=None, print_result=False):
     with open(input_file, "r", encoding="utf-8") as f_in:
         ocr_data = json.load(f_in)
 
@@ -117,7 +138,7 @@ def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force
         for j, sentence in enumerate(sentences):
             if not sentence:
                 continue
-            prompt = make_prompt(sentence)
+            prompt = make_prompt(correction_model,sentence)
             corrected, full_text = ask_minerva(prompt, model, tokenizer)
             corrected_sentences.append(corrected)
 
@@ -143,15 +164,16 @@ def process_ocr_file(input_file, gold_file, output_file, model, tokenizer, force
             json.dump(results, f_out, ensure_ascii=False, indent=2)
 
 def translate_with_minerva(file_name, correction_model="minerva", print_result=False):
+
     input_path = f"datasets/eng/{file_name}_ocr.json"
     gold_path = f"datasets/eng/{file_name}_clean.json"
     output_path = f"datasets/eng/corrections/{correction_model}/{file_name}.json"
 
 
     log("Loading Minerva model...")
-    model, tokenizer = load_minerva_model(finetuned=True)
+    model, tokenizer = load_minerva_model(correction_model,finetuned=True)
 
     log("Starting OCR correction...")
-    process_ocr_file(input_path, gold_path, output_path, model, tokenizer, force_indices=None, print_result=print_result)
+    process_ocr_file(correction_model, input_path, gold_path, output_path, model, tokenizer, force_indices=None, print_result=print_result)
 
     log("✅ Done!")
