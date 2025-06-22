@@ -1,12 +1,12 @@
 
 ## Translations
-from src import translate_with_llama4, translate_with_minerva, translate_with_t5
+from src import correct_with_llama4, correct_with_minerva, correct_with_t5
 
 ## Scores
-from src import gemini_score, prometheus_score, annotate_human_scores
+from src import gemini_score, prometheus_score, annotate_human_scores, build_output_file
 
 ## Stats
-from src import kappa_correlation,accuracy_correlation, plot_confusion_matrix
+from src import kappa_correlation,accuracy_correlation, plot_confusion_matrix, build_rouges
 
 # WATCH OUT! this is just the name of the file without extension. it MUST be into the datasets folder.
 # The output will be generated into /datasets/correction with the same file_name and extension.
@@ -18,15 +18,20 @@ FILE_NAME = "the_vampyre"
 #------ TRANSLATIONS ------#
 
 # - llama4 -
-#translate_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
+# correct_with_llama4(FILE_NAME, print_result=False) ##Enrich the dataset with translations
 #
 # # - smallLLM -
-translate_with_t5(FILE_NAME, print_result=True)
+correct_with_t5(FILE_NAME, print_result=True)
 #
 # # - minerva - correction_model is the name of the model to use for translation in:
 # [minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-# translate_with_minerva(FILE_NAME, correction_model="minerva")
+# correct_with_minerva(FILE_NAME, correction_model="minerva")
 #
+build_output_file(FILE_NAME, "t5")
+#build_output_file(FILE_NAME, "llama4")
+#build_output_file(FILE_NAME, "minerva")
+#build_output_file(FILE_NAME, "minerva_finetuned_llima")
+#build_output_file(FILE_NAME, "minerva_finetuned_post_ocr")
 # # ------------------------------#
 #
 #
@@ -36,9 +41,17 @@ translate_with_t5(FILE_NAME, print_result=True)
 #
 # # - Gemini -correction_model is the name of the model to use for translation in:
 # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
-# gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
-# gemini_score(FILE_NAME,"deep_mount") ## Evaluating smallLLM translations
-# gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
+#gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
+gemini_score(FILE_NAME,"t5") ## Evaluating smallLLM translations
+#gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
+#gemini_score(FILE_NAME,"minerva_finetuned_llima") ##Evaluating minerva translations
+#gemini_score(FILE_NAME,"minerva_finetuned_post_ocr") ##Evaluating minerva translations
+
+build_rouges(FILE_NAME, "t5")
+#build_rouges(FILE_NAME, "minerva")
+#build_rouges(FILE_NAME, "minerva_finetuned_llima")
+#build_rouges(FILE_NAME, "minerva_finetuned_post_ocr")
+#build_rouges(FILE_NAME, "llama4")
 #
 #
 # # - Prometheus -correction_model is the name of the model to use for translation in:
@@ -51,7 +64,7 @@ translate_with_t5(FILE_NAME, print_result=True)
 # # - Human -correction_model is the name of the model to use for translation in:
 # # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
 # annotate_human_scores(FILE_NAME,"llama4")
-# annotate_human_scores(FILE_NAME,"smallLLM")
+annotate_human_scores(FILE_NAME,"t5")
 # annotate_human_scores(FILE_NAME,"minerva")
 # # ------------------------------#
 #

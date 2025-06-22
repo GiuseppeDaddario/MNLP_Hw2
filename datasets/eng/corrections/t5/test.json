@@ -1,12 +1,12 @@
-{
-  "0": {
+[
+  {
     "ocr": "The qu1ck brown fox jumPed 0ver the 1azy d0g.",
     "gold": "The quick brown fox jumped over the lazy dog.",
-    "smaLLM_correction": ": The quick brown fox jumped over the lazy dog"
+    "correction": "The quick brown fox jumped over the lazy dog."
   },
-  "1": {
+  {
     "ocr": "He went t0 the st0re t0 buy s0me mi1k and breacl.",
     "gold": "He went to the store to buy some milk and bread.",
-    "smaLLM_correction": ": He went to the store to buy some mir and breach"
+    "correction": "He went to the store to buy some milk and breach."
   }
-}
+]

@@ -15,7 +15,7 @@ def rouge_l(reference, prediction):
     return scorer.score(reference, prediction)['rougeL'].fmeasure
 
 def build_rouges(FILE_NAME, correction_model):
-    BASE_PATH = "datasets/eng/corrections/"
+    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     INPUT_PATH = BASE_PATH + FILE_NAME + ".json"
     OUTPUT_PATH = BASE_PATH + FILE_NAME + "_rouges.json"
 
@@ -23,7 +23,7 @@ def build_rouges(FILE_NAME, correction_model):
         data = json.load(f)
 
     #data = list(data.values())
-    key = correction_model + "_correction"
+    key = "correction"
 
     rouges = {}
 

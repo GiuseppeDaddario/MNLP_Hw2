@@ -1,3 +1,4 @@
+from accelerate import Accelerator
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 from datetime import datetime
@@ -36,7 +37,7 @@ def valuta_judge(text,model,tokenizer, JUDGE_PROMPT, MAX_NEW_TOKENS, device):
 
     # Estrai il numero se presente
     match = re.search(r"\[NUMERIC SCORE\]\s*[:\-]?\s*([1-5])\b", decoded)
-    return match.group(1) if match else f"[ERRORE: {decoded.strip()}]"
+    return match.group(1) if match else f"[ERRORE: {decoded.strip()}]", decoded
 
 # === LOADING PROMETHEUS MODEL ===
 def init():
@@ -58,8 +59,6 @@ def init():
         local_files_only = True
         log("Running in Local environment")
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-
     JUDGE_PROMPT = (
         "Evaluate the quality of the [GENERATED] text in comparison to the [EXPECTED] text. "
         "Use the following scale:\n\n"
@@ -74,8 +73,12 @@ def init():
     )
     MAX_NEW_TOKENS = 2500
     log("Caricamento Prometheus base...")
+    accelerator = Accelerator()
+    device = accelerator.device
+
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True, local_files_only=local_files_only)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, trust_remote_code=True, local_files_only=local_files_only).to(device)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, trust_remote_code=True, local_files_only=local_files_only)
+    model = accelerator.prepare(model)
     model.eval()
 
     return MODEL_PATH, device, JUDGE_PROMPT, MAX_NEW_TOKENS, tokenizer, model
@@ -92,54 +95,66 @@ def prometheus_ask_score(original,reference,correction, JUDGE_PROMPT, MAX_NEW_TO
 
     # === LOOP DI VALUTAZIONE ===
     log("Valutazione esempi...")
-    score = valuta_judge(text,model,tokenizer, JUDGE_PROMPT, MAX_NEW_TOKENS, device)
+    score, full_output = valuta_judge(text,model,tokenizer, JUDGE_PROMPT, MAX_NEW_TOKENS, device)
     print(f"OCR:               {original}")
     print(f"Gold:              {reference}")
     print(f"Model Correction:  {correction}")
     print(f"Score:             {score}")
 
-    return score
+    return score, full_output
 
 
 
 def prometheus_score(FILE_NAME, correction_model):
     MODEL_PATH, device, JUDGE_PROMPT, MAX_NEW_TOKENS, tokenizer, model = init()
 
-    BASE_PATH = "datasets/eng/corrections/" + correction_model + "/"
+    groupname = "C0rr3tt0r1_4ut0m4t1c1"
+    evaluation_model = "prometheus"
+    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
-    # Carica il tuo JSON da file
+    JUDGE_PATH = f"outputs/{correction_model}/{groupname}-hw2_ocr-{evaluation_model}.json"
+
+    # Carica JSON da file
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
-    
-    data = list(data.values())
 
-    key = f"correction"
-    key2 = f"prometheus_score"
+    #data = list(data.values())
+    key = "correction"
+    key2 = "prometheus_score"
 
-
+    judge_output_data = {}
 
     log("|====================================")
     log(f"Evaluating with Prometheus...")
+
     for i, entry in enumerate(data, start=1):
-        
         correction = entry[key]
         reference = entry["gold"]
         original = entry["ocr"]
 
         try:
-            score = prometheus_ask_score(original,reference,correction, JUDGE_PROMPT, MAX_NEW_TOKENS, device, tokenizer, model)
+            score, full_output = prometheus_ask_score(original, reference, correction, JUDGE_PROMPT, MAX_NEW_TOKENS, device, tokenizer, model)
             entry[key2] = int(score)
+            judge_output_data[str(i-1)] = {
+                "output": full_output,
+                "score": score
+            }
         except ValueError:
-            entry[key2] = score  
+            score = entry[key2] = score
         except Exception as e:
             log(f"Errore alla voce {i}: {e}")
-            entry[key2] = "ERROR"
+            score = entry[key2] = "ERROR"
 
-        time.sleep(1) 
 
-    # Salva il risultato in un nuovo file
+    # Salva il risultato con gli score nel file originale
     with open(FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+    # Salva anche il nuovo file richiesto (JUDGE_PATH)
+    os.makedirs(os.path.dirname(JUDGE_PATH), exist_ok=True)
+    with open(JUDGE_PATH, "w", encoding="utf-8") as f:
+        json.dump(judge_output_data, f, ensure_ascii=False, indent=2)
+
+    log(f"Salvato file di valutazione: {JUDGE_PATH}")
     log("|====================================")
     log("\n")

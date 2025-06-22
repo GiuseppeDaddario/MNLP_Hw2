@@ -1,0 +1,194 @@
+{
+  "0": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the capitalization and the use of a period instead of a semicolon.  These are minor stylistic differences that do not significantly alter the meaning.",
+    "score": 4
+  },
+  "1": {
+    "output": "[NUMERIC SCORE] 5\nThe generated text is identical to the expected text.",
+    "score": 5
+  },
+  "2": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is an unnecessary period at the end, which is a minor issue.",
+    "score": 4
+  },
+  "3": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the spelling of \"vampires\" instead of \"vompyres\" in the generated text, which is a minor, easily correctable error.  The meaning and accuracy are not affected.",
+    "score": 4
+  },
+  "4": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and only differs from the expected text in minor ways, primarily in punctuation and spelling (e.g., \"vampirism\" vs. \"vampyrism,\" a comma difference).  The meaning and content are entirely preserved.",
+    "score": 4
+  },
+  "5": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text corrects the spelling of \"vampyre\" to the more common \"vampire,\" which is a minor improvement.  The only difference is this spelling change; otherwise it's identical in meaning and structure to the expected text.",
+    "score": 4
+  },
+  "6": {
+    "output": "[NUMERIC SCORE] 5\nThe generated text is identical to the expected text.",
+    "score": 5
+  },
+  "7": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.  There are no differences.",
+    "score": 5
+  },
+  "8": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  There are only a few minor differences: \"fire\" is changed to \"sire\", \"flames\" to \"flame,\" \"whereon\" to \"when shorn\", \"cold\" is added before blood, \"hagged\" instead of \"haggard,\" and \"they\" replaces \"these\" at the end.  These are all relatively minor changes that don't significantly alter the meaning or flow of the poem.",
+    "score": 4
+  },
+  "9": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, correcting many of the OCR errors.  However, it retains a couple of minor spelling inconsistencies (\"vampyre\" vs \"vampire\") that were present in both the OCR and expected text.  These are minor and don't affect the overall meaning or accuracy.",
+    "score": 4
+  },
+  "10": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  The only difference is a slight misspelling of one of the words (Vrokoloka instead of Vroucolocha), which is a minor error.",
+    "score": 4
+  },
+  "11": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is nearly identical to the expected text, only differing in capitalization.  This is a minor stylistic difference and doesn't affect the meaning.",
+    "score": 4
+  },
+  "12": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the same meaning as the expected text.  The main difference is the change of \"house\" to \"ball\" in one instance, which is a minor inaccuracy and doesn't significantly alter the overall meaning.  There are also a few minor differences in punctuation and formatting (such as \"hers\" vs. \"her's\").  These are all minor issues and don't detract significantly from the overall quality.",
+    "score": 4
+  },
+  "13": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only significant difference is the substitution of \"in short\" for \"in fine\" near the middle.  This is a minor stylistic variation, not a factual or meaning-altering error.",
+    "score": 4
+  },
+  "14": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the same information as the expected text.  The only significant difference is the addition of \"Berkeley\" to the address (which is a reasonable assumption given the context), and minor variations in spelling (\"affairs\" vs. \"affoirs\"). These are minor issues that don't alter the meaning or overall quality.",
+    "score": 4
+  },
+  "15": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is a perfect reproduction of the expected text.  There are no differences in wording, spelling, or punctuation.",
+    "score": 5
+  },
+  "16": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  The only differences are in the OCR artifacts present in the original text, which are correctly removed in the generated version (e.g., \"s0on\" corrected to \"soon,\" \"waſ\" to \"was\").  These are not errors in generation, but rather improvements in cleaning up the source material.",
+    "score": 4
+  },
+  "17": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.  There are no differences in spelling, punctuation, or wording.",
+    "score": 5
+  },
+  "18": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and faithful to the expected text.  There are a few minor differences in word choice and punctuation (e.g., \"many-coloured\" vs. \"many coloured,\" \"so that\" vs. \"save that,\" \"soaring\" vs. \"floating\", \"heart-breaking\" vs. \"heartbreaking\"). These are minor enough not to significantly alter the meaning or flow of the passage.",
+    "score": 4
+  },
+  "19": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same meaning as the expected text.  There are only a few minor differences in wording and punctuation (e.g., \"tear himself away\" instead of \"tear himself at times,\"  \"frank, infantile\" instead of \"frank infantile\"). These are insignificant enough not to alter the overall meaning or flow.",
+    "score": 4
+  },
+  "20": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is practically identical to the expected text.  There are only a couple of very minor differences in spelling (e.g., \"corpse\" vs. \"corse\"), which are inconsequential to the overall meaning and flow.",
+    "score": 5
+  },
+  "21": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same meaning as the expected text.  There are only minor differences in punctuation and phrasing (e.g., the addition of a comma after \"Aubrey\" in the first sentence).  These are insignificant enough not to affect the overall understanding or accuracy of the transcription.",
+    "score": 4
+  },
+  "22": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.  There are no differences in wording, spelling, or punctuation.",
+    "score": 5
+  },
+  "23": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is a perfect transcription of the expected text.  There are no differences in wording, spelling, or punctuation.",
+    "score": 5
+  },
+  "24": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, with only minor differences in punctuation and word choice from the expected text.  The most noticeable difference is the addition of \"was\" before \"astonished\" in the generated text, which is grammatically correct but slightly alters the sentence's flow compared to the expected text.  The overall meaning and accuracy are not affected.",
+    "score": 4
+  },
+  "25": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the same meaning as the expected text.  However, it contains a single misspelling (\"courtly\" instead of \"country\") and a likely OCR error in spelling (\"staghans\" instead of \"ataghans\").  These are minor issues that don't significantly alter the overall meaning or readability.",
+    "score": 4
+  },
+  "26": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, showing only minor differences from the expected text.  The main differences are in spelling (\"infantine\" vs. \"infantinc\") and the use of \"someone\" versus \"some one\". These are minor deviations and don't impact the overall meaning or readability.",
+    "score": 4
+  },
+  "27": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  The only significant difference is the substitution of \"sauntering\" for \"footing\" in one instance.  This is a minor semantic change and doesn't significantly alter the meaning.  The rest of the text matches almost perfectly.",
+    "score": 4
+  },
+  "28": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and faithful to the expected text.  There are only a few minor differences in punctuation (e.g., semicolons vs. commas) and word choice (e.g., \"refusing\" vs. \"refused\"). These are insignificant enough that they don't alter the overall meaning or flow of the passage.",
+    "score": 4
+  },
+  "29": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, with only a few minor deviations.  The most noticeable difference is the change of \"mocked\" to \"invoked\" in relation to death.  While both words fit grammatically, \"mocked\" is more appropriate to the context of the original text. There are also a few minor word choice differences and a slightly different phrasing here and there (\"laid him down to rest\" vs. \"laid himself down to rest\"), but these do not significantly alter the meaning or flow.",
+    "score": 4
+  },
+  "30": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.  There are no errors.",
+    "score": 5
+  },
+  "31": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is practically identical to the expected text.  There are only minor differences in punctuation (like the use of commas), which are insignificant to the overall meaning and quality.",
+    "score": 5
+  },
+  "32": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same meaning as the expected text.  There are only minor differences in spelling and punctuation (\"everyone\" instead of \"every one,\" a missing comma, and slightly different spacing/word choices in a few places). These are insignificant to the overall understanding and flow of the passage.",
+    "score": 4
+  },
+  "33": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is nearly identical to the expected text, with only minor differences in punctuation and a couple of instances of slightly different word ordering (e.g., \"by what he considered the ravings\" vs \"by, what he considered, the ravings\").  These are insignificant and do not affect the meaning or flow.",
+    "score": 5
+  },
+  "34": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the correction of \"haf\" to \"had\" in the generated text. This is a minor grammatical error, hence the score of 4.",
+    "score": 4
+  },
+  "35": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the capitalization of \"vampire,\" which is a minor issue.",
+    "score": 4
+  },
+  "36": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the capitalization and the use of \"Mytilene\" instead of \"Mitylene,\" which is a minor variation in spelling.  Both spellings are acceptable depending on the preferred style guide.",
+    "score": 4
+  },
+  "37": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely the same as the expected text, only differing in capitalization.  This is a minor issue.",
+    "score": 4
+  },
+  "38": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is an exact match to the expected text.",
+    "score": 5
+  },
+  "39": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same information as the expected text.  The only significant difference is the replacement of \"monticule\" with \"mountain,\" which is a minor factual deviation but doesn't significantly alter the meaning.  The capitalization of \"His Majesty's\" and the use of the pound symbol (£) instead of \"L\" are stylistic choices, not errors.",
+    "score": 4
+  },
+  "40": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  The only difference is \"those books\" instead of \"these books\" near the end, a minor error.",
+    "score": 4
+  },
+  "41": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is a minor spelling variation (\"zecchines\" vs \"zechines\"), which is a relatively insignificant error.",
+    "score": 4
+  },
+  "42": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.  There are no differences.",
+    "score": 5
+  },
+  "43": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, with only minor punctuation differences from the expected text.  The most significant difference is the use of semicolons versus commas, which is a stylistic choice rather than a factual error.",
+    "score": 4
+  },
+  "44": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and faithful to the expected text.  There are only a few minor differences: a slight change in punctuation (a comma added), a spelling correction (\"Calista\" corrected to \"Calcla\"), and a slightly different word choice (\"could\" instead of \"can\"). These are minor enough not to significantly affect the meaning or quality.",
+    "score": 4
+  },
+  "45": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same meaning as the expected text.  There are only a few minor differences: \"Childe Harolde\" is corrected to \"Childe Harold,\" and \"Cales\" is likely a misspelling of \"Calcla\" (a proper noun, the meaning of which I don't know and is hard to verify).  These are minor inaccuracies that don't affect the overall understanding.  The addition of an 'a' before 'man's' in the last paragraph is also a minor grammatical correction.",
+    "score": 4
+  },
+  "46": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the same meaning as the expected text.  The only difference is capitalization and the addition of a period, which are minor stylistic variations.",
+    "score": 4
+  },
+  "47": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text only differs from the expected text in capitalization (\"Court\" and \"Street\" instead of \"court\" and \"street\").  This is a minor stylistic difference and doesn't affect the meaning or accuracy.",
+    "score": 4
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "0": {
+    "output": "[NUMERIC SCORE] 2\n\nThe generated text is incomplete. While it attempts to convey the same information, it omits the crucial semicolon, altering the title's structure and potentially its intended meaning.  The capitalization is also lost.",
+    "score": 2
+  },
+  "1": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is nearly identical to the expected text.  The only difference is capitalization, which is a minor issue.",
+    "score": 4
+  },
+  "2": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is the addition of a period at the end, which is a minor grammatical variation and doesn't significantly alter the meaning.",
+    "score": 4
+  },
+  "3": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, mainly in spelling and punctuation,  which alter the flow and, in a few cases, the meaning slightly.  While it captures the overall meaning of the original, the numerous minor errors prevent it from being considered accurate.",
+    "score": 3
+  },
+  "4": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely complete and conveys the main points of the story.  However, it contains several spelling errors (\"curios,\" \"cornmander-in-chief,\" \"certifier,\" \"euphorus,\" \"grove\" instead of \"grave,\" \"coming\" instead of \"becoming\"), and it cuts off abruptly mid-sentence.  While the meaning isn't entirely lost, these errors and the incompleteness detract from the quality.",
+    "score": 3
+  },
+  "5": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text makes a couple of minor errors.  It corrects the spelling of \"universa1\" and \"vampyre,\" but it omits a comma after \"is\" and changes \"sucked by a vampyre\" to \"sucks by a vampire\". While these are relatively small changes, they slightly alter the sentence's flow and formality, thus preventing a perfect score.",
+    "score": 4
+  },
+  "6": {
+    "output": "[NUMERIC SCORE] 5\nThe generated text is identical to the expected text.",
+    "score": 5
+  },
+  "7": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors that affect the meaning and flow of the passage.  \"Believably adapted\" is not the same as \"better adapted,\" and \"distance\" is incorrectly used instead of \"instance.\"  \"Who in out crime\" is nonsensical.  The change from \"kindred and affection\" to \"bonds of kindness and affliction\" is a significant alteration in meaning. While many of the OCR errors are corrected, several new ones are introduced.  It's mostly understandable, but contains enough errors to lower the score below \"minor issues\".",
+    "score": 3
+  },
+  "8": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including some misspellings (\"god\" instead of \"blood,\" \"corset\" instead of \"corse,\" \"flannel\" instead of \"flame,\" \"frequence'er\" instead of \"freezes\"), omissions of words and phrases, and alterations to the meaning (e.g., the change to \"natural place\"). While it generally follows the structure and content of the original text, the cumulative effect of these errors makes it noticeably less accurate.",
+    "score": 3
+  },
+  "9": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, making it noticeably different from the expected text.  While it largely conveys the same information, there are significant inaccuracies in names (Oneiza to oneida, Tournefort to thurrock, Calmet to calmed), spelling (\"core\" for \"corpse\", \"spent through\" instead of \"pourtrayed throughout\"), and phrasing (\"wild life the vivid poem\" instead of \"wild but beautiful poem\").  The errors alter the flow and precision of the original text.",
+    "score": 3
+  },
+  "10": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, mostly minor, but enough to alter the meaning slightly and impact readability.  \"Informative\" replaces the more fitting \"interesting,\" \"limited\" is used instead of \"limits,\" there are several missing or incorrectly used words (\"thou,\" \"in ay,\" \"the more are scientific\"), and some spelling/typos are present (\"gould,\" \"act\"). While the core information is conveyed, the quality is lessened by these errors.",
+    "score": 3
+  },
+  "11": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is a reasonable shortening of the expected text, but it loses the stylistic element of capitalization and the archaic spelling.  While the meaning remains, it's not a perfect reproduction.",
+    "score": 3
+  },
+  "12": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely complete, but contains several errors that affect readability and meaning.  There are numerous typos and misspellings (\"variovs,\" \"af,\" \"anobleman,\" \"ignore,\" \"pretend,\" \"oily,\" \"quail,\" \"terrorlessness,\" \"nat compare,\" \"attribute,\" \"up or,\" \"head,\" \"peculiar ratios,\" \"blue face\").  Furthermore, it cuts off abruptly mid-sentence, making it incomplete.  While the basic structure of the original text is somewhat preserved, the errors are significant enough to impact comprehension.",
+    "score": 3
+  },
+  "13": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely understandable and conveys the general meaning of the original. However, it contains numerous spelling errors (\"aubrey,\" \"rude,\" \"Vico,\" \"sine\"), grammatical inconsistencies (missing articles, incorrect punctuation), and omissions (the final sentence is incomplete).  While the core narrative remains intact, the numerous errors detract from the quality.",
+    "score": 3
+  },
+  "14": {
+    "output": "[NUMERIC SCORE] 2\n\nThe generated text is incomplete and contains several significant errors.  While it covers a portion of the original, it omits a large chunk of the text towards the end.  Furthermore, it introduces numerous misspellings and inaccuracies (e.g., \"chariot\" instead of \"character,\" \"gauge\" instead of \"gave,\" \"acquistened\" instead of \"acquainted\"). The meaning is altered in several places due to these errors.",
+    "score": 2
+  },
+  "15": {
+    "output": "[NUMERIC SCORE] 2\n\nThe generated text is incomplete and contains numerous errors, making it significantly inaccurate and misleading.  While it starts well, it quickly deteriorates into a jumbled mess of misspellings, grammatical errors, and missing words.  It fails to capture the meaning of the original text beyond the first few sentences.",
+    "score": 2
+  },
+  "16": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including misspellings (\"son,\" \"rome,\" \"phoned,\" \"creature,\" \"live,\" \"here,\" \"climate\"), incorrect word choices (\"to him he had revered\"), and omitted words/phrases that alter the meaning and flow (\"was in search of,\"  \"spirit but affection\"). While it generally conveys the same story, the numerous errors significantly detract from the quality.",
+    "score": 3
+  },
+  "17": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, mostly in spelling and word choice, that alter the meaning in small but noticeable ways. While it captures the general plot, the errors are frequent enough to detract from the overall quality.  For example, \"carrier\" instead of \"character,\" \"beat\" instead of \"watch,\" \"circuit\" instead of \"circle,\" and \"assailant\" instead of \"assignation\" are significant errors that change the meaning slightly.  The grammatical errors, though not severe, are also distracting.",
+    "score": 3
+  },
+  "18": {
+    "output": "[NUMERIC SCORE] 1\n\nThe generated text is severely truncated and contains numerous spelling and grammatical errors, rendering it largely incomprehensible and unusable.  It only covers a fraction of the original text.",
+    "score": 1
+  },
+  "19": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors that affect the meaning and flow of the passage.  While it captures some of the original text, numerous words are misspelled or replaced with incorrect ones (\"attoch,\" \"clnd,\" \"affccted,\" \"sovght,\" \"ridjculed,\" \"ottachod,\"  \"ottimes,\" \"reseclrch,\" \"rvins,\" \"irnoge,\"  \"pclrt,\" \"reluclarice,\" \"sor,\" \"excursionſ,\" \"retvrn,\" \"nocessarily,\" \"vpon,\" \"confideration,\" \"vampyres,\" \"pole\" etc.).  The sentence structure is also broken in several places, and the generated text cuts off incompletely.  While it's understandable in parts,  the significant number of errors lowers its quality.",
+    "score": 3
+  },
+  "20": {
+    "output": "[NUMERIC SCORE] 1\n\nThe generated text is severely truncated and contains numerous OCR errors that go beyond simple misspellings.  It's incomplete and fails to convey the story's meaning.",
+    "score": 1
+  },
+  "21": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, but it's mostly understandable.  There are misspellings (\"ruthie,\" \"athens,\" \"complicit,\" \"long words,\" \"quiet\"), grammatical issues (sentence fragments, missing words), and some alterations in word choice that slightly change the meaning. While the overall narrative is preserved, the numerous errors prevent a higher score.",
+    "score": 3
+  },
+  "22": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely complete, covering most of the story's events. However, it contains numerous spelling and grammatical errors (\"stock\" instead of \"shock\", \"weekend\" instead of \"weakened\", \"cold\" instead of \"could\", \"athens\" instead of \"Athens\", etc.), as well as some omissions, resulting in an altered meaning in some places.  While the core narrative is preserved, the numerous errors detract significantly from the quality.",
+    "score": 3
+  },
+  "23": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors that affect the meaning and flow of the passage.  While it captures the general gist, there are significant word substitutions (\"frontier\" for \"friend,\" \"England\" for \"entrance,\" \"ruthann\" for \"Ruthven,\" \"demoralized\" for \"decreased,\" \"estate\" for \"existence,\" etc.) and omissions that render it less accurate than the original.  The punctuation is also inconsistent.",
+    "score": 3
+  },
+  "24": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, making it noticeably different from the expected text and slightly altering the meaning in places.  While it captures the overall story, there are numerous spelling mistakes (\"slept,\" \"attend,\" \"gravely,\" \"recording,\" \"talk,\" \"i,\" \"ben,\" \"sound,\" \"identic\"), grammatical errors (missing articles, incorrect verb tenses), and some word choice differences (\"contemplated\" instead of \"conveyed\") that affect the flow and accuracy.",
+    "score": 3
+  },
+  "25": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including misspelling (\"civilly,\" \"iris,\" \"elevate,\" \"offended,\" \"tomb,\" \"apparent ornamentally,\" \"hitch,\" \"shut cred,\" \"furtive,\" \"borrow,\" \"poco\"), and grammatical issues (missing articles, incorrect word choices). While the general meaning remains intact, the numerous mistakes significantly affect the quality and readability.",
+    "score": 3
+  },
+  "26": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text has several minor errors.  The OCR is quite good, but there are some spelling mistakes (\"to me\" instead of \"Rome\", \"ruthann\" instead of \"Ruthven\", \"vicing\" instead of \"victim\", \"anthem\" instead of \"Ianthe\", \"waved\" instead of \"wafted\") and punctuation issues (missing commas and inconsistent capitalization). These are relatively minor, however, and don't significantly alter the meaning of the text.",
+    "score": 4
+  },
+  "27": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors that affect the meaning and readability, although it mostly follows the structure of the expected text.  There are numerous spelling errors (\"riot\" instead of \"not\", \"abutting\", \"jay\" instead of \"joy\", etc.) and some word substitutions that change the intended meaning (\"humility\" instead of \"levity\", \"influence\" instead of \"affection\").  The generated text is incomplete, cutting off mid-sentence.  While the core story is somewhat preserved, the numerous errors prevent it from being considered accurate.",
+    "score": 3
+  },
+  "28": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, omissions, and some altered meanings, though it generally follows the storyline.  Many words are misspelled or incorrectly transcribed (\"conscientious\" instead of \"anxious\", \"miles\" instead of \"smile\", \"arm and him clung\" is nonsensical, \"ruthie\" instead of \"Ruthven\", etc.).  There are also punctuation issues and sentence fragments. While the core narrative remains largely intact, the numerous errors prevent a higher score.",
+    "score": 3
+  },
+  "29": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is a significantly shortened version of the original and contains several errors.  While it captures the general gist of the passage,  many details are missing, and some words are incorrectly transcribed (\"conversion\" instead of \"conduct,\"  \"belling\" instead of \"bearing,\" etc.).  Several sentences are incomplete or awkwardly phrased.  While not entirely unreadable, it contains enough inaccuracies to lower its quality.",
+    "score": 3
+  },
+  "30": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, but it is mostly understandable and conveys the general meaning of the original.  There are numerous spelling mistakes (\"day my,\" \"preventer,\" \"hardy,\" \"incoherent,\" \"loved,\" \"faces,\" \"sizzling,\" \"dossier,\" \"isaught,\" \"riot\") and some grammatical issues.  While the overall narrative structure remains intact, these errors detract from the quality of the output.",
+    "score": 3
+  },
+  "31": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is a partial transcription with significant errors. While it captures the general plot points, there are numerous misspellings (\"lime\" for \"time,\" \"army\" for \"room,\" \"audrey\" for \"Aubrey,\" \"far\" for \"awful,\"  \"spirit\" for \"smile,\" etc.), omissions of words and phrases, and alterations of meaning (\"socially\" instead of \"society,\" \"status\" instead of \"sister\"). The errors impact readability and understanding.  While the general narrative structure is retained, the quality of the transcription is not high due to the quantity of mistakes.",
+    "score": 3
+  },
+  "32": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several significant errors, including misspelling (\"ruthie,\" \"ben,\" \"whirl,\" \"heart,\" \"him,\" \"officiation,\" \"face,\" \"to the ears,\" \"return,\" \"him,\" \"exillance,\" \"serve,\" \"at that,\" \"agony,\" \"all\").  While it generally follows the structure of the original, these errors and the truncation alter the meaning and readability.  It's not completely unacceptable, but it contains enough mistakes to warrant a score of 3.",
+    "score": 3
+  },
+  "33": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct but contains several noticeable errors.  There are spelling mistakes (\"lo,\" \"o for hovers,\" \"joy\" instead of \"honour,\" \"nates\"), punctuation inconsistencies, and the text cuts off abruptly. While the core narrative is preserved, the errors detract from the quality and accuracy.",
+    "score": 3
+  },
+  "34": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text has a few minor errors.  \"Aubrey\" is misspelled as \"Audrey,\" and there are a couple of minor grammatical issues (\"increased the effusion\" instead of \"increased; the effusion,\" and \"relative calmly\" instead of \"related composedly\"). However, it conveys the overall meaning accurately and is largely faithful to the original.",
+    "score": 4
+  },
+  "35": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors.  \"ben\" instead of \"when,\" \"ruthie\" instead of \"Ruthven,\" \"disclosed\" instead of \"disappeared,\" and \"hand\" instead of \"thirst\" are all significant inaccuracies that alter the meaning slightly.  While the overall sense is preserved, the mistakes are numerous enough to warrant a score of 3.",
+    "score": 3
+  },
+  "36": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text has minor issues.  While it conveys the same information, there are a few capitalization and spelling errors (\"letter\" and \"A\" should be capitalized, and \"baron\" should be \"Byron\").  The overall meaning is not lost.",
+    "score": 4
+  },
+  "37": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct in retaining the original \"ACCOUNT OF LORD\" and \"&c.\" However, it incorrectly replaces \"BYRON'S\" with \"baron's\" and adds an unnecessary \"act\" at the end, altering the meaning and introducing an error.  While the core components are present, these errors prevent a perfect score.",
+    "score": 3
+  },
+  "38": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including \"al I\" instead of \"all,\"  \"chaos e\" instead of \"choose,\" and inconsistent spacing and punctuation. While the overall meaning is understandable, the errors are significant enough to impact the quality.",
+    "score": 3
+  },
+  "39": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, affecting both the meaning and flow of the passage. While it captures the general gist of the original, numerous words are misspelled or replaced with incorrect alternatives (\"Great Greek\" instead of \"Grecian,\" \"certificate\" instead of \"certain,\" \"scandinavian\" instead of \"Smyrna,\" etc.). Some phrases are truncated, leaving the text incomplete and hard to follow.  The errors are frequent enough to make the generated text noticeably inferior to the original, yet not so pervasive as to render it completely incomprehensible.",
+    "score": 3
+  },
+  "40": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly complete, but contains several errors and omissions that alter the meaning in places and impact readability.  There are spelling errors (\"recessive,\" \"silting,\" \"mansiori\", \"parallel\"), grammatical issues (missing articles and punctuation), and some significant word substitutions (\"mirror\" instead of \"myrtle,\" \"scoped\" instead of \"observed\"). While the core narrative is present, the numerous inaccuracies prevent a higher score.",
+    "score": 3
+  },
+  "41": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including spelling mistakes (\"ben,\" \"thy,\" \"special,\" \"if I to propose,\" \"hero\"), grammatical issues (missing punctuation and articles), and minor factual deviations (\"raised\" instead of \"resides\"). While the core meaning remains mostly intact, the errors are noticeable and impact the overall quality.",
+    "score": 3
+  },
+  "42": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors that affect the meaning and readability.  While it mostly conveys the same information, there are multiple spelling errors (\"apparent,\" \"forth,\" \"a fly,\" \"cor nicest,\" \"alone,\" \"thwarted,\" \"lachrymal christian\"), and some word choices (\"serene,\" \"bigger\") alter the original meaning slightly.  The errors, while not catastrophic, are frequent enough to lower the quality score.",
+    "score": 3
+  },
+  "43": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors.  \"round streamlet\" is inaccurate, \"mature bushes\" is a change of meaning, \"Mary of his evenings\" is a misspelling/misinterpretation of \"many,\" and there are several punctuation and capitalization errors. While the overall meaning is mostly preserved, the numerous inaccuracies prevent a higher score.",
+    "score": 3
+  },
+  "44": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely complete, but contains several inaccuracies and omissions.  While it captures the general gist of the passage, it makes several errors in names (e.g., \"Mount calcium,\" \"creature\" instead of \"temple\"), descriptions (e.g.,  the inaccurate addition of clouds rising from the islands), and grammatical structures.  It also abruptly cuts off partway through.  There are enough correct elements to understand the original meaning, but the errors are numerous and distracting enough to merit a score of 3.",
+    "score": 3
+  },
+  "45": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely complete, covering most of the key points of the original.  However, it contains numerous spelling errors (\"baleful\" instead of \"peaceful,\" \"naval\" instead of \"could,\" \"ecclesiasticities\" instead of \"eccentricities,\" etc.), and several instances of incorrect or missing punctuation. It also cuts off abruptly, leaving out a significant portion of the original text. While the overall meaning is mostly preserved, the numerous errors and incompleteness warrant a score of 3.",
+    "score": 3
+  },
+  "46": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text adds a period, a minor grammatical difference that doesn't alter the meaning.  The core information is identical.",
+    "score": 4
+  },
+  "47": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has some errors.  While it captures the general sense of the original, \"GiIlet\" is misspelled as \"Giblets,\" and there is improper capitalization and spacing.  The meaning isn't entirely lost, but the errors are noticeable and affect readability.",
+    "score": 3
+  }
+}

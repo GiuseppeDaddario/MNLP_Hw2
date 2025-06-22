@@ -112,7 +112,7 @@ def process_ocr_file(input_file, gold_file, output_file, print_result=False):
         # Se vuoi rimuovere questa parte, puoi farlo con una regex o semplicemente con una slice
         # correction = correction.replace("Ecco il testo corretto: ", "").strip()
 
-def translate_with_llama4(file_name, print_result=False):
+def correct_with_llama4(file_name, print_result=False):
     file = file_name
     datapath = "datasets/eng/"
 

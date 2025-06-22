@@ -72,10 +72,10 @@ def capitalize_first_letter(text):
         return text
     return text[0].upper() + text[1:]
 
-def translate_with_t5(FILE_NAME, print_result=True):
+def correct_with_t5(FILE_NAME, print_result=True):
     spell, ocr_corrector, tokenizer = init()
     print("\n|========================================")
-    print("| \033[93mTranslating with smaLLM ...\033[0m")
+    print("| \033[93mTranslating with t5 ...\033[0m")
 
     input_path = f"datasets/eng/{FILE_NAME}_ocr.json"
     gold_path = f"datasets/eng/{FILE_NAME}_clean.json"
@@ -147,8 +147,3 @@ def translate_with_t5(FILE_NAME, print_result=True):
         json.dump(results, f_out, ensure_ascii=False, indent=2)
 
     print("|========================================\n")
-
-
-
-
-

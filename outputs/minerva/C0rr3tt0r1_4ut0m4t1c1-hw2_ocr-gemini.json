@@ -1,0 +1,194 @@
+{
+  "0": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text, differing only in capitalization.  While capitalization is important for proper nouns, the difference is minor and doesn't significantly alter the meaning.",
+    "score": 4
+  },
+  "1": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is capitalization, which is a minor issue.",
+    "score": 4
+  },
+  "2": {
+    "output": "[NUMERIC SCORE] 5\n\nThe generated text is identical to the expected text.",
+    "score": 5
+  },
+  "3": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct but contains several errors.  \"helias\" should be \"belief\", \"compies\" should be \"vampires\", \"quickly\" is a slightly less formal alternative to \"speedily\", \"ruptility\" should be \"repletion\", \"badies\" should be \"bodies\", and \"ureth pores\" is a nonsensical corruption of \"very pores\". While the overall meaning remains largely intact, these errors introduce inaccuracies and slightly alter the tone.",
+    "score": 3
+  },
+  "4": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely understandable and conveys the general meaning of the original. However, it contains several noticeable errors.  \"Motheryga\" is a misspelling, \"coroner-in-chief\" is incorrect, \"convicted to say\" is nonsensical,  \"Turkish Service\" is a misreading, \"grove\" instead of \"grave\" alters the meaning slightly, \"sor\" is a typo, \"seen him\" changes the narrative, \"upheaval\" is incorrect, \"red and foul blood\" is a less precise description, \"bear's body and body\" is a nonsensical repetition, and \"pneumonia\" is a completely wrong substitution for \"vampyrism\". While most of the mistakes don't completely derail the understanding, they are significant enough to lower the score to a 3.",
+    "score": 3
+  },
+  "5": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text accurately conveys the meaning of the original.  It makes a few minor changes (\"bitten\" instead of \"sucked,\" removing \"himself\" and slightly altering the phrasing at the end), but these do not significantly alter the meaning or accuracy.",
+    "score": 4
+  },
+  "6": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct in that it attempts to transcribe the word \"Chief bailiff\". However, it misspells both \"Chief\" and \"bailiff,\" making the output noticeably inaccurate, even though the overall meaning is still somewhat understandable.",
+    "score": 3
+  },
+  "7": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text has only minor differences from the expected text.  \"resistance\" is substituted for \"instance,\" \"alone\" for \"only,\" \"obligated\" for \"compelled,\" \"visits\" for \"visitations,\" and \"alive\" for \"in existence.\"  These are all minor lexical substitutions that don't significantly alter the meaning.  The quotation marks around \"Giaour\" are also slightly different.",
+    "score": 4
+  },
+  "8": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct, conveying the main points of the poem. However, it contains several errors:  \"latebe\" instead of \"loathe,\" \"perfor e\" instead of \"perforce,\" \"fire\" instead of \"sire,\" \"changing\" instead of \"cursing,\"  \"unbloody\" instead of \"unhallowed,\"  \"were born\" instead of \"when shorn,\" and \"dry with Ghosts and Afrids rage\" instead of \"and with Gouls and Afrits rave.\"  The inclusion of a random question \"Q: What is a good way to learn how to play chess?\" further indicates issues with the generation process.  While the overall meaning isn't drastically altered, these errors are significant enough to lower the score.",
+    "score": 3
+  },
+  "9": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, mostly in word choices and grammar. While it conveys the general meaning of the original,  it lacks the precision and accuracy of the expected text.  The word \"complex\" in place of \"vampyre corse\" is a significant deviation.  Other minor issues include the use of \"wildly beautiful\" instead of \"wild but beautiful\", omitting \"she best loved whilst in existence\", and slightly altering phrasing.  The OCR errors in the original are not perfectly corrected.",
+    "score": 3
+  },
+  "10": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text largely captures the meaning of the original OCR text but introduces several errors.  The phrasing is altered (\"however\" instead of \"though,\" \"simply remarking\" instead of \"merely remarking\"), and some spellings are different (Vrouchocha, Vardouca instead of Vroucolocha, Vardoulacha).  The most significant issue is the addition of unrelated content at the end about soil conservation.",
+    "score": 3
+  },
+  "11": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text.  The only difference is capitalization, which is a minor issue.",
+    "score": 4
+  },
+  "12": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely understandable and follows the overall narrative, but it contains numerous inaccuracies and misinterpretations of the original text.  Many words are misspelled or replaced with incorrect synonyms, altering the meaning slightly (e.g., \"various parts\" instead of \"various parties,\" \"quell\" becoming \"quoll\"). Some phrases are nonsensical (e.g.,  \"the weight of a new something\"). The inclusion of the random question \"Q: What is the difference between a ‘dry’ and a ‘wet’ fire?\" demonstrates a significant issue with the generation process. While the core story remains, the numerous errors detract from the overall quality.",
+    "score": 3
+  },
+  "13": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct, conveying the general meaning of the original. However, it contains several errors:  \"young\" instead of \"in childhood,\" \"vic\" instead of \"vice,\" \"morely\" instead of \"merely,\" \"vice of clothes\" instead of \"vesting of clothes,\" \"in his mind\" is an addition that alters the meaning, \"lingering\" instead of \"languishing,\" \"rawness\" instead of \"romance,\" \"collection\" instead of \"congeries,\" and \"relive\" instead of \"relinquish.\"  The added question, \"Q: What is a good way to learn how to play chess?\", is completely out of place.",
+    "score": 3
+  },
+  "14": {
+    "output": "[NUMERIC SCORE] 2\n\nThe generated text contains significant inaccuracies and alterations to the meaning of the original.  While it attempts to follow the general plot, key details are changed (e.g., \"hero of a romance\" becomes \"background of a romance,\"  \"career of vice\" becomes \"career of virtue,\" Lord Ruthven becomes Lord Rutherford).  Furthermore, it introduces entirely extraneous content about soil conservation and writing research papers, demonstrating a complete lack of coherence and faithfulness to the source material.",
+    "score": 2
+  },
+  "15": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors and alterations that affect the meaning and flow of the original.  While the overall narrative is preserved, there are numerous word substitutions (\"profusely generous\" instead of \"profuse in his liberality,\" \"red-veined tints\" instead of \"reduced to indigence,\" etc.) that change the nuance or accuracy of the original phrasing. There's also the inclusion of an entirely unrelated question about stem cells and a summary of an article about soil conservation at the end, which is completely extraneous and indicates a significant failure in the generation process.  While many sentences are understandable, the cumulative effect of the errors reduces the quality.",
+    "score": 3
+  },
+  "16": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct, conveying the main plot points of the original. However, there are noticeable mistakes and alterations:  \"soon\" is omitted,  some wording is changed (\"doing this\" instead of \"thus engaged,\" \"came\" instead of \"arrived\"), and there's a significant error in replacing \"victim\" with \"wife.\" Additionally, the inclusion of completely unrelated text about soil conservation at the end is a major flaw.",
+    "score": 3
+  },
+  "17": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same information as the expected text.  There are a few minor word choices that alter the tone slightly (e.g., \"tried to come up with a plausible excuse\" instead of \"resolved to invent some plausible pretext\") and a couple of minor grammatical errors (\"framing that moment he must declare accompanying,\" \"other lady\" instead of \"mother of the lady,\" \"assignment\" instead of \"assignation\").  These are small enough not to significantly impact the overall meaning or quality.",
+    "score": 4
+  },
+  "18": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors and alterations that change the meaning or flow of the original.  While the overall narrative is preserved, there are numerous inaccuracies in word choice (\"let Rome\" instead of \"left Rome,\" \"many coated lichens\" instead of \"many coloured lichen,\" \"horse\" instead of \"gazelle,\"  \"slothigh\" instead of \"floating,\" and others) and grammatical errors.  The addition of the completely unrelated final paragraph about soil conservation is a major issue.  There are enough minor and major errors present to lower the score from a 4.",
+    "score": 3
+  },
+  "19": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct, conveying the main plot points of the original. However, there are several noticeable errors.  Some word choices are inaccurate (\"attracted\" instead of \"attached,\" \"insatiable\" instead of \"infantile,\" \"surroundings around him\" is redundant), and some phrasing is awkward or changes the nuance of the original. There are also a few spelling and grammatical errors (\"sevcr al,\" \"sor,\" \"be got\"). While the overall meaning isn't drastically altered, the quality is noticeably lower than the expected text due to these inaccuracies.",
+    "score": 3
+  },
+  "20": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors, omissions, and alterations that affect the overall meaning and flow, while still conveying the general plot.  There are numerous word choice issues (\"unexpected journey\" instead of \"excursion,\" \"hegged on\" instead of \"begged of,\"  \"boars\" instead of \"beings,\" etc.) and some significant plot changes (e.g., the description of the building changes from \"hovel\" to \"cow\").  While the major events are present, several details are incorrect or missing, resulting in a less accurate and slightly altered narrative.",
+    "score": 3
+  },
+  "21": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text contains several errors that alter the meaning and flow of the original.  While it mostly covers the same events, there are significant inaccuracies in names (Irene instead of Ianthe, Rutben instead of Ruthven), actions (eating oranges instead of calling upon Lord Ruthven), and descriptions (quiet changed instead of quite changed, convalescent began to heal rapidly instead of convalescence began to be rapid).  Additionally, the insertion of an unrelated outline on soil conservation is completely inappropriate.  Despite some correct passages, the errors are numerous enough to detract significantly from the quality.",
+    "score": 3
+  },
+  "22": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely understandable and follows the plot of the original, but contains several errors.  There are some noticeable spelling mistakes (\"stroke\" instead of \"shock,\" \"Lard\" instead of \"Lord,\" \"torront\" instead of \"torrent,\" \"whizzling\" instead of \"whistling,\" \"fhouts\" instead of \"shouts,\" \"bis\" instead of \"his\"), grammatical issues (awkward phrasing, inconsistent tense), and minor factual alterations (changing details of the setting or character's actions). While the overall narrative is preserved, the quality is diminished by these errors.",
+    "score": 3
+  },
+  "23": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely similar to the expected text, conveying the same general story. However, it contains several inaccuracies and additions that detract from its quality.  \"Nearby cabin\" is a fair replacement for \"neighboring cabin\",  but \"companion\" instead of \"comrade\" and \"declined\" instead of \"decreased\" are less suitable. The most significant error is the nonsensical inclusion of \"His coronary artery and appearance had not clogged\" which is not present or implied in the expected text, completely changing the intended meaning. The final paragraph is entirely extraneous. While the overall narrative remains mostly intact, these errors prevent a higher score.",
+    "score": 3
+  },
+  "24": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same meaning as the expected text.  However, there are several minor errors including grammatical issues (\"how coldly he had shivered\" is awkward and inaccurate), minor word choice differences (\"foot of a neighboring mountain\" instead of \"pinnacle of a neighboring mount\"), and a few spelling inconsistencies (e.g., \"lo\" instead of \"to\").  These errors do not significantly alter the overall meaning or impact the readability.",
+    "score": 4
+  },
+  "25": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors.  While it largely follows the plot and structure of the original, there are significant word choice issues (\"journey\" instead of \"country,\" \"irritated\" instead of \"in which all apparently conspired,\"  \"poorly shaped\" instead of \"peculiarly shaped,\" \"hole\" instead of \"hut\"). Additionally, the inclusion of an unrelated outline about soil conservation at the end is a major flaw, demonstrating a significant failure in maintaining contextual relevance.  The errors, while not rendering the text completely incomprehensible, are frequent enough to significantly impact quality.",
+    "score": 3
+  },
+  "26": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely correct, conveying the main points of the original text. However, it contains several errors: \"repeated blows\" instead of \"repeated horrors,\" \"her departure from his lordship\" is less accurate than \"the departure of his lordship,\" \"hosted\" instead of \"hastened,\" and several instances of misspellings (\"Ro me,\" \"mansiori,\" \"fatbers,\" \"abedierit,\" and \"infantinc\").  While not drastically altering the meaning, these errors detract from the quality and accuracy.",
+    "score": 3
+  },
+  "27": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely similar to the expected text, conveying the same general meaning. However, it contains several errors:  \"winning grace\" is incorrectly negated,  \"appeal\" is used instead of \"applause,\"  several words are misspelled or replaced with less suitable synonyms (\"sooting\" for \"footing,\" \"Jay\" for \"joy,\" \"calm and thoughtful\" for \"sedate and pensive,\" \"volatile\" for \"voluptuary,\" \"incoherently\" for \"melancholy,\" \"strongers\" for \"strangers\").  The insertion of irrelevant advice on writing a research paper is a significant flaw. While mostly understandable, these errors and the addition of unrelated text detract from the quality and accuracy.",
+    "score": 3
+  },
+  "28": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has a number of errors and omissions compared to the expected text.  While it generally follows the narrative, there are instances of incorrect or missing words (\"bereft of all around him\" instead of \"heedless of all around him\", \"forging\" instead of \"forcing\",  \"forcibly her\" instead of \"forced her\"), and the inclusion of completely unrelated questions and answers about soil conservation and primary/secondary sources at the end. The overall meaning is mostly preserved, but the accuracy and coherence are significantly affected by these issues.",
+    "score": 3
+  },
+  "29": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has a number of errors, mostly stemming from OCR inaccuracies that were not fully corrected.  While it largely follows the plot and structure of the original, several words are incorrectly transcribed or interpreted, altering the meaning in some places (e.g., \"innsider\" instead of \"monster\", \"inoculated\" instead of \"mocked\").  Some phrasing is also slightly off, making the writing less elegant.  There's also an irrelevant question about stem cells at the end.",
+    "score": 3
+  },
+  "30": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is largely similar to the expected text, conveying the same basic narrative. However, it contains several noticeable errors:  \"endured during his wandering\" instead of \"daily encountered in his wanderings,\" \"incoherent behavior made him confined\" instead of \"incoherence became at last so great, that he was confined,\"  a grammatical error in \"he would do not to touch her,\" and the nonsensical insertion of a question about database keys (\"Q: What is the difference...\").  Additionally, \"weather was passing\" is incorrect. While the overall meaning remains intact, these errors significantly detract from the quality of the transcription.",
+    "score": 3
+  },
+  "31": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, including misspelled words (\"elapscd,\" \"Avbry,\" \"regrets,\" \"barberid,\" \"fluttering\"), incorrect word choices (\"aptly able,\" \"which with tears, fluttering\"), and a completely extraneous section at the end about soil conservation.  While the majority of the narrative is present, these errors and the addition of irrelevant content significantly detract from the quality.",
+    "score": 3
+  },
+  "32": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text is mostly correct but contains several noticeable errors that alter the meaning or flow slightly.  \"Where\" is used incorrectly in two places instead of \"When.\"  \"Home\" is substituted for \"fate,\" changing the meaning in a subtle yet important way.  The phrasing is also less sophisticated and elegant in several instances.  There are also some minor spelling and punctuation errors (e.g., \"Hastened,\" \"Avbrey,\" \"toil to recover,\" \"soothsayers,\" \"6ranch,\" \"hasteningthe\"). While the overall story remains intact, the quality of the writing is significantly lower.",
+    "score": 3
+  },
+  "33": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors, impacting its overall accuracy. While it captures the main plot points, it contains numerous spelling mistakes (\"atlempled,\" \"servcls,\" \"birthright\" instead of \"honour,\" \"one more hour\" instead of \"a few hours,\" \"declared\" instead of \"denounced,\" etc.), as well as some substitutions that alter the meaning slightly (\"French\" instead of \"frantic,\" \"noises\" instead of \"notes,\" \"weddings\" instead of \"carriages,\" \"ancestors\" instead of \"attendants,\" \"fragile\" instead of \"frail\").  The errors, though not catastrophic, are frequent enough to reduce the quality.",
+    "score": 3
+  },
+  "34": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text makes a few minor changes.  \"carefully\" replaces \"composedly,\" which is a slight alteration in tone but doesn't significantly change the meaning.  The addition of \"that\" before \"his sister's guardians\" is grammatically correct and improves clarity, but it's a deviation from the original. The use of an em dash instead of an en dash is a stylistic difference rather than an error. Overall, the changes are small and don't detract significantly from the accuracy of the transcription.",
+    "score": 4
+  },
+  "35": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text makes a few minor changes.  \"Guardians\" becomes \"guards,\" which is a reasonable synonym. \"Disappeared\" becomes \"disclosed,\" which alters the meaning slightly but doesn't drastically change the overall sense.  \"Thirst\" is misspelled as \"first.\" These are minor inaccuracies; the overall meaning is preserved.",
+    "score": 4
+  },
+  "36": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is almost identical to the expected text. The only difference is capitalization, which is a minor issue.",
+    "score": 4
+  },
+  "37": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text adds \"and career,\" which is not present in the expected text.  While this isn't factually incorrect (Byron did have a career), it's an addition and therefore a deviation from the original.  The core information is preserved, making it a minor issue.",
+    "score": 4
+  },
+  "38": {
+    "output": "[NUMERIC SCORE] 5\nThe generated text is identical to the expected text.",
+    "score": 5
+  },
+  "39": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors.  The year is incorrect (1821 instead of 1812), some words are misspelled or incorrectly used (\"certcliri,\" \"merchants\" instead of \"merchantmen\", \"walked a ramble,\" \"mansion\" instead of \"man,\" \"Millylene\"), and there's a significant alteration of meaning in one sentence (\"He engaged me as a pilot, and would have taken me with him; but I did not choose to marry Millylene\"). While the overall meaning is preserved, these errors make the quality less than perfect.",
+    "score": 3
+  },
+  "40": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the same information as the expected text.  However, there are a few minor inaccuracies: \"6 bedroom\" instead of \"bedroom,\" \"wooden tables\" instead of \"marble tables,\" \"myrtle tree\" instead of \"myrtle,\" \"reclining pose\" instead of \"leaning posture,\" \"except for one painting\" which is contradictory to the rest of the description, and \"Racine\" instead of \"Rousseau.\"  These are relatively small deviations that don't significantly alter the meaning or understanding of the passage.",
+    "score": 4
+  },
+  "41": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is very close to the expected text.  There are only a few minor differences:  \"forgotten\" instead of \"forgot,\" \"remove\" instead of \"move,\" \"however, his other ways are very good\" instead of the slightly less formal \"he is otherways very good,\" \"zecchinos\" instead of \"zechines,\" and \"woods\" instead of \"wood\" and  \"do not know\" instead of \"don't know\". These are all minor variations and do not significantly alter the meaning or flow of the text.",
+    "score": 4
+  },
+  "42": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text makes several noticeable errors.  It changes \"paces\" to \"feet,\" \"plinths\" to \"plains,\" and alters the description of the balustrade.  It also misrepresents the location of the Greek's evening activities, changing \"house-tops\" to \"houses\" and implying the houses themselves are furnished for this purpose, rather than just their roofs. While the overall meaning remains similar, these inaccuracies are significant enough to lower the score.",
+    "score": 3
+  },
+  "43": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate and conveys the same information as the expected text.  The only differences are minor: \"small streamlet\" is shortened to \"streamlet\", \"many of his evenings and nights\" is changed to \"many hours of his evenings and nights\", and \"besides Sundays\" is changed to \"except on Sundays\". These are stylistic variations rather than significant errors in meaning.",
+    "score": 4
+  },
+  "44": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has several errors.  While it largely follows the structure of the original, there are numerous word substitutions that change the meaning slightly (e.g., \"determine\" instead of \"be termed,\" \"Calicco\" instead of \"Calcla\", \"notarized's\" instead of \"mountain's,\" \"oak trees\" instead of \"chesnut and palm-trees\").  There are also grammatical errors and a completely nonsensical inclusion of an algebra problem (\"Q: Solve -5*y + 1 = 2 for y\").  The errors are numerous enough to impact readability and understanding, but the overall narrative remains mostly intact.",
+    "score": 3
+  },
+  "45": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is largely accurate, conveying the main ideas and sentiments of the original.  However, there are several minor inaccuracies and slightly altered word choices (e.g., \"wanderer\" instead of \"rambler,\" \"characteristics\" instead of \"eccentricities,\" \"Calcutta\" instead of \"Calcla,\" \"corrected\" instead of \"consoled,\" \"recapture\" instead of \"read,\" \"himself\" instead of \"him,\" \"pleading\" instead of \"pleasing,\" and a few others).  These minor deviations don't significantly change the overall meaning but detract slightly from the accuracy and stylistic consistency of the original.",
+    "score": 4
+  },
+  "46": {
+    "output": "[NUMERIC SCORE] 4\n\nThe generated text is essentially the same as the expected text, but adds unnecessary capitalization and a period.  This is a minor stylistic change, not a significant error in meaning or accuracy.",
+    "score": 4
+  },
+  "47": {
+    "output": "[NUMERIC SCORE] 3\n\nThe generated text has some errors.  While it correctly identifies \"Printer\", \"Crown-court\", and \"Fleet-street\", it misspells \"Gillet\" as \"Greet\" and changes the capitalization of \"Court\" and \"Street\". These are noticeable mistakes that alter the proper name slightly.",
+    "score": 3
+  }
+}

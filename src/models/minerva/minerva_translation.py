@@ -166,7 +166,7 @@ def process_ocr_file(correction_model, input_file, gold_file, output_file, model
         with open(output_file, "w", encoding="utf-8") as f_out:
             json.dump(results, f_out, ensure_ascii=False, indent=2)
 
-def translate_with_minerva(file_name, correction_model="minerva", print_result=False, finetuned=False):
+def correct_with_minerva(file_name, correction_model="minerva", print_result=False, finetuned=False):
 
     input_path = f"datasets/eng/{file_name}_ocr.json"
     gold_path = f"datasets/eng/{file_name}_clean.json"

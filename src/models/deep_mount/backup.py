@@ -2,16 +2,20 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 from spellchecker import SpellChecker
 import re
 import string
+import json
+from tqdm import tqdm
 
-model_path = "./ocr_corrector_finetuned"
-tokenizer = AutoTokenizer.from_pretrained(model_path)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
+def init():
+    model_path = "lorebenucci/DeepReworkedMount"
+    #model_path = "DeepMount00/OCR_corrector"
+    #model_path = "yelpfeast/byt5-base-english-ocr-correction"
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
+    ocr_corrector = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
+    spell = SpellChecker(language='en')
+    return model_path,tokenizer,model,ocr_corrector,spell
 
-ocr_corrector = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
-
-spell = SpellChecker()
-
-def correct_spelling(text):
+def correct_spelling(text, spell):
     words = text.split()
     corrected_words = []
     for word in words:
@@ -42,32 +46,24 @@ def clean_text(text):
 
     return text
 
-def ocr_fix(text: str) -> str:
+def ocr_fix(ocr_corrector,text: str, spell) -> str:
     input_text = f"{text}"
     model_output = ocr_corrector(input_text, max_new_tokens=256)[0]['generated_text']
-    corrected = correct_spelling(model_output)
+    corrected = correct_spelling(model_output, spell)
 
     cleaned = clean_text(corrected)
     return cleaned
 
-
-
-
-import json
-from tqdm import tqdm
-
-def correggiDataset(FILE_NAME):
-    
-    
-    
+def correct_with_deep_mount(FILE_NAME, print_result=False):
+    model_path, tokenizer, model, ocr_corrector, spell = init()
     file = FILE_NAME
     datapath = "datasets/eng/"
 
     input_path = datapath + file + "_ocr.json"
     gold_path = datapath + file + "_clean.json"
-    output_path = datapath + "corrections/DeepMount/" + file + ".json"
-    
-    
+    output_path = datapath + "corrections/deep_mount/" + file + ".json"
+
+
     # Carica file OCR e GOLD
     with open(input_path, "r", encoding="utf-8") as f:
         ocr_data = json.load(f)
@@ -82,7 +78,7 @@ def correggiDataset(FILE_NAME):
         gold_text = gold_data.get(key, "")
 
         # Correggi il testo OCR con il tuo modello+spellchecker
-        correction = ocr_fix(ocr_text)
+        correction = ocr_fix(ocr_corrector,ocr_text, spell)
 
         # Aggiungi il record alla lista
         dataset_corretto.append({
@@ -91,16 +87,13 @@ def correggiDataset(FILE_NAME):
             "correction": correction
         })
 
+        if print_result:
+            print(f"\nOCR:        {ocr_text}")
+            print(f"Gold:       {gold_text}")
+            print(f"Correction: {correction}\n")
+
     # Salva su file
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(dataset_corretto, f, indent=2, ensure_ascii=False)
 
-
-
-
-
-
-    print(f"✅ Dataset corretto salvato in: {output_path}")
-
-
-correggiDataset("the_vampyre")
+    print(f"Dataset saved in: {output_path}")
