@@ -1,50 +1,6 @@
 import json
 from rouge_score import rouge_scorer
 
-#==== ROUGE FUNCTIONS ========
-def rouge_1(reference, prediction):
-    scorer = rouge_scorer.RougeScorer(['rouge1'], use_stemmer=True)
-    return scorer.score(reference, prediction)['rouge1'].fmeasure
-
-def rouge_2(reference, prediction):
-    scorer = rouge_scorer.RougeScorer(['rouge2'], use_stemmer=True)
-    return scorer.score(reference, prediction)['rouge2'].fmeasure
-
-def rouge_l(reference, prediction):
-    scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
-    return scorer.score(reference, prediction)['rougeL'].fmeasure
-
-def build_rouges(FILE_NAME, correction_model):
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
-    INPUT_PATH = BASE_PATH + FILE_NAME + ".json"
-    OUTPUT_PATH = BASE_PATH + FILE_NAME + "_rouges.json"
-
-    with open(INPUT_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    #data = list(data.values())
-    key = "correction"
-
-    rouges = {}
-
-    for i, item in enumerate(data):
-        reference = item.get("gold", "")
-        prediction = item.get(key, "")
-
-        rouge1 = rouge_1(reference, prediction)
-        rouge2 = rouge_2(reference, prediction)
-        rougel = rouge_l(reference, prediction)
-
-        rouges[str(i)] = {
-            "rouge-1": round(rouge1, 4),
-            "rouge-2": round(rouge2, 4),
-            "rouge-l": round(rougel, 4)
-        }
-
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(rouges, f, ensure_ascii=False, indent=2)
-
-    print(f"ROUGE scores saved to: {OUTPUT_PATH}")
 
 #==== Human annotation ========
 def annotate_human_scores(FILE_NAME, correction_model):
