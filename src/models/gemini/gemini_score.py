@@ -131,3 +131,6 @@ def gemini_score(FILE_NAME, correction_model):
 
     log(f"Evaluation file saved: {JUDGE_PATH}")
     log("|====================================")
+
+
+
