@@ -7,6 +7,7 @@ from .models import (
 )
 from .utils import (
     plot_confusion_matrix,
+    plot_confusion_matrices,
     annotate_human_scores,
     build_rouges,
     accuracy_correlation,
@@ -23,6 +24,7 @@ __all__ = [
     "correct_with_llama4",
     "correct_with_t5",
     "plot_confusion_matrix",
+    "plot_confusion_matrices",
     "annotate_human_scores",
     "build_rouges",
     "accuracy_correlation",
