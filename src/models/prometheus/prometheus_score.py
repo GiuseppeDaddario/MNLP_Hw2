@@ -125,7 +125,8 @@ def prometheus_score(FILE_NAME, correction_model):
     judge_output_data = {}
 
     log("|====================================")
-    log(f"Evaluating with Prometheus...")
+    log(f"\033[34mEvaluating with Prometheus...\033[0m")
+
 
     for i, entry in enumerate(data, start=1):
         correction = entry[key]
@@ -155,6 +156,6 @@ def prometheus_score(FILE_NAME, correction_model):
     with open(JUDGE_PATH, "w", encoding="utf-8") as f:
         json.dump(judge_output_data, f, ensure_ascii=False, indent=2)
 
-    log(f"Salvato file di valutazione: {JUDGE_PATH}")
+    log(f"| \033[32mSalvato file di valutazione: {JUDGE_PATH}\033[0m")
     log("|====================================")
     log("\n")

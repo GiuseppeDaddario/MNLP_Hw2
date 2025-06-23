@@ -38,7 +38,7 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
 
         print("\n")
         print("|====================================")
-        print(f"| \033[93mKAPPA CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
+        print(f"| \033[34mKAPPA CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
         print("|------------------------------------")
         print("| Remember that -1 < C-K < 1: \n| -- 0 means casual agreement\n| -- 1 means complete agreement\n| -- -1 means complete disagreement")
         print("|------------------------------------")
@@ -89,7 +89,7 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
 
         print("\n")
         print("|====================================")
-        print(f"| \033[93mACCURACY CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
+        print(f"| \033[34mACCURACY CORRELATION:\033[0m\n| translator: {correction_model}\n| judge: {evaluation_model}")
         print("|------------------------------------")
         print("| Defined as: \n| Matching human-machine scores/total")
         print("|------------------------------------")

@@ -63,7 +63,7 @@ def process_ocr_file(input_file, gold_file, output_file, print_result=False):
 
     print("\n")
     print("|========================================")
-    print("| \033[93mTranslating with llama4 ...\033[0m")
+    print("| \033[34mTranslating with llama4 ...\033[0m")
 
     for key in ocr_data:
         ocr_text = ocr_data.get(key, "")

@@ -75,7 +75,8 @@ def capitalize_first_letter(text):
 def correct_with_t5(FILE_NAME, print_result=True):
     spell, ocr_corrector, tokenizer = init()
     print("\n|========================================")
-    print("| \033[93mTranslating with t5 ...\033[0m")
+    print("| \033[34mTranslating with t5 ...\033[0m")
+
 
     input_path = f"datasets/eng/{FILE_NAME}_ocr.json"
     gold_path = f"datasets/eng/{FILE_NAME}_clean.json"

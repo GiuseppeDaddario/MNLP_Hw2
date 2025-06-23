@@ -72,7 +72,7 @@ def gemini_score(FILE_NAME, correction_model):
     key_output = "gemini_score"
 
     log("|====================================")
-    log("Evaluating with Gemini...")
+    log("| \033[34mEvaluating with Gemini...\033[0m")
 
     judge_output_data = {}  # Dizionario, chiave: indice come stringa
 
