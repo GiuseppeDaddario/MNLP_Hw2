@@ -70,6 +70,9 @@ def gemini_score(FILE_NAME, correction_model):
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    if not isinstance(data, list):
+        data = list(data.values())
+
     key_input = "correction"
     key_output = "gemini_score"
 

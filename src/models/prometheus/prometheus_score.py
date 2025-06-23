@@ -117,7 +117,9 @@ def prometheus_score(FILE_NAME, correction_model):
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    #data = list(data.values())
+    if not isinstance(data, list):
+        data = list(data.values())
+
     key = "correction"
     key2 = "prometheus_score"
 
