@@ -6,7 +6,7 @@ from src import correct_with_llama4, correct_with_minerva, correct_with_t5
 from src import gemini_score, prometheus_score, annotate_human_scores, build_output_file
 
 ## Stats
-from src import kappa_correlation,accuracy_correlation, plot_confusion_matrix, build_rouges
+from src import kappa_correlation,accuracy_correlation, plot_confusion_matrix, build_rouges,plot_confusion_matrices
 
 # WATCH OUT! this is just the name of the file without extension. it MUST be into the datasets folder.
 # The output will be generated into /datasets/correction with the same file_name and extension.
@@ -98,11 +98,15 @@ FILE_NAME = "the_vampyre"
 #
 #
 # ## -------- CONFUSION MATRICES -------- #
-plot_confusion_matrix("the_vampyre", "llama4", "gemini", normalize=True)
-plot_confusion_matrix("the_vampyre", "llama4", "prometheus", normalize=True)
+#plot_confusion_matrix("the_vampyre", "llama4", "gemini", normalize=True)
+#plot_confusion_matrix("the_vampyre", "llama4", "prometheus", normalize=True)
 #
 # plot_confusion_matrix("finetuning", "smaLLM", "gemini", normalize=True)
 # plot_confusion_matrix("finetuning", "smaLLM", "prometheus", normalize=True)
 #
 # plot_confusion_matrix("finetuning", "minerva", "gemini", normalize=True)
 # plot_confusion_matrix(FILE_NAME, "minerva", "prometheus", normalize=True)
+
+plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
+plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
+plot_confusion_matrices("the_vampyre", "t5", normalize=True)

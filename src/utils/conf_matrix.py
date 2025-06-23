@@ -80,5 +80,6 @@ def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="
 
     plt.suptitle(f"Confusion Matrices for '{correction_model}'", fontsize=14)
     plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.savefig(f"./plots/confusion_matrices_{correction_model}.pdf",format='pdf', bbox_inches='tight',dpi=300)
     plt.show()
 
