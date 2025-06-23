@@ -32,8 +32,12 @@ def extract_numeric_score(text):
 def init_gemini():
     API_KEY = os.environ.get("GEMINI_KEY", "")
     if not API_KEY:
-        raise EnvironmentError("GEMINI_API_KEY non impostata nelle variabili d'ambiente.")
-    genai.configure(api_key=API_KEY)
+        raise EnvironmentError("GEMINI_KEY non impostata nelle variabili d'ambiente.")
+    try:
+        genai.configure(api_key=API_KEY)
+        log("API key for Gemini configured successfully.")
+    except Exception as e:
+        log(f"Error configuring Gemini API: {e}")
     model = genai.GenerativeModel("gemini-1.5-flash-latest")
     return model
 
