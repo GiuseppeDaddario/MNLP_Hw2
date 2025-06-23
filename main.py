@@ -1,15 +1,4 @@
 
-
-
-
-#Benucci Lorenzo, D'Addario Giuseppe, La Sapienza University of Rome, 2025.
-#####################################################################################
-##### MAIN FUNCTION ACTUALLY MOVED ON COLAB. THIS ONE IS USED ONLY IN LOCAL ENV #####
-#####################################################################################
-#https://colab.research.google.com/drive/1ixKbLo5EVUr1gbbYYy1jvVuDGWIKiHK7?usp=sharing
-
-
-
 ## Translations
 from src import correct_with_llama4, correct_with_minerva, correct_with_t5
 
@@ -92,19 +81,28 @@ FILE_NAME = "the_vampyre"
 #kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
-#
+#kappa_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
+
+
 # kappa_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
-#
+#kappa_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
+
 #
 # accuracy_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","gemini",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
 #
 # accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
 # # ------------------------------#
 #
 #
@@ -121,3 +119,5 @@ FILE_NAME = "the_vampyre"
 #plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
 #plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
 #plot_confusion_matrices("the_vampyre", "t5", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva_finetuned_llima", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva_finetuned_post_ocr", normalize=True)
