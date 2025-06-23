@@ -1,21 +1,21 @@
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from datetime import datetime
 import json
 import os
 import re
+from src.utils.logger import log
 
-def log(msg):
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
-
-def load_minerva_model(correction_model, finetuned=True):
+#==== LOADING MINERVA MODEL =====
+def load_minerva_model(correction_model, finetuned=True, online=True):
     # Checking if running in Google Colab
     try:
         import google.colab
         is_colab = True
     except ImportError:
         is_colab = False
+    if online: #Just to be sure in case of local env on colab
+        is_colab = True
 
     HF_BASE_MODEL_NAME = "sapienzanlp/Minerva-7B-instruct-v1.0"
     LOCAL_BASE_MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
@@ -53,7 +53,10 @@ def load_minerva_model(correction_model, finetuned=True):
     )
 
     return model, tokenizer
+#=======================
 
+
+#==== MINERVA PROMPT MAKER =====
 def make_prompt(correction_model, ocr_text):
     if correction_model == "minerva" or correction_model == "minerva_finetuned_llima":
         return (
@@ -75,8 +78,10 @@ def make_prompt(correction_model, ocr_text):
             "Corrected:"
         )
     return None
+#=======================
 
 
+#==== SINGLE GENERATION =====
 @torch.inference_mode()
 def ask_minerva(prompt, model, tokenizer):
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -96,12 +101,17 @@ def ask_minerva(prompt, model, tokenizer):
         return first_line, decoded
 
     return decoded.strip().split("\n")[0].strip(), decoded
+#=======================
 
 
+#==== TEXT PREPROCESSING =====
 def split_into_sentences(text):
-    # Divide le frasi usando il punto seguito da spazio o fine stringa
+    # Divide with the point followed by a space or newline
     return [s.strip() for s in re.split(r'(?<=[.])\s+', text) if s.strip()]
+#=======================
 
+
+#==== PROCESSING DATASET =====
 def process_ocr_file(correction_model, input_file, gold_file, output_file, model, tokenizer, force_indices=None, print_result=False):
     with open(input_file, "r", encoding="utf-8") as f_in:
         ocr_data = json.load(f_in)
@@ -109,21 +119,20 @@ def process_ocr_file(correction_model, input_file, gold_file, output_file, model
     with open(gold_file, "r", encoding="utf-8") as f_gold:
         gold_data = json.load(f_gold)
 
-    # Carica output esistente, se disponibile
+    # Load output if exists, for skipping already processed keys
     if os.path.exists(output_file):
         with open(output_file, "r", encoding="utf-8") as f_out:
             results = json.load(f_out)
     else:
         results = {}
-
     keys = list(ocr_data.keys())
 
-    # Applica filtro su indici forzati
+    # Control for forced indices
     if force_indices is not None:
         keys = [keys[i] for i in force_indices if i < len(keys)]
 
     for i, key in enumerate(keys):
-        # Salta se già processato (solo se non forzato)
+        # Skip if already processed and not forced
         if key in results and (force_indices is None or i not in force_indices):
             log(f"[{i+1}/{len(keys)}] Skipping already processed key '{key}'")
             continue
@@ -162,21 +171,24 @@ def process_ocr_file(correction_model, input_file, gold_file, output_file, model
             "minerva_correction": final_correction
         }
 
-        # Salva dopo ogni iterazione per sicurezza
+        #==== SAVING ====
         with open(output_file, "w", encoding="utf-8") as f_out:
             json.dump(results, f_out, ensure_ascii=False, indent=2)
+        #================
 
+
+#==== WRAPPER FUNCTION =====
 def correct_with_minerva(file_name, correction_model="minerva", print_result=False, finetuned=False):
 
     input_path = f"datasets/eng/{file_name}_ocr.json"
     gold_path = f"datasets/eng/{file_name}_clean.json"
     output_path = f"datasets/eng/corrections/{correction_model}/{file_name}.json"
 
-
     log("Loading Minerva model...")
-    model, tokenizer = load_minerva_model(correction_model,finetuned=finetuned)
+    model, tokenizer = load_minerva_model(correction_model,finetuned=finetuned, online=True)
 
     log("Starting OCR correction...")
     process_ocr_file(correction_model, input_path, gold_path, output_path, model, tokenizer, force_indices=None, print_result=print_result)
 
-    log("✅ Done!")
+    log(f"Corrections saved to:{output_path}")
+#=============================
