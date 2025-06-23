@@ -1,8 +1,7 @@
 import json
 from src.utils.rouge_analysis import rouge_1, rouge_2, rouge_l
 
-
-#==== Human annotation ========
+#==== HUMAN ANNOTATIONS ========
 def annotate_human_scores(FILE_NAME, correction_model):
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
@@ -42,3 +41,5 @@ def annotate_human_scores(FILE_NAME, correction_model):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     print("\n  \033[92mAnnotations complete and saved!\033[0m")
+
+#==========================================

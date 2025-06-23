@@ -20,6 +20,7 @@ def rouge_l(reference, prediction):
 #=============================
 
 
+#==== BUILD ROUGE SCORES ===============
 def build_rouges(FILE_NAME, correction_model):
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     INPUT_PATH = BASE_PATH + FILE_NAME + ".json"
@@ -49,19 +50,20 @@ def build_rouges(FILE_NAME, correction_model):
         json.dump(rouges, f, ensure_ascii=False, indent=2)
 
     print(f"ROUGE scores saved to: {OUTPUT_PATH}")
+#==============================
+
 
 #==== GENERATE PLOTS ===============
 def analyze_dataset(FILE_NAME, correction_model, save=False):
-    # Carica i dati del dataset (gold, correction, human_score)
+    #==== LOADING DATA ====
     data_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}.json"
     rouge_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}_rouges.json"
 
     with open(data_file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
-
-    # Carica i ROUGE dal file esterno
     with open(rouge_file_path, "r", encoding="utf-8") as f:
         rouge_data = json.load(f)
+    #========================
 
     rouge1_scores = []
     rouge2_scores = []
@@ -82,10 +84,9 @@ def analyze_dataset(FILE_NAME, correction_model, save=False):
             rouge2_scores.append(np.nan)
             rougel_scores.append(np.nan)
 
-        # human_score può essere mancante
         human_scores.append(item.get("human_score", np.nan))
 
-    # Converti in numpy arrays
+    # Numpy arrays
     rouge1_scores = np.array(rouge1_scores)
     rouge2_scores = np.array(rouge2_scores)
     rougel_scores = np.array(rougel_scores)
@@ -108,9 +109,13 @@ def analyze_dataset(FILE_NAME, correction_model, save=False):
     plt.title(f"ROUGE scores distribution for {correction_model}")
     plt.ylabel("Score")
 
+    #==== SAVING ====
     if save:
         output_path = f"./plots/rouge_boxplot_{correction_model}.png"
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         print(f"Plot saved in: {output_path}")
+    #================
 
     plt.show()
+
+#===========================

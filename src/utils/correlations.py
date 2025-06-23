@@ -1,17 +1,7 @@
-
-## IMPORTS ##
 from sklearn.metrics import cohen_kappa_score
 import json
-#############
 
-
-
-
-######################################
-###      KAPPA CORRELATION         ###
-######################################
-
-
+#==== KAPPA CORRELATION ===============
 def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_results=True):
     
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
@@ -47,22 +37,10 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
         print("\n")
 
     return kappa
-
-#######################################
-#######################################
+#=======================================
 
 
-
-
-
-
-
-
-
-######################################
-###      ACCURACY CORRELATION      ###
-######################################
-
+#==== ACCURACY CORRELATION =============
 def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_results=True):
     
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
@@ -80,7 +58,7 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
             human_scores.append(item[f"human_score"])
             machine_scores.append(item[key])
         else:
-            print("Missing 'human_score' or 'machine_score' in item:", item)
+            print("Missing 'human_score' in item:", item)
     
     matches = [1 if h == m else 0 for h, m in zip(human_scores, machine_scores)]
     accuracy = sum(matches) / len(matches) if matches else 0
@@ -99,9 +77,7 @@ def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_re
         print("\n")
 
     return accuracy
-
-#######################################
-#######################################
+#=========================================
 
 
 

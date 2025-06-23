@@ -1,4 +1,15 @@
 
+
+
+
+#Benucci Lorenzo, D'Addario Giuseppe, La Sapienza University of Rome, 2025.
+#####################################################################################
+##### MAIN FUNCTION ACTUALLY MOVED ON COLAB. THIS ONE IS USED ONLY IN LOCAL ENV #####
+#####################################################################################
+#https://colab.research.google.com/drive/1ixKbLo5EVUr1gbbYYy1jvVuDGWIKiHK7?usp=sharing
+
+
+
 ## Translations
 from src import correct_with_llama4, correct_with_minerva, correct_with_t5
 
@@ -107,6 +118,6 @@ FILE_NAME = "the_vampyre"
 # plot_confusion_matrix("finetuning", "minerva", "gemini", normalize=True)
 # plot_confusion_matrix(FILE_NAME, "minerva", "prometheus", normalize=True)
 
-plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
-plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
-plot_confusion_matrices("the_vampyre", "t5", normalize=True)
+#plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
+#plot_confusion_matrices("the_vampyre", "t5", normalize=True)

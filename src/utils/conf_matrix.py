@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
+#==== PLOT ONE CONF MATRIX ====
 def plot_confusion_matrix(FILE_NAME, correction_model, evaluation_model, normalize=False, cmap="Blues"):
     
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
@@ -34,8 +35,10 @@ def plot_confusion_matrix(FILE_NAME, correction_model, evaluation_model, normali
     plt.title(f"Evaluating {correction_model} translation: \n Human score vs {evaluation_model}")
     plt.tight_layout()
     plt.show()
+#=====================
 
 
+#==== PLOT TWO CONF MATRICES TOGETHER ====
 def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="Blues"):
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
@@ -59,11 +62,11 @@ def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="
 
         return human_scores, machine_scores
 
-    # Estrai i punteggi per entrambi i modelli
+    # Extract scores for both models
     h1, m1 = extract_scores(evaluation_model_1)
     h2, m2 = extract_scores(evaluation_model_2)
 
-    # Crea la figura con due subplot affiancati
+    # Build confusion matrices
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     for ax, human_scores, machine_scores, eval_model in zip(
@@ -82,4 +85,4 @@ def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="
     plt.tight_layout(rect=[0, 0, 1, 0.95])
     plt.savefig(f"./plots/confusion_matrices_{correction_model}.pdf",format='pdf', bbox_inches='tight',dpi=300)
     plt.show()
-
+#=====================
