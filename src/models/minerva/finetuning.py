@@ -111,7 +111,7 @@ if FINETUNING == "LIMA":
 
 elif FINETUNING == "POST_OCR":
     log("Loading Post-OCR dataset from disk...")
-    combined = load_from_disk("datasets/post_ocr_correction")
+    combined = load_from_disk("datasets/post_ocr_correction") ## DOWNLOADED ON LEONARDO; TOO HEAVY TO LOAD ON GITHUB
     #combined = combined.select(range(10)) #DEBUG
     def map_to_prompt(example):
         return {

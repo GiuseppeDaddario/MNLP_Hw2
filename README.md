@@ -14,6 +14,9 @@ The code both for re-generating the corrections and analyzing the results is ava
 
 The repository is organized into the following main components:
 
+- **`report.pdf`**: The report of the project.
+
+
 - **`CINECA/`**: Contains files and scripts used to run experiments and generations on the CINECA cluster.
 
 - **`outputs/`**: Contains output files to be delivered for the homework. Files are organized by model.
@@ -27,10 +30,10 @@ The repository is organized into the following main components:
 - **`plots/`**: Contains generated plots to be included in the report
 
 - **`datasets/`**: Contains all datasets used in the project, organized by language.
-    - `eng/`: English datasets.
-        - `corrections/`: Model outputs and corrections used for evaluation, grouped by model (`t5`, `t5`, `minerva`, `minerva_finetuned_lima`, `minerva_finetuned_post_ocr`).
-        - `lima/`: LIMA dataset for the finetuning of Minerva.
-    - `ita/`: Italian dataset (currently not used).
+  - `corrections/`: Model outputs and corrections used for evaluation, grouped by model (`t5`, `llama4`, `minerva`, `minerva_finetuned_lima`, `minerva_finetuned_post_ocr`).
+  - `lima/`: LIMA dataset for the finetuning of Minerva.
+  - `post_ocr_corrections/`: This directory actually doesn't exist here on github, because the dataset is too big to be uploaded. It was used after downloading it locally on Leonardo supercomputer.
+
 
 - **`src/`**: Source code of the project.
     - `models/`: Implementations and wrappers for the models used (`t5`, `gemini`, `llama4`, `minerva`, `prometheus`).
