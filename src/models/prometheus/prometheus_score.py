@@ -109,7 +109,7 @@ def prometheus_score(FILE_NAME, correction_model):
 
     groupname = "C0rr3tt0r1_4ut0m4t1c1" #for the output file to deliver
     evaluation_model = "prometheus"
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
     JUDGE_PATH = f"outputs/{correction_model}/{groupname}-hw2_ocr-{evaluation_model}.json"
 

@@ -103,8 +103,8 @@ model = get_peft_model(model, peft_config)
 # --- Load and prepare datasets ---
 if FINETUNING == "LIMA":
     log("Loading LIMA dataset from disk...")
-    #ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
-    #ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
+    #ds1 = load_ocr_dataset("./datasets/finetuning.json")
+    #ds2 = load_ocr_dataset("./datasets/human_data.json")
     ds3 = load_lima_dataset("./datasets/lima")
     #combined = concatenate_datasets([ds1, ds2, ds3])
     combined = ds3

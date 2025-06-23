@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix
 #==== PLOT ONE CONF MATRIX ====
 def plot_confusion_matrix(FILE_NAME, correction_model, evaluation_model, normalize=False, cmap="Blues"):
     
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
 
     with open(FILE_PATH, "r", encoding="utf-8") as f:
@@ -40,7 +40,7 @@ def plot_confusion_matrix(FILE_NAME, correction_model, evaluation_model, normali
 
 #==== PLOT TWO CONF MATRICES TOGETHER ====
 def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="Blues"):
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
     evaluation_model_1 = "gemini"
     evaluation_model_2 = "prometheus"

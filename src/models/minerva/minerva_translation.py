@@ -180,9 +180,9 @@ def process_ocr_file(correction_model, input_file, gold_file, output_file, model
 #==== WRAPPER FUNCTION =====
 def correct_with_minerva(file_name, correction_model="minerva", print_result=False, finetuned=False):
 
-    input_path = f"datasets/eng/{file_name}_ocr.json"
-    gold_path = f"datasets/eng/{file_name}_clean.json"
-    output_path = f"datasets/eng/corrections/{correction_model}/{file_name}.json"
+    input_path = f"datasets/{file_name}_ocr.json"
+    gold_path = f"datasets/{file_name}_clean.json"
+    output_path = f"datasets/corrections/{correction_model}/{file_name}.json"
 
     log("Loading Minerva model...")
     model, tokenizer = load_minerva_model(correction_model,finetuned=finetuned, online=True)

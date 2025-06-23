@@ -3,7 +3,7 @@ from src.utils.rouge_analysis import rouge_1, rouge_2, rouge_l
 
 #==== HUMAN ANNOTATIONS ========
 def annotate_human_scores(FILE_NAME, correction_model):
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
 
     with open(FILE_PATH, "r", encoding="utf-8") as f:

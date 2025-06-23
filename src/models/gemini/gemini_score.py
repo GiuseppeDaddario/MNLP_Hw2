@@ -65,7 +65,7 @@ def gemini_ask_score(original, reference, correction, model):
 def gemini_score(FILE_NAME, correction_model):
     model = init_gemini()
 
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = os.path.join(BASE_PATH, f"{FILE_NAME}.json")
     groupname = "C0rr3tt0r1_4ut0m4t1c1"
     evaluation_model = "gemini"

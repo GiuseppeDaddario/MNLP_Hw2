@@ -85,9 +85,9 @@ def correct_with_t5(FILE_NAME, print_result=True):
     print("\n|========================================")
     print("| \033[34mTranslating with t5 ...\033[0m")
 
-    input_path = f"datasets/eng/{FILE_NAME}_ocr.json"
-    gold_path = f"datasets/eng/{FILE_NAME}_clean.json"
-    output_path = f"datasets/eng/corrections/t5/{FILE_NAME}.json"
+    input_path = f"datasets/{FILE_NAME}_ocr.json"
+    gold_path = f"datasets/{FILE_NAME}_clean.json"
+    output_path = f"datasets/corrections/t5/{FILE_NAME}.json"
 
     with open(input_path, "r", encoding="utf-8") as f_in:
         ocr_data = json.load(f_in)

@@ -5,7 +5,7 @@ import os
 def build_output_file(FILE_NAME, correction_model):
     groupname = "C0rr3tt0r1_4ut0m4t1c1"
     JUDGE_PATH = f"outputs/{correction_model}/{groupname}-hw2_ocr-{correction_model}.json"
-    CORRECTION_PATH = f"datasets/eng/corrections/{correction_model}/{FILE_NAME}.json"
+    CORRECTION_PATH = f"datasets/corrections/{correction_model}/{FILE_NAME}.json"
 
     # Load the JSON data
     with open(CORRECTION_PATH, "r", encoding="utf-8") as f:

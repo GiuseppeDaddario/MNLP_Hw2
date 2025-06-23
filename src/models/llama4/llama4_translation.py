@@ -104,7 +104,7 @@ def process_ocr_file(input_file, gold_file, output_file, print_result=False):
 #==== WRAPPER FUNCTION ====
 def correct_with_llama4(file_name, print_result=False):
     file = file_name
-    datapath = "datasets/eng/"
+    datapath = "datasets/"
 
     input_path = datapath + file + "_ocr.json"
     gold_path = datapath + file + "_clean.json"

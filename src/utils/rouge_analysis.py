@@ -22,7 +22,7 @@ def rouge_l(reference, prediction):
 
 #==== BUILD ROUGE SCORES ===============
 def build_rouges(FILE_NAME, correction_model):
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     INPUT_PATH = BASE_PATH + FILE_NAME + ".json"
     OUTPUT_PATH = BASE_PATH + FILE_NAME + "_rouges.json"
 
@@ -56,8 +56,8 @@ def build_rouges(FILE_NAME, correction_model):
 #==== GENERATE PLOTS ===============
 def analyze_dataset(FILE_NAME, correction_model, save=False):
     #==== LOADING DATA ====
-    data_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}.json"
-    rouge_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}_rouges.json"
+    data_file_path = f"datasets/corrections/{correction_model}/{FILE_NAME}.json"
+    rouge_file_path = f"datasets/corrections/{correction_model}/{FILE_NAME}_rouges.json"
 
     with open(data_file_path, "r", encoding="utf-8") as f:
         data = json.load(f)

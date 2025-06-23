@@ -4,7 +4,7 @@ import json
 #==== KAPPA CORRELATION ===============
 def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_results=True):
     
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
 
     with open(FILE_PATH, "r", encoding="utf-8") as f:
@@ -43,7 +43,7 @@ def kappa_correlation(FILE_NAME, correction_model, evaluation_model, print_resul
 #==== ACCURACY CORRELATION =============
 def accuracy_correlation(FILE_NAME, correction_model, evaluation_model, print_results=True):
     
-    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    BASE_PATH = f"datasets/corrections/{correction_model}/"
     FILE_PATH = BASE_PATH + FILE_NAME + ".json"
 
     with open(FILE_PATH, "r", encoding="utf-8") as f:
