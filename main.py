@@ -81,19 +81,28 @@ FILE_NAME = "the_vampyre"
 #kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
-#
+kappa_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
+
+
 # kappa_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
-#
+kappa_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
+
 #
 # accuracy_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","gemini",print_results=True)
+accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
 #
 # accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
+accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
 # # ------------------------------#
 #
 #
@@ -107,6 +116,8 @@ FILE_NAME = "the_vampyre"
 # plot_confusion_matrix("finetuning", "minerva", "gemini", normalize=True)
 # plot_confusion_matrix(FILE_NAME, "minerva", "prometheus", normalize=True)
 
-plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
-plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
-plot_confusion_matrices("the_vampyre", "t5", normalize=True)
+#plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
+#plot_confusion_matrices("the_vampyre", "t5", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva_finetuned_llima", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva_finetuned_post_ocr", normalize=True)

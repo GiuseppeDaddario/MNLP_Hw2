@@ -20,7 +20,7 @@ def log(msg):
 
 def preprocess_text(text):
     # sostituzioni comuni OCR + spazi dopo punteggiatura se mancanti
-    text = text.replace('1', 'i').replace('0', 'o').replace('4', 'a')
+    #text = text.replace('1', 'i').replace('0', 'o').replace('4', 'a') ## DA TOGLIERE!
     text = re.sub(r'([.,;:!?])([^\s])', r'\1 \2', text)
     text = re.sub(r'[^\x00-\x7F]+', '', text)  # caratteri non ascii
     text = re.sub(r'\s+', ' ', text)
@@ -40,11 +40,11 @@ def spellcheck_text(text, spell):
     corrected_words = [spellcheck_word(w, spell) for w in words]
     return " ".join(corrected_words)
 
-def split_into_sentences(text):
+def split_into_sentences(text): #Spacy per dividere in frasi
     doc = nlp(text)
     return [sent.text.strip() for sent in doc.sents if sent.text.strip()]
 
-def chunk_sentence_by_tokens(sentence, tokenizer, max_tokens=MAX_TOKENS):
+def chunk_sentence_by_tokens(sentence, tokenizer, max_tokens=MAX_TOKENS): ##divides a sentence into chunks based on token count
     words = sentence.split()
     chunks = []
     current_chunk = []
