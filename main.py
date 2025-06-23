@@ -64,7 +64,7 @@ FILE_NAME = "the_vampyre"
 # # - Human -correction_model is the name of the model to use for translation in:
 # # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
 # annotate_human_scores(FILE_NAME,"llama4")
-annotate_human_scores(FILE_NAME,"t5")
+# annotate_human_scores(FILE_NAME,"t5")
 # annotate_human_scores(FILE_NAME,"minerva")
 # # ------------------------------#
 #
@@ -98,8 +98,8 @@ annotate_human_scores(FILE_NAME,"t5")
 #
 #
 # ## -------- CONFUSION MATRICES -------- #
-# plot_confusion_matrix("finetuning", "llama4", "gemini", normalize=True)
-# plot_confusion_matrix("finetuning", "llama4", "prometheus", normalize=True)
+plot_confusion_matrix("the_vampyre", "llama4", "gemini", normalize=True)
+plot_confusion_matrix("the_vampyre", "llama4", "prometheus", normalize=True)
 #
 # plot_confusion_matrix("finetuning", "smaLLM", "gemini", normalize=True)
 # plot_confusion_matrix("finetuning", "smaLLM", "prometheus", normalize=True)
