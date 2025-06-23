@@ -1,5 +1,5 @@
 import json
-from rouge_score import rouge_scorer
+from src.utils.rouge_analysis import rouge_1, rouge_2, rouge_l
 
 
 #==== Human annotation ========

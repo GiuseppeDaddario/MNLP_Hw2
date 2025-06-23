@@ -17,6 +17,9 @@ def rouge_l(reference, prediction):
     scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
     return scorer.score(reference, prediction)['rougeL'].fmeasure
 
+#=============================
+
+
 def build_rouges(FILE_NAME, correction_model):
     BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
     INPUT_PATH = BASE_PATH + FILE_NAME + ".json"
@@ -27,9 +30,7 @@ def build_rouges(FILE_NAME, correction_model):
 
     #data = list(data.values())
     key = "correction"
-
     rouges = {}
-
     for i, item in enumerate(data):
         reference = item.get("gold", "")
         prediction = item.get(key, "")
@@ -49,8 +50,8 @@ def build_rouges(FILE_NAME, correction_model):
 
     print(f"ROUGE scores saved to: {OUTPUT_PATH}")
 
-
-def analyze_dataset(FILE_NAME, correction_model):
+#==== GENERATE PLOTS ===============
+def analyze_dataset(FILE_NAME, correction_model, save=False):
     # Carica i dati del dataset (gold, correction, human_score)
     data_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}.json"
     rouge_file_path = f"../../datasets/eng/corrections/{correction_model}/{FILE_NAME}_rouges.json"
@@ -90,24 +91,26 @@ def analyze_dataset(FILE_NAME, correction_model):
     rougel_scores = np.array(rougel_scores)
     human_scores = np.array(human_scores)
 
-    print("=== STATISTICHE ROUGE ===")
+    print(f"=== ROUGE STATS {correction_model} ===")
     for name, scores in zip(["ROUGE-1", "ROUGE-2", "ROUGE-L"], [rouge1_scores, rouge2_scores, rougel_scores]):
         print(f"{name}: mean={np.nanmean(scores):.3f}, std={np.nanstd(scores):.3f}, min={np.nanmin(scores):.3f}, max={np.nanmax(scores):.3f}")
 
-    print("\n=== CORRELAZIONI (Spearman) tra ROUGE e punteggi umani ===")
-    # Maschera per filtrare valori validi
+    print(f"\n=== CORRELATIONS ROUGE - HUMAN SCORES {correction_model} ===")
+    # Mask for valid scores
     mask = ~np.isnan(human_scores)
     for name, scores in zip(["ROUGE-1", "ROUGE-2", "ROUGE-L"], [rouge1_scores, rouge2_scores, rougel_scores]):
         valid_mask = mask & ~np.isnan(scores)
         corr, pval = spearmanr(scores[valid_mask], human_scores[valid_mask])
         print(f"{name}: Spearman r = {corr:.3f}, p-value = {pval:.3e}")
 
-    # Boxplot distribuzione ROUGE
+    # Boxplot ROUGE
     plt.boxplot([rouge1_scores, rouge2_scores, rougel_scores], labels=["ROUGE-1", "ROUGE-2", "ROUGE-L"])
-    plt.title(f"ROUGE scores distribution on the dataset {FILE_NAME}, {correction_model}")
+    plt.title(f"ROUGE scores distribution for {correction_model}")
     plt.ylabel("Score")
-    plt.show()
 
-# Esempio di uso (modifica il path al file json):
-if __name__ == "__main__":
-    analyze_dataset("the_vampyre","minerva")
+    if save:
+        output_path = f"./plots/rouge_boxplot_{correction_model}.png"
+        plt.savefig(output_path, dpi=300, bbox_inches='tight')
+        print(f"Plot saved in: {output_path}")
+
+    plt.show()

@@ -7,22 +7,22 @@ from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from datetime import datetime
 from functools import partial
+from src.utils.logger import log
 
-# --- Logging ---
-def log(msg):
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
-# --- Config ---
+#==== CONFIG ====
 FINETUNING = "POST_OCR"
 #MODEL_PATH = "./src/models/minerva/cache/models--sapienzanlp--Minerva-7B-instruct-v1.0/snapshots/d1fc0f0e589ae879c5ac763e0e4206a4d14a3f6d"
-MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima"
-FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_llima_post_ocr"
+MODEL_PATH = "./src/models/minerva/finetuned_minerva_lima"
+FINETUNED_MODEL_PATH = "./src/models/minerva/finetuned_minerva_post_ocr"
 BATCH_SIZE = 3
 EPOCHS = 4
 LR = 2e-5
 MAX_LENGTH = 512
+#================
 
-# --- Prompt template ---
+
+#==== PROMPT ====
 def make_prompt(ocr_text: str) -> str:
     return (
         "You are an OCR correction system.\n"
@@ -35,8 +35,10 @@ def make_prompt(ocr_text: str) -> str:
         f"Sentence: {ocr_text}\n"
         "Corrected:"
     )
+#================
 
-# --- Dataset loaders ---
+
+#==== DATASET LOADING ===
 def load_ocr_dataset(path):
     ds = load_dataset("json", data_files=path)["train"]
     return ds.map(lambda ex: {"instruction": make_prompt(ex["ocr"]), "response": ex["corretto"]}, remove_columns=ds.column_names)
@@ -45,8 +47,10 @@ def load_lima_dataset(path):
     ds = load_from_disk(path)["train"]
     ds = ds.filter(lambda ex: len(ex["conversations"]) >= 2)
     return ds.map(lambda ex: {"instruction": ex["conversations"][0], "response": ex["conversations"][1]}, remove_columns=ds.column_names)
+#=========================
 
-# --- Preprocessing ---
+
+#==== PREPROCESSING ====
 def preprocess(batch, tokenizer):
     full_texts = [
         f"### Instruction:\n{instr}\n\n### Response:\n{resp}"
@@ -55,19 +59,24 @@ def preprocess(batch, tokenizer):
     model_inputs = tokenizer(full_texts, truncation=True, padding="max_length", max_length=512)
     model_inputs["labels"] = model_inputs["input_ids"].copy()
     return model_inputs
+#========================
 
-# --- Collate fn ---
+
+#==== SMART COLLATE ====
 def smart_collate(batch, tokenizer):
     padded = tokenizer.pad(batch, return_tensors="pt")
     labels = padded["labels"]
     padded["labels"] = torch.where(padded["attention_mask"] == 1, labels, -100)
     return padded
+#========================
 
-# --- Accelerator init ---
+
+#==== MAIN =======
+# -- accelerator setup --
 accelerator = Accelerator(mixed_precision="fp16")
 log("Accelerator ready.")
 
-# --- Load tokenizer and model ---
+# -- model and tokenizer loading --
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
@@ -92,8 +101,8 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 
 # --- Load and prepare datasets ---
-if FINETUNING == "LLIMA":
-    log("Loading LLIMA dataset from disk...")
+if FINETUNING == "LIMA":
+    log("Loading LIMA dataset from disk...")
     #ds1 = load_ocr_dataset("./datasets/eng/finetuning.json")
     #ds2 = load_ocr_dataset("./datasets/eng/human_data.json")
     ds3 = load_lima_dataset("./datasets/lima")
@@ -145,4 +154,5 @@ if accelerator.is_main_process:
     model.save_pretrained(FINETUNED_MODEL_PATH)
     tokenizer.save_pretrained(FINETUNED_MODEL_PATH)
 
-log("✅ Finetuning completed.")
+log("Finetuning completed.")
+#=========================== END MAIN

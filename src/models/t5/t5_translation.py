@@ -3,48 +3,36 @@ from spellchecker import SpellChecker
 import spacy
 import json
 import re
-from datetime import datetime
+from src.utils.logger import log
 
+#==== CONFIGURATION ====
 nlp = spacy.load("en_core_web_sm")
 MAX_TOKENS = 100
 MIN_CHUNK_WORDS = 3  # minimo parole per chunk valido
+#=======================
 
+#==== INIT ====
 def init():
     spell = SpellChecker(language='en')
     ocr_corrector = pipeline("text2text-generation", model="yelpfeast/byt5-base-english-ocr-correction")
     tokenizer = AutoTokenizer.from_pretrained("yelpfeast/byt5-base-english-ocr-correction")
     return spell, ocr_corrector, tokenizer
+#===============
 
-def log(msg):
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
-
-def preprocess_text(text):
-    # sostituzioni comuni OCR + spazi dopo punteggiatura se mancanti
-    #text = text.replace('1', 'i').replace('0', 'o').replace('4', 'a') ## DA TOGLIERE!
+#==== PREPROCESSING ====
+def preprocess_text(text): #Common substitutions and cleaning
+    text = text.replace('1', 'i').replace('0', 'o').replace('4', 'a')
     text = re.sub(r'([.,;:!?])([^\s])', r'\1 \2', text)
     text = re.sub(r'[^\x00-\x7F]+', '', text)  # caratteri non ascii
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-def spellcheck_word(word, spell):
-    # Non correggiamo se è punteggiatura o numeri o già corretto
-    if not re.match(r"^[a-zA-Z'-]+$", word):
-        return word
-    correction = spell.correction(word)
-    if correction is None:
-        return word
-    return correction
-
-def spellcheck_text(text, spell):
-    words = text.split()
-    corrected_words = [spellcheck_word(w, spell) for w in words]
-    return " ".join(corrected_words)
-
-def split_into_sentences(text): #Spacy per dividere in frasi
+def split_into_sentences(text): # Split text into sentences using spacy
     doc = nlp(text)
     return [sent.text.strip() for sent in doc.sents if sent.text.strip()]
 
-def chunk_sentence_by_tokens(sentence, tokenizer, max_tokens=MAX_TOKENS): ##divides a sentence into chunks based on token count
+# Chunk sentence into smaller parts based on token count (for tokenizer limits)
+def chunk_sentence_by_tokens(sentence, tokenizer, max_tokens=MAX_TOKENS):
     words = sentence.split()
     chunks = []
     current_chunk = []
@@ -71,12 +59,31 @@ def capitalize_first_letter(text):
     if not text:
         return text
     return text[0].upper() + text[1:]
+#=============================
 
+
+#==== SPELLCHECKING ====
+def spellcheck_word(word, spell):
+    if not re.match(r"^[a-zA-Z'-]+$", word):
+        return word
+    correction = spell.correction(word)
+    if correction is None:
+        return word
+    return correction
+
+def spellcheck_text(text, spell):
+    words = text.split()
+    corrected_words = [spellcheck_word(w, spell) for w in words]
+    return " ".join(corrected_words)
+
+#========================
+
+
+#==== PROCESS THE DATASET ====
 def correct_with_t5(FILE_NAME, print_result=True):
     spell, ocr_corrector, tokenizer = init()
     print("\n|========================================")
     print("| \033[34mTranslating with t5 ...\033[0m")
-
 
     input_path = f"datasets/eng/{FILE_NAME}_ocr.json"
     gold_path = f"datasets/eng/{FILE_NAME}_clean.json"
@@ -116,12 +123,12 @@ def correct_with_t5(FILE_NAME, print_result=True):
                     else:
                         corrected = out.strip()
 
-                    # fallback se output troppo corto o solo puntini
+                    # fallback if output is too short or empty
                     if len(corrected) < 5 or corrected in ["...", "fix...", ""]:
-                        log(f"    Chunk {chunk_i}/{len(sub_chunks)}: Model output troppo corto o vuoto, uso testo preprocessato")
+                        log(f"    Chunk {chunk_i}/{len(sub_chunks)}: Model output too short, using preprocessed text")
                         corrected = preprocessed
                 except Exception as e:
-                    log(f"    Chunk {chunk_i}/{len(sub_chunks)}: Errore modello: {e}")
+                    log(f"    Chunk {chunk_i}/{len(sub_chunks)}: Error: {e}")
                     corrected = preprocessed
 
                 spellchecked = spellcheck_text(corrected, spell)
@@ -131,6 +138,7 @@ def correct_with_t5(FILE_NAME, print_result=True):
             corrected_sentence = capitalize_first_letter(corrected_sentence)
             corrected_sentences.append(corrected_sentence)
 
+        # Building the final correction
         final_correction = " ".join(corrected_sentences)
 
         if print_result:
@@ -141,7 +149,7 @@ def correct_with_t5(FILE_NAME, print_result=True):
         results[key] = {
             "ocr": ocr_text,
             "gold": gold_text,
-            "smaLLM_correction": final_correction
+            "correction": final_correction
         }
 
     with open(output_path, "w", encoding="utf-8") as f_out:

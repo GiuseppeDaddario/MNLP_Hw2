@@ -13,8 +13,7 @@ from .utils import (
     analyze_dataset,
     accuracy_correlation,
     kappa_correlation,
-    reorganize_dataset,
-    textCleaner,
+    log,
     build_output_file,
 )
 
@@ -31,6 +30,5 @@ __all__ = [
     "analyze_dataset",
     "accuracy_correlation",
     "kappa_correlation",
-    "reorganize_dataset",
-    "textCleaner"
+    "log"
 ]
