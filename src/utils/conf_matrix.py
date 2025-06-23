@@ -36,5 +36,49 @@ def plot_confusion_matrix(FILE_NAME, correction_model, evaluation_model, normali
     plt.show()
 
 
+def plot_confusion_matrices(FILE_NAME, correction_model, normalize=False, cmap="Blues"):
+    BASE_PATH = f"datasets/eng/corrections/{correction_model}/"
+    FILE_PATH = BASE_PATH + FILE_NAME + ".json"
+    evaluation_model_1 = "gemini"
+    evaluation_model_2 = "prometheus"
 
+    with open(FILE_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    def extract_scores(eval_model):
+        human_scores = []
+        machine_scores = []
+        key = f"{eval_model}_score"
+
+        for item in data:
+            if "human_score" in item and key in item:
+                human_scores.append(item["human_score"])
+                machine_scores.append(item[key])
+            else:
+                print(f"Missing 'human_score' or '{key}' in item:", item)
+
+        return human_scores, machine_scores
+
+    # Estrai i punteggi per entrambi i modelli
+    h1, m1 = extract_scores(evaluation_model_1)
+    h2, m2 = extract_scores(evaluation_model_2)
+
+    # Crea la figura con due subplot affiancati
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+    for ax, human_scores, machine_scores, eval_model in zip(
+            axes, [h1, h2], [m1, m2], [evaluation_model_1, evaluation_model_2]
+    ):
+        labels = sorted(list(set(human_scores + machine_scores)))
+        cm = confusion_matrix(human_scores, machine_scores, labels=labels, normalize='true' if normalize else None)
+
+        sns.heatmap(cm, annot=True, fmt=".2f" if normalize else "d", cmap=cmap,
+                    xticklabels=labels, yticklabels=labels, ax=ax)
+        ax.set_xlabel("Model Score")
+        ax.set_ylabel("Human Score")
+        ax.set_title(f"{eval_model} vs Human")
+
+    plt.suptitle(f"Confusion Matrices for '{correction_model}'", fontsize=14)
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.show()
 
