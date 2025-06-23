@@ -1,4 +1,14 @@
 
+
+
+# D'Addairo Giuseppe MAT:2177530, Benucci Lorenzo MAT: 2219690
+######################################################################################################
+#### THE MAIN FUNCTION IS MOVED ON GOOGLE COLAB; WHIS IS JUST FOR LOCAL ENV TESTING AND EXECUTION ####
+######################################################################################################
+# Colab link: https://colab.research.google.com/drive/1ixKbLo5EVUr1gbbYYy1jvVuDGWIKiHK7?usp=sharing
+
+
+
 ## Translations
 from src import correct_with_llama4, correct_with_minerva, correct_with_t5
 
