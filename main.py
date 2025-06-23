@@ -34,13 +34,13 @@ FILE_NAME = "the_vampyre"
 #correct_with_t5(FILE_NAME, print_result=True)
 #
 # # - minerva - correction_model is the name of the model to use for translation in:
-# [minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
+# [minerva, minerva_finetuned_lima, minerva_finetuned_post_ocr]
 # correct_with_minerva(FILE_NAME, correction_model="minerva")
 #
 #build_output_file(FILE_NAME, "t5")
 #build_output_file(FILE_NAME, "llama4")
 #build_output_file(FILE_NAME, "minerva")
-#build_output_file(FILE_NAME, "minerva_finetuned_llima")
+#build_output_file(FILE_NAME, "minerva_finetuned_lima")
 #build_output_file(FILE_NAME, "minerva_finetuned_post_ocr")
 # # ------------------------------#
 #
@@ -50,29 +50,29 @@ FILE_NAME = "the_vampyre"
 # #function input "corection_model" can be [llama4/minerva/smallLLM]
 #
 # # - Gemini -correction_model is the name of the model to use for translation in:
-# # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
+# # [llama4, t5, minerva, minerva_finetuned_lima, minerva_finetuned_post_ocr]
 #gemini_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 #gemini_score(FILE_NAME,"t5") ## Evaluating smallLLM translations
 #gemini_score(FILE_NAME,"minerva") ##Evaluating minerva translations
-#gemini_score(FILE_NAME,"minerva_finetuned_llima") ##Evaluating minerva translations
+#gemini_score(FILE_NAME,"minerva_finetuned_lima") ##Evaluating minerva translations
 #gemini_score(FILE_NAME,"minerva_finetuned_post_ocr") ##Evaluating minerva translations
 
 #build_rouges(FILE_NAME, "t5")
 #build_rouges(FILE_NAME, "minerva")
-#build_rouges(FILE_NAME, "minerva_finetuned_llima")
+#build_rouges(FILE_NAME, "minerva_finetuned_lima")
 #build_rouges(FILE_NAME, "minerva_finetuned_post_ocr")
 #build_rouges(FILE_NAME, "llama4")
 #
 #
 # # - Prometheus -correction_model is the name of the model to use for translation in:
-# # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
+# # # [llama4, deep_mount, minerva, minerva_finetuned_lima, minerva_finetuned_post_ocr]
 #prometheus_score(FILE_NAME, "llama4") ## Evaluating llama4 translations
 # prometheus_score(FILE_NAME,"deep_mount") ## Evaluating smallLLM translations
 # prometheus_score(FILE_NAME,"minerva") ## Evaluating minerva translations.
 #
 #
 # # - Human -correction_model is the name of the model to use for translation in:
-# # # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
+# # # [llama4, deep_mount, minerva, minerva_finetuned_lima, minerva_finetuned_post_ocr]
 # annotate_human_scores(FILE_NAME,"llama4")
 # annotate_human_scores(FILE_NAME,"t5")
 # annotate_human_scores(FILE_NAME,"minerva")
@@ -84,34 +84,34 @@ FILE_NAME = "the_vampyre"
 #
 # # ----- COMPUTING CORRELATION ----- #
 # -correction_model is the name of the model to use for translation in:
-# # [llama4, deep_mount, minerva, minerva_finetuned_llima, minerva_finetuned_post_ocr]
+# # [llama4, deep_mount, minerva, minerva_finetuned_lima, minerva_finetuned_post_ocr]
 # # kappa_correlation(FILE_NAME, correction_model, judge_model, print_result)
 # # accuracy_correlation(FILE_NAME, correction_model, judge_model, print_result)
 #
 #kappa_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","gemini",print_results=True)
-#kappa_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva_finetuned_lima","gemini",print_results=True)
 #kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
 
 
 # kappa_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # kappa_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
-#kappa_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+#kappa_correlation(FILE_NAME,"minerva_finetuned_lima","prometheus",print_results=True)
 #kappa_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
 
 #
 # accuracy_correlation(FILE_NAME,"llama4","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","gemini",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","gemini",print_results=True)
-#accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","gemini",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_lima","gemini",print_results=True)
 #accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","gemini",print_results=True)
 #
 # accuracy_correlation(FILE_NAME,"llama4","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"smallLLM","prometheus",print_results=True)
 # accuracy_correlation(FILE_NAME,"minerva","prometheus",print_results=True)
-#accuracy_correlation(FILE_NAME,"minerva_finetuned_llima","prometheus",print_results=True)
+#accuracy_correlation(FILE_NAME,"minerva_finetuned_lima","prometheus",print_results=True)
 #accuracy_correlation(FILE_NAME,"minerva_finetuned_post_ocr","prometheus",print_results=True)
 # # ------------------------------#
 #
@@ -129,5 +129,5 @@ FILE_NAME = "the_vampyre"
 #plot_confusion_matrices("the_vampyre", "llama4", normalize=True)
 #plot_confusion_matrices("the_vampyre", "minerva", normalize=True)
 #plot_confusion_matrices("the_vampyre", "t5", normalize=True)
-#plot_confusion_matrices("the_vampyre", "minerva_finetuned_llima", normalize=True)
+#plot_confusion_matrices("the_vampyre", "minerva_finetuned_lima", normalize=True)
 #plot_confusion_matrices("the_vampyre", "minerva_finetuned_post_ocr", normalize=True)

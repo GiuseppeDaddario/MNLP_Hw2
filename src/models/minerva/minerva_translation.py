@@ -58,7 +58,7 @@ def load_minerva_model(correction_model, finetuned=True, online=True):
 
 #==== MINERVA PROMPT MAKER =====
 def make_prompt(correction_model, ocr_text):
-    if correction_model == "minerva" or correction_model == "minerva_finetuned_llima":
+    if correction_model == "minerva" or correction_model == "minerva_finetuned_lima":
         return (
              "You are an OCR correction system.\n"
              "Task: Fix spelling, spacing, and OCR errors in the given sentence ONLY if there are any.\n"
