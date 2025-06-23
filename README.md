@@ -7,7 +7,7 @@ The goal of this homework is to explore the capabilities of different language m
 ***
 ### How to run the code
 The code both for re-generating the corrections and analyzing the results is available in this 
-[Googl colab notebook](https://colab.research.google.com/drive/1ixKbLo5EVUr1gbbYYy1jvVuDGWIKiHK7?usp=sharing)
+[Google colab notebook](https://colab.research.google.com/drive/1ixKbLo5EVUr1gbbYYy1jvVuDGWIKiHK7?usp=sharing)
 
 ***
 ### Structure of the Repository
